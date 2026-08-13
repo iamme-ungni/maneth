@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>HANARA Header & Travel Desk Banner</title>
+  <title>HANARA - Travel Desk & Concierge</title>
   <!-- Google Fonts & Font Awesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,7 +86,6 @@
       border-bottom: 1px solid #eae5db;
     }
 
-    /* Logo Styling */
     .brand-logo {
       display: flex;
       align-items: center;
@@ -129,7 +128,6 @@
       margin-top: 3px;
     }
 
-    /* Navigation Menu */
     .nav-links {
       display: flex;
       align-items: center;
@@ -157,246 +155,354 @@
       color: #d17a6a;
     }
 
-    /* Aesthetic Travel Desk Button Accent Styling */
-    .nav-item.travel-desk-btn {
-      background: linear-gradient(135deg, #d17a6a 0%, #b85e4f 100%);
-      color: #ffffff !important;
-      box-shadow: 0 4px 15px rgba(209, 122, 106, 0.3);
-      display: flex;
-      align-items: center;
-      gap: 8px;
+    /* Main Content Area */
+    .content-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    .nav-item.travel-desk-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(209, 122, 106, 0.45);
-    }
-
-    .pulse-dot {
-      width: 8px;
-      height: 8px;
-      background-color: #55efc4;
-      border-radius: 50%;
-      box-shadow: 0 0 0 0 rgba(85, 239, 196, 0.7);
-      animation: pulse 1.6s infinite;
-    }
-
-    @keyframes pulse {
-      0% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(85, 239, 196, 0.7);
-      }
-      70% {
-        transform: scale(1);
-        box-shadow: 0 0 0 8px rgba(85, 239, 196, 0);
-      }
-      100% {
-        transform: scale(0.95);
-        box-shadow: 0 0 0 0 rgba(85, 239, 196, 0);
-      }
-    }
-
-    /* Travel Desk Hero Section */
-    .travel-desk-hero {
-      max-width: 1200px;
-      margin: 32px auto;
-      padding: 0 32px;
-    }
-
-    .desk-hero-card {
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 36px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-      border: 1px solid #eae5db;
-    }
-
-    .desk-header {
-      margin-bottom: 28px;
-    }
-
-    .desk-header h2 {
-      font-size: 28px;
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 20px;
       color: #231f20;
-      display: flex;
-      align-items: center;
-      gap: 12px;
     }
 
-    .desk-header p {
-      color: #7a7571;
-      font-size: 15px;
-      margin-top: 6px;
-    }
-
+    /* Travel Desk Services Grid */
     .desk-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
       gap: 24px;
-    }
-
-    @media (max-width: 850px) {
-      .desk-grid {
-        grid-template-columns: 1fr;
-      }
+      margin-bottom: 40px;
     }
 
     .desk-card {
-      background: #f7f5f0;
-      border-radius: 20px;
-      padding: 24px;
+      background: #ffffff;
       border: 1px solid #eae5db;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+      transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    .desk-card:hover {
+      border-color: #d17a6a;
+      transform: translateY(-2px);
+    }
+
+    .desk-card-icon {
+      width: 50px;
+      height: 50px;
+      background-color: #faece7;
+      color: #d17a6a;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
     }
 
     .desk-card h3 {
-      font-size: 18px;
-      color: #d17a6a;
-      margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 20px;
+      font-weight: 800;
+      color: #231f20;
+      margin-bottom: 10px;
     }
 
-    .contact-list {
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: #ffffff;
-      padding: 12px 16px;
-      border-radius: 12px;
-      text-decoration: none;
-      color: #2b2826;
-      font-weight: 600;
+    .desk-card p {
       font-size: 14px;
-      border: 1px solid #eae5db;
-      transition: all 0.2s ease;
+      color: #7a7571;
+      line-height: 1.5;
+      margin-bottom: 20px;
     }
 
-    .contact-item:hover {
-      transform: translateX(4px);
-      border-color: #d17a6a;
-      box-shadow: 0 4px 12px rgba(209, 122, 106, 0.1);
-    }
-
-    .contact-item i {
-      color: #d17a6a;
-      width: 20px;
-      font-size: 16px;
-    }
-
-    /* Meeting & QR Payment Box with Form Inputs */
-    .qr-card {
-      background: linear-gradient(145deg, #231f20 0%, #3d3935 100%);
+    .btn-action {
+      background-color: #231f20;
       color: #ffffff;
-      border-radius: 20px;
-      padding: 28px 24px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+      width: 100%;
+    }
+
+    .btn-action:hover {
+      background-color: #d17a6a;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.5);
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
+      padding: 20px;
     }
 
-    .qr-card h3 {
-      font-size: 18px;
-      color: #ebb4a8;
-      margin-bottom: 6px;
+    .modal-content {
+      background-color: #ffffff;
+      border-radius: 20px;
+      padding: 35px;
+      max-width: 550px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      position: relative;
+      animation: modalSlideIn 0.3s ease;
+      max-height: 90vh;
+      overflow-y: auto;
     }
 
-    .qr-card p {
-      font-size: 12px;
-      color: #d8c8b8;
-      margin-bottom: 14px;
+    @keyframes modalSlideIn {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .close-btn {
+      color: #7a7571;
+      position: absolute;
+      top: 20px;
+      right: 25px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .close-btn:hover {
+      color: #231f20;
+    }
+
+    .modal-header-icon {
+      width: 48px;
+      height: 48px;
+      background-color: #faece7;
+      color: #d17a6a;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    .modal-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: #231f20;
+      margin-bottom: 8px;
+    }
+
+    .modal-subtitle {
+      font-size: 14px;
+      color: #7a7571;
+      margin-bottom: 16px;
       line-height: 1.4;
     }
 
-    /* Form Fields for Name & Phone */
-    .booking-form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      margin-bottom: 16px;
-      text-align: left;
+    /* Perks/Options List in Modal */
+    .modal-features-list {
+      list-style: none;
+      margin-bottom: 20px;
+      background-color: #fcfbfa;
+      border: 1px solid #eae5db;
+      border-radius: 12px;
+      padding: 12px 16px;
     }
 
+    .modal-features-list li {
+      font-size: 13px;
+      color: #3d3935;
+      padding: 8px 0;
+      border-bottom: 1px solid #f7f3ec;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .modal-features-list li:last-child {
+      border-bottom: none;
+    }
+
+    .modal-features-list li i {
+      color: #d17a6a;
+      font-size: 13px;
+    }
+
+    .modal-features-list li strong {
+      color: #231f20;
+    }
+
+    /* Form Styles */
     .form-group {
-      width: 100%;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(235, 180, 168, 0.3);
-      border-radius: 10px;
-      padding: 8px 12px;
+      margin-bottom: 14px;
     }
 
     .form-group label {
       display: block;
-      font-size: 10px;
-      color: #ebb4a8;
-      font-weight: 700;
-      margin-bottom: 2px;
-      letter-spacing: 0.5px;
-    }
-
-    .form-group input {
-      width: 100%;
-      background: transparent;
-      border: none;
-      color: #ffffff;
       font-size: 13px;
-      font-family: inherit;
-      outline: none;
-    }
-
-    .form-group input::placeholder {
-      color: rgba(255, 255, 255, 0.4);
-    }
-
-    /* Significantly Enlarged QR Frame for Maximum Scan Visibility */
-    .qr-frame {
-      width: 260px;
-      height: 260px;
-      background: #ffffff;
-      border-radius: 20px;
-      padding: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 3px dashed #d17a6a;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
-      margin: 10px 0;
-    }
-
-    .qr-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .badge-bar {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 16px;
-    }
-
-    .badge {
-      background: #ffffff;
-      padding: 6px 12px;
-      border-radius: 16px;
-      font-size: 12px;
       font-weight: 700;
-      color: #3d3935;
+      color: #2b2826;
+      margin-bottom: 6px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 10px 14px;
       border: 1px solid #eae5db;
+      border-radius: 10px;
+      font-size: 14px;
+      color: #2b2826;
+      background-color: #f7f5f0;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: #d17a6a;
+      background-color: #ffffff;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .submit-btn {
+      background-color: #d17a6a;
+      color: #ffffff;
+      border: none;
+      padding: 12px;
+      border-radius: 25px;
+      font-size: 15px;
+      font-weight: 700;
+      width: 100%;
+      cursor: pointer;
+      text-align: center;
+      margin-top: 6px;
+      transition: background-color 0.2s;
+    }
+
+    .submit-btn:hover {
+      background-color: #b86455;
+    }
+
+    /* Ticket / Confirmation Styles */
+    .ticket-card {
+      display: none;
+      background: #fdfbf7;
+      border: 2px dashed #d17a6a;
+      border-radius: 16px;
+      padding: 24px;
+      margin-top: 15px;
+    }
+
+    .ticket-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eae5db;
+      padding-bottom: 12px;
+      margin-bottom: 15px;
+    }
+
+    .ticket-logo {
+      font-weight: 800;
+      font-size: 16px;
+      color: #231f20;
+    }
+
+    .ticket-status {
+      background-color: #e2f0d9;
+      color: #385723;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .ticket-body-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      font-size: 13px;
+      margin-bottom: 15px;
+    }
+
+    .ticket-field span {
+      display: block;
+      color: #7a7571;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .ticket-field strong {
+      color: #2b2826;
+      font-size: 14px;
+    }
+
+    .ticket-footer {
+      border-top: 1px solid #eae5db;
+      padding-top: 12px;
+      font-size: 12px;
+      color: #7a7571;
+      text-align: center;
+    }
+
+    /* Support Banner */
+    .support-banner {
+      background: #ffffff;
+      border: 1px solid #eae5db;
+      border-radius: 16px;
+      padding: 30px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .support-info h3 {
+      font-size: 20px;
+      font-weight: 800;
+      color: #231f20;
+      margin-bottom: 6px;
+    }
+
+    .support-info p {
+      font-size: 14px;
+      color: #7a7571;
+    }
+
+    .support-btn {
+      background-color: #faece7;
+      color: #d17a6a;
+      text-decoration: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-weight: 700;
+      font-size: 14px;
+      transition: background-color 0.2s;
+    }
+
+    .support-btn:hover {
+      background-color: #ebb4a8;
+      color: #231f20;
     }
   </style>
 </head>
@@ -405,8 +511,8 @@
   <!-- Top Announcement Bar -->
   <div class="top-bar">
     <div class="top-bar-left">
-      <span class="tag-pill">EATS GUIDE</span>
-      <span>Savor Korea's Most Iconic Eats & Hanok Cafés. Instant Ordering.</span>
+      <span class="tag-pill">TRAVEL DESK</span>
+      <span>24/7 Concierge, SIM Cards, Luggage Delivery & Transit Assistance.</span>
     </div>
     <div class="top-bar-right">
       <a href="tel:090777186" class="info-item">
@@ -422,112 +528,306 @@
 
   <!-- Main Navigation Header -->
   <header class="main-header">
-    <a href="index.html" class="logo">
-      <div class="logo-symbol">한</div>
-      <div class="logo-text">
+    <a href="index.html" class="brand-logo">
+      <div class="logo-circle">한</div>
+      <div class="brand-details">
         <span class="brand-name">HANARA</span>
         <span class="brand-subtext">하나로 · ALL IN KOREA</span>
       </div>
     </a>
-
     <nav>
       <ul class="nav-links">
         <li><a href="index.html" class="nav-item">Main Square</a></li>
         <li><a href="hotelteam3.html" class="nav-item">Cozy Stays</a></li>
         <li><a href="coffeeteam3.html" class="nav-item">Eats & Cafés</a></li>
-        <li><a href="day-escapes.html" class="nav-item">Day Escapes</a></li>
-        <li><a href="kculture.html" class="nav-item">K-Culture</a></li>
-        <li><span class="nav-item">Travel Desk</span></li>
+        <li><a href="day-escape.html" class="nav-item">Day Escapes</a></li>
+        <li><a href="kculture.html" class="nav-item">K-Culture & Shows</a></li>
+        <li><span class="nav-item active">Travel Desk</span></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Travel Desk Section Directly Under the Header -->
-  <section class="travel-desk-hero" id="travel-desk">
-    <div class="desk-hero-card">
-      <div class="desk-header">
-        <h2><i class="fa-solid fa-compass" style="color: #d17a6a;"></i> HANARA Travel Desk</h2>
-        <p>Your 24/7 personal concierge & emergency assistant based in Ulsan, South Korea.</p>
+  <!-- Main Content Area -->
+  <main class="content-container">
+    <h2 class="section-title">Travel Desk & Concierge Services</h2>
+    
+    <div class="desk-grid">
+      <!-- Service 1: Airport Transfer -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-card-icon"><i class="fa-solid fa-car"></i></div>
+          <h3>Airport Private Transfer</h3>
+          <p>Book reliable pick-up or drop-off services between Incheon/Gimpo Airport and your accommodation in Seoul with English-speaking drivers.</p>
+        </div>
+        <button class="btn-action" onclick="openModal('transferModal')">Book Transfer</button>
       </div>
 
-      <div class="desk-grid">
-        <!-- Left: Direct Contact Options -->
-        <div class="desk-card">
-          <div>
-            <h3><i class="fa-solid fa-headset"></i> Immediate Assistance</h3>
-            <ul class="contact-list">
-              <li>
-                <a href="tel:090777186" class="contact-item">
-                  <i class="fa-solid fa-phone"></i>
-                  <span>Phone / WhatsApp: +82 90-777-186</span>
-                </a>
-              </li>
-              <li>
-                <a href="https://t.me/090777186" target="_blank" class="contact-item">
-                  <i class="fa-paper-plane fa-solid"></i>
-                  <span>Telegram Emergency: @090777186</span>
-                </a>
-              </li>
-              <li>
-                <a href="mailto:eungmaneth186@gmail.com" class="contact-item">
-                  <i class="fa-solid fa-envelope"></i>
-                  <span>Email: eungmaneth186@gmail.com</span>
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div style="margin-top: 20px;">
-            <span style="font-size: 11px; font-weight: 700; color: #7a7571; letter-spacing: 0.5px;">SUPPORTED LANGUAGES</span>
-            <div class="badge-bar">
-              <span class="badge">English</span>
-              <span class="badge">한국어</span>
-              <span class="badge">中文</span>
-              <span class="badge">Français</span>
-            </div>
-          </div>
+      <!-- Service 2: Luggage Delivery -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-card-icon"><i class="fa-solid fa-suitcase-rolling"></i></div>
+          <h3>Luggage Delivery & Storage</h3>
+          <p>Travel hands-free across Korea. We transfer your bags securely between airports, hotels, and train stations on the same day.</p>
         </div>
+        <button class="btn-action" onclick="openModal('luggageModal')">Reserve Service</button>
+      </div>
 
-        <!-- Right: Work Meeting, Form & Extra Large Payment QR Code Box -->
-        <div class="qr-card">
-          <div>
-            <h3><i class="fa-solid fa-handshake"></i> Book Work Meeting</h3>
-            <p>Please enter your details and complete the consultation payment first to confirm your meeting.</p>
-            
-            <!-- User Info Input Fields -->
-            <div class="booking-form">
-              <div class="form-group">
-                <label for="userName">YOUR NAME</label>
-                <input type="text" id="userName" placeholder="e.g. John Doe">
-              </div>
-              <div class="form-group">
-                <label for="userPhone">PHONE NUMBER / WHATSAPP</label>
-                <input type="text" id="userPhone" placeholder="e.g. +123456789">
-              </div>
-            </div>
-          </div>
-
-          <!-- Extra Large QR frame -->
-          <div class="qr-frame">
-            <img src="photo_2026-08-11_17-25-17.jpg" alt="Scan QR Code to Pay and Confirm Meeting">
-          </div>
-          
-          <span style="font-size: 11px; color: #ebb4a8; margin-top: 12px;">Scan to Complete Payment & Lock Meeting</span>
+      <!-- Service 3: SIM Card & Pocket WiFi -->
+      <div class="desk-card">
+        <div>
+          <div class="desk-card-icon"><i class="fa-solid fa-wifi"></i></div>
+          <h3>High-Speed eSIM & WiFi</h3>
+          <p>Stay connected instantly upon landing with high-speed unlimited 4G/5G Korea SIM cards, eSIMs, or portable WiFi routers (Paid via Visa).</p>
         </div>
+        <button class="btn-action" onclick="openModal('wifiModal')">Get Connected</button>
       </div>
     </div>
-  </section>
 
-  <!-- Interactive Dynamic Active Switcher -->
+    <!-- Support Banner -->
+    <div class="support-banner">
+      <div class="support-info">
+        <h3>Need custom travel assistance or emergency help?</h3>
+        <p>Call our emergency assistant line directly at <strong>090777186</strong> for any problem or emergency help.</p>
+      </div>
+      <a href="tel:090777186" class="support-btn">Call Emergency: 090777186</a>
+    </div>
+  </main>
+
+  <!-- MODAL: Airport Transfer Perks + Form + Ticket -->
+  <div id="transferModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('transferModal')">&times;</span>
+      <div class="modal-header-icon"><i class="fa-solid fa-car"></i></div>
+      <h3 class="modal-title">Airport Private Transfer</h3>
+      <p class="modal-subtitle">Check out our top tourist perks, then fill in your details to instantly generate your transfer ticket:</p>
+      
+      <!-- Tourist Perks / What tourists want -->
+      <ul class="modal-features-list">
+        <li><i class="fa-solid fa-check"></i><span><strong>Live Flight Tracking:</strong> Driver monitors your flight time automatically.</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>Meet & Greet:</strong> Name sign displayed right at the arrival gate.</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>Free Child Seat Option:</strong> Safe family travel support on request.</span></li>
+      </ul>
+
+      <form id="transferForm" onsubmit="generateTicket(event, 'transfer')">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="t_name" placeholder="e.g. John Doe" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Flight Number</label>
+            <input type="text" id="t_flight" placeholder="e.g. KE123" required>
+          </div>
+          <div class="form-group">
+            <label>Pickup Date</label>
+            <input type="date" id="t_date" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Destination Hotel in Seoul</label>
+          <input type="text" id="t_dest" placeholder="e.g. Signiel Seoul" required>
+        </div>
+        <button type="submit" class="submit-btn">Confirm & Generate Ticket</button>
+      </form>
+
+      <!-- Generated Ticket -->
+      <div id="transferTicket" class="ticket-card">
+        <div class="ticket-header">
+          <span class="ticket-logo"><i class="fa-solid fa-car"></i> HANARA TRANSFER PASS</span>
+          <span class="ticket-status">CONFIRMED</span>
+        </div>
+        <div class="ticket-body-grid">
+          <div class="ticket-field"><span>Passenger</span><strong id="res_t_name">-</strong></div>
+          <div class="ticket-field"><span>Flight</span><strong id="res_t_flight">-</strong></div>
+          <div class="ticket-field"><span>Date</span><strong id="res_t_date">-</strong></div>
+          <div class="ticket-field"><span>Destination</span><strong id="res_t_dest">-</strong></div>
+        </div>
+        <div class="ticket-footer">Show this digital pass to your English-speaking driver. Emergency Help: 090777186</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: Luggage Delivery Perks + Form + Ticket -->
+  <div id="luggageModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('luggageModal')">&times;</span>
+      <div class="modal-header-icon"><i class="fa-solid fa-suitcase-rolling"></i></div>
+      <h3 class="modal-title">Luggage Delivery & Storage</h3>
+      <p class="modal-subtitle">Check out our top tourist perks, then fill in your details to secure your luggage voucher:</p>
+      
+      <!-- Tourist Perks / What tourists want -->
+      <ul class="modal-features-list">
+        <li><i class="fa-solid fa-check"></i><span><strong>Same-Day Drop:</strong> Drop by 11 AM, ready at your hotel room by 4 PM.</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>City-to-City Sync:</strong> Send bags straight from Seoul hotels to Busan hotels.</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>Full Insurance:</strong> Secure coverage against damage or loss during transit.</span></li>
+      </ul>
+
+      <form id="luggageForm" onsubmit="generateTicket(event, 'luggage')">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="l_name" placeholder="e.g. Jane Smith" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Number of Bags</label>
+            <input type="number" id="l_bags" min="1" max="10" placeholder="1" required>
+          </div>
+          <div class="form-group">
+            <label>Service Date</label>
+            <input type="date" id="l_date" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>From (Drop-off)</label>
+            <input type="text" id="l_from" placeholder="e.g. Incheon Airport T1" required>
+          </div>
+          <div class="form-group">
+            <label>To (Destination)</label>
+            <input type="text" id="l_to" placeholder="e.g. Lotte Hotel Seoul" required>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Generate Luggage Voucher</button>
+      </form>
+
+      <!-- Generated Ticket -->
+      <div id="luggageTicket" class="ticket-card">
+        <div class="ticket-header">
+          <span class="ticket-logo"><i class="fa-solid fa-suitcase-rolling"></i> HANARA LUGGAGE VOUCHER</span>
+          <span class="ticket-status">RESERVED</span>
+        </div>
+        <div class="ticket-body-grid">
+          <div class="ticket-field"><span>Owner</span><strong id="res_l_name">-</strong></div>
+          <div class="ticket-field"><span>Bags Count</span><strong id="res_l_bags">-</strong></div>
+          <div class="ticket-field"><span>Route</span><strong id="res_l_route">-</strong></div>
+          <div class="ticket-field"><span>Date</span><strong id="res_l_date">-</strong></div>
+        </div>
+        <div class="ticket-footer">Hand bags to our desk representative. Helpline: 090777186</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL: eSIM & WiFi Perks + Visa Payment + Ticket/Password -->
+  <div id="wifiModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" onclick="closeModal('wifiModal')">&times;</span>
+      <div class="modal-header-icon"><i class="fa-solid fa-wifi"></i></div>
+      <h3 class="modal-title">High-Speed eSIM & Pocket WiFi</h3>
+      <p class="modal-subtitle">Check out connection perks, pay securely via Visa card to unlock passwords, and receive your pass:</p>
+      
+      <!-- Tourist Perks / What tourists want -->
+      <ul class="modal-features-list">
+        <li><i class="fa-solid fa-check"></i><span><strong>Free Public WiFi Guide:</strong> Instant passwords for <em>"Seoul_Secure"</em> & <em>"KT_GiGA"</em>.</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>Instant Email Delivery:</strong> QR code sent right away for instant activation.</span></li>
+        <li><i class="fa-solid fa-check"></i><span><strong>Airport 24/7 Booth:</strong> Pick up physical pocket routers anytime at Incheon or Gimpo.</span></li>
+      </ul>
+
+      <form id="wifiForm" onsubmit="generateTicket(event, 'wifi')">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" id="w_name" placeholder="e.g. Alex Johnson" required>
+        </div>
+        <div class="form-group">
+          <label>Select Connectivity Plan (Paid via Visa)</label>
+          <select id="w_plan" required>
+            <option value="Unlimited 5G eSIM (5 Days) - $18">Unlimited 5G eSIM (5 Days) - $18</option>
+            <option value="Unlimited 5G eSIM (10 Days) - $30">Unlimited 5G eSIM (10 Days) - $30</option>
+            <option value="Pocket WiFi Router (7 Days) - $35">Pocket WiFi Router (7 Days) - $35</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label><i class="fa-brands fa-cc-visa" style="color:#1a1f71; font-size: 16px;"></i> Visa Card Number</label>
+          <input type="text" placeholder="4111 2222 3333 4444" maxlength="19" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Expiry Date</label>
+            <input type="text" placeholder="MM/YY" maxlength="5" required>
+          </div>
+          <div class="form-group">
+            <label>CVV</label>
+            <input type="password" placeholder="123" maxlength="4" required>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Pay via Visa & Unlock Pass</button>
+      </form>
+
+      <!-- Generated Ticket -->
+      <div id="wifiTicket" class="ticket-card">
+        <div class="ticket-header">
+          <span class="ticket-logo"><i class="fa-solid fa-wifi"></i> HANARA WIFI PASS</span>
+          <span class="ticket-status">PAID & ACTIVE</span>
+        </div>
+        <div class="ticket-body-grid">
+          <div class="ticket-field"><span>Customer</span><strong id="res_w_name">-</strong></div>
+          <div class="ticket-field"><span>Selected Plan</span><strong id="res_w_plan">-</strong></div>
+          <div class="ticket-field"><span>Network Password</span><strong style="color: #d17a6a;">KoreaConnect#2026</strong></div>
+          <div class="ticket-field"><span>Payment Status</span><strong>Paid via Visa (Success)</strong></div>
+        </div>
+        <div class="ticket-footer">Scan your QR code or use network password. Tech Support: 090777186</div>
+      </div>
+    </div>
+  </div>
+
   <script>
-    const navItems = document.querySelectorAll('.nav-item');
+    function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'flex';
+    }
 
-    navItems.forEach(item => {
-      item.addEventListener('click', () => {
-        navItems.forEach(nav => nav.classList.remove('active'));
-        item.classList.add('active');
-      });
-    });
+    function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+      // Reset ticket and form visibility when closing
+      if(modalId === 'transferModal') {
+        document.getElementById('transferForm').style.display = 'block';
+        document.getElementById('transferTicket').style.display = 'none';
+        document.getElementById('transferForm').reset();
+      } else if(modalId === 'luggageModal') {
+        document.getElementById('luggageForm').style.display = 'block';
+        document.getElementById('luggageTicket').style.display = 'none';
+        document.getElementById('luggageForm').reset();
+      } else if(modalId === 'wifiModal') {
+        document.getElementById('wifiForm').style.display = 'block';
+        document.getElementById('wifiTicket').style.display = 'none';
+        document.getElementById('wifiForm').reset();
+      }
+    }
+
+    function generateTicket(event, type) {
+      event.preventDefault();
+      
+      if(type === 'transfer') {
+        document.getElementById('res_t_name').innerText = document.getElementById('t_name').value;
+        document.getElementById('res_t_flight').innerText = document.getElementById('t_flight').value;
+        document.getElementById('res_t_date').innerText = document.getElementById('t_date').value;
+        document.getElementById('res_t_dest').innerText = document.getElementById('t_dest').value;
+        
+        document.getElementById('transferForm').style.display = 'none';
+        document.getElementById('transferTicket').style.display = 'block';
+      } 
+      else if(type === 'luggage') {
+        document.getElementById('res_l_name').innerText = document.getElementById('l_name').value;
+        document.getElementById('res_l_bags').innerText = document.getElementById('l_bags').value;
+        document.getElementById('res_l_route').innerText = document.getElementById('l_from').value + ' ➔ ' + document.getElementById('l_to').value;
+        document.getElementById('res_l_date').innerText = document.getElementById('l_date').value;
+        
+        document.getElementById('luggageForm').style.display = 'none';
+        document.getElementById('luggageTicket').style.display = 'block';
+      }
+      else if(type === 'wifi') {
+        document.getElementById('res_w_name').innerText = document.getElementById('w_name').value;
+        document.getElementById('res_w_plan').innerText = document.getElementById('w_plan').value;
+        
+        document.getElementById('wifiForm').style.display = 'none';
+        document.getElementById('wifiTicket').style.display = 'block';
+      }
+    }
+
+    // Close modal when clicking outside of modal content
+    window.onclick = function(event) {
+      if (event.target.classList.contains('modal')) {
+        closeModal(event.target.id);
+      }
+    }
   </script>
 
 </body>
