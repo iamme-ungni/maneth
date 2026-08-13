@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HANARA - K-Culture & Artist Showcase</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: #f7f5f0;
+      color: #2b2826;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background-color: #f7f3ec;
+      border-bottom: 1px solid #eae5db;
+      padding: 8px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #3d3935;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tag-pill {
+      border: 1.5px solid #ebb4a8;
+      color: #d17a6a;
+      background-color: #ffffff;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .info-item i {
+      font-size: 13px;
+      color: #3d3935;
+    }
+
+    .info-item strong {
+      font-weight: 700;
+    }
+
+    /* Main Header Navigation */
+    .main-header {
+      background-color: #ffffff;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eae5db;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-circle {
+      width: 44px;
+      height: 44px;
+      background-color: #d8c8b8;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      color: #231f20;
+    }
+
+    .brand-subtext {
+      font-size: 11px;
+      color: #7a7571;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: #2b2826;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      background-color: #f7f3ec;
+    }
+
+    .nav-item.active {
+      background-color: #faece7;
+      color: #d17a6a;
+    }
+
+    /* Main Content Area */
+    .content-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      color: #231f20;
+    }
+
+    /* Artist Selection Grid (Options) */
+    .artist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .artist-option-card {
+      background: #ffffff;
+      border: 2px solid #eae5db;
+      border-radius: 16px;
+      padding: 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .artist-option-card:hover {
+      border-color: #d17a6a;
+      transform: translateY(-2px);
+    }
+
+    .artist-option-card.selected {
+      border-color: #d17a6a;
+      background-color: #faece7;
+    }
+
+    .artist-img {
+      width: 100%;
+      height: 110px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+
+    .artist-option-card h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: #231f20;
+    }
+
+    .artist-option-card p {
+      font-size: 12px;
+      color: #7a7571;
+      margin-top: 2px;
+    }
+
+    /* Concert & Booking Slide Box */
+    .concert-card {
+      background: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #eae5db;
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: none; /* Hidden by default until selected */
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .concert-card.active-slide {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .concert-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 1px solid #eae5db;
+      padding-bottom: 20px;
+      margin-bottom: 25px;
+    }
+
+    .concert-title h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #231f20;
+      margin-bottom: 6px;
+    }
+
+    .concert-title p {
+      font-size: 14px;
+      color: #7a7571;
+    }
+
+    .badge-tour {
+      background-color: #faece7;
+      color: #d17a6a;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+
+    @media (max-width: 768px) {
+      .booking-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #2b2826;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1.5px solid #eae5db;
+      border-radius: 10px;
+      font-size: 14px;
+      background-color: #faf8f5;
+      color: #2b2826;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: #d17a6a;
+      background-color: #ffffff;
+    }
+
+    .addon-section {
+      background-color: #f7f3ec;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 10px;
+    }
+
+    .addon-section h3 {
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 14px;
+      color: #231f20;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .checkbox-item label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      font-weight: 500;
+      margin-bottom: 0;
+    }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 18px;
+      height: 18px;
+      accent-color: #d17a6a;
+      cursor: pointer;
+    }
+
+    .price-tag {
+      font-weight: 700;
+      color: #d17a6a;
+    }
+
+    .checkout-footer {
+      margin-top: 30px;
+      border-top: 1px solid #eae5db;
+      padding-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .total-display {
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    .total-display span {
+      color: #d17a6a;
+    }
+
+    .btn-submit {
+      background-color: #231f20;
+      color: #ffffff;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 25px;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    .btn-submit:hover {
+      background-color: #d17a6a;
+    }
+
+    /* Modal Popup Box Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(35, 31, 32, 0.6);
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      width: 90%;
+      max-width: 800px;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      transform: translateY(20px);
+      transition: transform 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    }
+
+    .modal-overlay.active .modal-content {
+      transform: translateY(0);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: #f7f3ec;
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      color: #2b2826;
+      transition: background-color 0.2s;
+    }
+
+    .modal-close:hover {
+      background-color: #d17a6a;
+      color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span class="tag-pill">EATS GUIDE</span>
+      <span>Savor Korea's Most Iconic Eats & Hanok Cafés. Instant Ordering.</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="tel:090777186" class="info-item">
+        <i class="fa-solid fa-phone"></i>
+        <span>Direct Support: <strong>090777186</strong></span>
+      </a>
+      <a href="#" class="info-item">
+        <i class="fa-solid fa-globe"></i>
+        <span>EN / KRW ₩ & USD $</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <a href="#" class="brand-logo">
+      <div class="logo-circle">한</div>
+      <div class="brand-details">
+        <span class="brand-name">HANARA</span>
+        <span class="brand-subtext">하나로 · ALL IN KOREA</span>
+      </div>
+    </a>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-item">Main Square</a></li>
+        <li><a href="#" class="nav-item">Cozy Stays</a></li>
+        <li><a href="#" class="nav-item">Eats & Cafés</a></li>
+        <li><a href="#" class="nav-item">Day Escapes</a></li>
+        <li><a href="#" class="nav-item active">K-Culture</a></li>
+        <li><a href="#" class="nav-item">Travel Desk</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Content Area -->
+  <main class="content-container">
+    <h2 class="section-title">Select an Artist Tour</h2>
+    
+    <!-- Artist Selection Grid (Options with Unsplash Images) -->
+    <div class="artist-grid">
+      <div class="artist-option-card" data-target="cortisModal">
+        <img src="cortis.jpg" alt="CORTIS" class="artist-img">
+        <h3>CORTIS</h3>
+        <p>World Tour</p>
+      </div>
+
+      <div class="artist-option-card" data-target="btsModal">
+        <img src="Screenshot 2026-08-12 084808.png" alt="BTS" class="artist-img">
+        <h3>BTS</h3>
+        <p>Reunion Tour</p>
+      </div>
+
+      <div class="artist-option-card" data-target="blackpinkModal">
+        <img src="Screenshot 2026-08-12 084626.png" alt="BLACKPINK" class="artist-img">
+        <h3>BLACKPINK</h3>
+        <p>World Tour</p>
+      </div>
+
+      <div class="artist-option-card" data-target="enhypenModal">
+        <img src="enhpen.jpg" alt="ENHYPEN" class="artist-img">
+        <h3>ENHYPEN</h3>
+        <p>Walk the Line</p>
+      </div>
+
+      <div class="artist-option-card" data-target="lesserafimModal">
+        <img src="le-sserafim.jpg" alt="LE SSERAFIM" class="artist-img">
+        <h3>LE SSERAFIM</h3>
+        <p>Flame Safeties</p>
+      </div>
+
+      <div class="artist-option-card" data-target="iveModal">
+        <img src="ive.jpg" alt="IVE" class="artist-img">
+        <h3>IVE</h3>
+        <p>Show What I Have</p>
+      </div>
+
+      <div class="artist-option-card" data-target="newjeansModal">
+        <img src="newjean.jpg" alt="NewJeans" class="artist-img">
+        <h3>NewJeans</h3>
+        <p>Special Fan Meet</p>
+      </div>
+
+      <div class="artist-option-card" data-target="txtModal">
+        <img src="txt.jpg" alt="TOMORROW X TOGETHER" class="artist-img">
+        <h3>TOMORROW X TOGETHER</h3>
+        <p>Act: Tomorrow</p>
+      </div>
+
+      <div class="artist-option-card" data-target="lngshotModal">
+        <img src="lngshot.jpg" alt="LNGSHOT" class="artist-img">
+        <h3>LNGSHOT</h3>
+        <p>Live Showcase</p>
+      </div>
+    </div>
+  </main>
+
+  <!-- Global Modal Popup Container -->
+  <div id="bookingModalOverlay" class="modal-overlay">
+    <div class="modal-content">
+      <button class="modal-close" id="closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
+
+      <!-- CORTIS Modal Slide -->
+      <div id="cortisModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>CORTIS WORLD TOUR 'COLOR OUT' IN SEOUL</h1>
+            <p><i class="fa-solid fa-location-dot"></i> KSPO Dome, Seoul | Live Ticketing & Fan Package</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="130000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="130000" data-usd="95">General Admission - ₩968,632 ($686)</option>
+                  <option value="membership" data-price="150000" data-usd="110">Fanclub Membership Presale Ticket - ₩807,664 ($572)</option>
+                  <option value="vip" data-price="198000" data-usd="145">VIP Soundcheck Package - ₩564,786 ($399.99)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Membership Number / ID</label>
+                <input type="text" class="form-control" placeholder="e.g., CO123456789">
+              </div>
+              <div class="form-group">
+                <label>Full Name (As on Passport)</label>
+                <input type="text" class="form-control" placeholder="First and Last Name" required>
+              </div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="45000" data-usd="33"> Official Lightstick</label><span class="price-tag">₩99,068 ($70)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="18000" data-usd="13"> Latest Album Pre-order</label><span class="price-tag">₩ ($36)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="15000" data-usd="11"> Photocard Holder & Strap</label><span class="price-tag">₩35,300 ($25)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Round-Trip Shuttle</label><span class="price-tag">₩50,832 ($36)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩968,632 ($686)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- BTS Modal Slide -->
+      <div id="btsModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>BTS WORLD TOUR 'ARMY REUNION' IN SEOUL</h1>
+            <p><i class="fa-solid fa-location-dot"></i> Seoul Olympic Stadium</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="150000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="150000" data-usd="110">General Admission - ₩1,834,188 ($1299)</option>
+                  <option value="membership" data-price="180000" data-usd="132">ARMY Membership Presale - ₩857,084 ($607)</option>
+                  <option value="vip" data-price="240000" data-usd="175">VIP Soundcheck - ₩706,000 ($500)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>ARMY Membership ID</label><input type="text" class="form-control" placeholder="BA1234567"></div>
+              <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="55000" data-usd="40"> BTS Army Bomb Lightstick</label><span class="price-tag">₩112,960 ($80)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="22000" data-usd="16"> Anthology Album Set</label><span class="price-tag">₩70,600 ($50)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Seoul Shuttle Service</label><span class="price-tag">₩112,960 ($80)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩1,834,188 ($1299)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- BLACKPINK Modal Slide -->
+      <div id="blackpinkModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>BLACKPINK WORLD TOUR ENCORE IN SEOUL</h1>
+            <p><i class="fa-solid fa-location-dot"></i> Gocheok Sky Dome</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="140000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="140000" data-usd="102">General Admission - ₩1,551,788 ($1099)</option>
+                  <option value="membership" data-price="165000" data-usd="120">BLINK Membership Presale - ₩642,016 ($668)</option>
+                  <option value="vip" data-price="220000" data-usd="160">VIP Soundcheck Package - ₩663,640 ($470)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>BLINK Membership ID</label><input type="text" class="form-control" placeholder="BP1234567"></div>
+              <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="50000" data-usd="36"> Official Hammer Lightstick</label><span class="price-tag">₩98,840 ($70)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="20000" data-usd="15"> Album Package</label><span class="price-tag">₩70,600 ($50)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Round-Trip Shuttle</label><span class="price-tag">₩84,720 ($60)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩1,551,788 ($1099)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- ENHYPEN Modal Slide -->
+      <div id="enhypenModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>ENHYPEN WORLD TOUR 'WALK THE LINE' IN SEOUL</h1>
+            <p><i class="fa-solid fa-location-dot"></i> KSPO Dome</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="130000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="130000" data-usd="95">General Admission - ₩1,238,324 ($877)</option>
+                  <option value="membership" data-price="150000" data-usd="110">Engine Membership Presale - ₩150,000 ($)</option>
+                  <option value="vip" data-price="198000" data-usd="145">VIP Package - ₩198,000 ($145)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>ENGENE Membership ID</label><input type="text" class="form-control"></div>
+              <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="45000" data-usd="33"> Engene Lightstick</label><span class="price-tag">₩98,840 ($70)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="18000" data-usd="13"> Album Set</label><span class="price-tag">₩63,540 ($45)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩77,600 ($55)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩1,238,324 ($877)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- LE SSERAFIM Modal Slide -->
+      <div id="lesserafimModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>LE SSERAFIM TOUR 'FLAME RISES' IN SEOUL</h1>
+            <p><i class="fa-solid fa-location-dot"></i> Jamsil Indoor Stadium</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="130000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="130000" data-usd="95">General Admission - ₩105,900 ($75)</option>
+                  <option value="membership" data-price="150000" data-usd="110">Fearnot Membership Presale - ₩56,480 ($40)</option>
+                  <option value="vip" data-price="198000" data-usd="145">VIP Package - ₩988,400 ($700)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>FEARNOT Membership ID</label><input type="text" class="form-control"></div>
+              <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="45000" data-usd="33"> FEARNOT Lightstick</label><span class="price-tag">₩98,840 ($70)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="18000" data-usd="13"> Album Set</label><span class="price-tag">₩49,420 ($35)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩70,600 ($50)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩105,900 ($75)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- IVE Modal Slide -->
+      <div id="iveModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>IVE THE 1ST WORLD TOUR 'SHOW WHAT I HAVE'</h1>
+            <p><i class="fa-solid fa-location-dot"></i> KSPO Dome</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="130000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="130000" data-usd="95">General Admission - ₩105,900 ($75)</option>
+                  <option value="membership" data-price="150000" data-usd="110">DIVE Membership Presale - ₩70,600 ($50)</option>
+                  <option value="vip" data-price="198000" data-usd="145">VIP Package - ₩888,148 ($629)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>DIVE Membership ID</label><input type="text" class="form-control"></div>
+              <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="45000" data-usd="33"> DIVE Lightstick</label><span class="price-tag">₩98,840 ($70)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="18000" data-usd="13"> Album Set</label><span class="price-tag">₩67,776 ($48)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩69,188 ($49)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩105,900 ($75)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- NewJeans Modal Slide -->
+      <div id="newjeansModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>NEWJEANS SPECIAL FAN MEETING 'BUNNIES CAMP'</h1>
+            <p><i class="fa-solid fa-location-dot"></i> Seoul World Cup Stadium</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="120000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="120000" data-usd="88">General Admission - ₩127,080 ($90)</option>
+                  <option value="membership" data-price="140000" data-usd="102">Bunnies Membership Presale - ₩59,304 ($42)</option>
+                  <option value="vip" data-price="180000" data-usd="132">VIP Camp Pass - ₩847,200 ($600)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Bunnies Membership ID</label><input type="text" class="form-control"></div>
+              <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="42000" data-usd="31"> Tokki Lightstick</label><span class="price-tag">₩91,780 ($65)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="18000" data-usd="13"> EP Album Set</label><span class="price-tag">₩67,776 ($48)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩70,600 ($50)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩127,080 ($90)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- TXT Modal Slide -->
+      <div id="txtModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>TXT WORLD TOUR 'ACT: TOMORROW' IN SEOUL</h1>
+            <p><i class="fa-solid fa-location-dot"></i> KSPO Dome</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="130000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="130000" data-usd="95">General Admission - ₩124,256 ($88)</option>
+                  <option value="membership" data-price="150000" data-usd="110">MOA Membership Presale - ₩49,420 ($35)</option>
+                  <option value="vip" data-price="198000" data-usd="145">VIP Package - ₩847,200 ($600)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>MOA Membership ID</label><input type="text" class="form-control"></div>
+              <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="45000" data-usd="33"> MOA Bong Lightstick</label><span class="price-tag">₩77,660 ($55)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="18000" data-usd="13"> Album Set</label><span class="price-tag">₩56,480 ($40)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩69,148 ($39)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩124,256 ($88)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- LNGSHOT Modal Slide -->
+      <div id="lngshotModal" class="concert-card modal-slide">
+        <div class="concert-header">
+          <div class="concert-title">
+            <h1>LNGSHOT LIVE SHOWCASE IN SEOUL</h1>
+            <p><i class="fa-solid fa-location-dot"></i> Yes24 Live Hall</p>
+          </div>
+          <span class="badge-tour">Official Partner</span>
+        </div>
+        <form class="concertForm" data-base="110000">
+          <div class="booking-grid">
+            <div>
+              <div class="form-group">
+                <label>Select Ticket Category</label>
+                <select class="form-control ticketType" required>
+                  <option value="general" data-price="110000" data-usd="80">General Admission - ₩183,560 ($130)</option>
+                  <option value="membership" data-price="130000" data-usd="95">Fanclub Presale - ₩42,360 ($30)</option>
+                  <option value="vip" data-price="160000" data-usd="117">VIP Showcase Pass - ₩593,040 ($420)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Fanclub ID / Code</label><input type="text" class="form-control"></div>
+              <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
+            </div>
+            <div>
+              <div class="addon-section">
+                <h3>Official Merch & Add-ons</h3>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="40000" data-usd="29"> Official Light Ring</label><span class="price-tag">₩63,540 ($45)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="15000" data-usd="11"> Single Album</label><span class="price-tag">₩91,780 ($)65</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩59,304 ($42)</span></div>
+              </div>
+            </div>
+          </div>
+          <div class="checkout-footer">
+            <div class="total-display">Total Price: <span class="totalAmount">₩183,560 ($130)</span></div>
+            <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts for Navigation, Modal Popups, & Dynamic Pricing -->
+  <script>
+    // Header navigation active state logic
+    const navItems = document.querySelectorAll('.nav-item');
+    navItems.forEach(item => {
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+
+    // Modal Popup Trigger Logic
+    const artistCards = document.querySelectorAll('.artist-option-card');
+    const modalOverlay = document.getElementById('bookingModalOverlay');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const modalSlides = document.querySelectorAll('.modal-slide');
+
+    artistCards.forEach(card => {
+      card.addEventListener('click', () => {
+        const targetId = card.getAttribute('data-target');
+        
+        // Hide all modal slides inside popup first
+        modalSlides.forEach(slide => slide.classList.remove('active-slide'));
+
+        // Show specific target modal slide
+        const targetSlide = document.getElementById(targetId);
+        if (targetSlide) {
+          targetSlide.classList.add('active-slide');
+        }
+
+        // Open modal overlay
+        modalOverlay.classList.add('active');
+      });
+    });
+
+    // Close modal via close button or outside click
+    function closeModal() {
+      modalOverlay.classList.remove('active');
+    }
+
+    closeModalBtn.addEventListener('click', closeModal);
+    modalOverlay.addEventListener('click', (e) => {
+      if (e.target === modalOverlay) {
+        closeModal();
+      }
+    });
+
+    // Dynamic Price Calculation Logic for each form instance (handles both KRW and USD)
+    const forms = document.querySelectorAll('.concertForm');
+    forms.forEach(form => {
+      const ticketSelect = form.querySelector('.ticketType');
+      const checkboxes = form.querySelectorAll('.addon');
+      const totalAmountSpan = form.querySelector('.totalAmount');
+
+      function calculateTotal() {
+        const selectedOption = ticketSelect.options[ticketSelect.selectedIndex];
+        let totalKrw = parseInt(selectedOption.getAttribute('data-price'));
+        let totalUsd = parseInt(selectedOption.getAttribute('data-usd'));
+        
+        checkboxes.forEach(box => {
+          if (box.checked) {
+            totalKrw += parseInt(box.getAttribute('data-price'));
+            totalUsd += parseInt(box.getAttribute('data-usd'));
+          }
+        });
+
+        totalAmountSpan.textContent = '₩' + totalKrw.toLocaleString() + ' ($' + totalUsd.toLocaleString() + ')';
+      }
+
+      ticketSelect.addEventListener('change', calculateTotal);
+      checkboxes.forEach(box => box.addEventListener('change', calculateTotal));
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Order securely queued! Connecting to HANARA global payment gateway...');
+        closeModal();
+      });
+    });
+  </script>
+
+</body>
+</html>

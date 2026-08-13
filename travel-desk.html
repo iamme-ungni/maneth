@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HANARA Header & Travel Desk Banner</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: #f7f5f0;
+      color: #2b2826;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background-color: #f7f3ec;
+      border-bottom: 1px solid #eae5db;
+      padding: 8px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #3d3935;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tag-pill {
+      border: 1.5px solid #ebb4a8;
+      color: #d17a6a;
+      background-color: #ffffff;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .info-item i {
+      font-size: 13px;
+      color: #3d3935;
+    }
+
+    .info-item strong {
+      font-weight: 700;
+    }
+
+    /* Main Header Navigation */
+    .main-header {
+      background-color: #ffffff;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eae5db;
+    }
+
+    /* Logo Styling */
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-circle {
+      width: 44px;
+      height: 44px;
+      background-color: #d8c8b8;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      color: #231f20;
+    }
+
+    .brand-subtext {
+      font-size: 11px;
+      color: #7a7571;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    /* Navigation Menu */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: #2b2826;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-item:hover {
+      background-color: #f7f3ec;
+    }
+
+    .nav-item.active {
+      background-color: #faece7;
+      color: #d17a6a;
+    }
+
+    /* Aesthetic Travel Desk Button Accent Styling */
+    .nav-item.travel-desk-btn {
+      background: linear-gradient(135deg, #d17a6a 0%, #b85e4f 100%);
+      color: #ffffff !important;
+      box-shadow: 0 4px 15px rgba(209, 122, 106, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-item.travel-desk-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(209, 122, 106, 0.45);
+    }
+
+    .pulse-dot {
+      width: 8px;
+      height: 8px;
+      background-color: #55efc4;
+      border-radius: 50%;
+      box-shadow: 0 0 0 0 rgba(85, 239, 196, 0.7);
+      animation: pulse 1.6s infinite;
+    }
+
+    @keyframes pulse {
+      0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(85, 239, 196, 0.7);
+      }
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 8px rgba(85, 239, 196, 0);
+      }
+      100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(85, 239, 196, 0);
+      }
+    }
+
+    /* Travel Desk Hero Section */
+    .travel-desk-hero {
+      max-width: 1200px;
+      margin: 32px auto;
+      padding: 0 32px;
+    }
+
+    .desk-hero-card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 36px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+      border: 1px solid #eae5db;
+    }
+
+    .desk-header {
+      margin-bottom: 28px;
+    }
+
+    .desk-header h2 {
+      font-size: 28px;
+      color: #231f20;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .desk-header p {
+      color: #7a7571;
+      font-size: 15px;
+      margin-top: 6px;
+    }
+
+    .desk-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 850px) {
+      .desk-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .desk-card {
+      background: #f7f5f0;
+      border-radius: 20px;
+      padding: 24px;
+      border: 1px solid #eae5db;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .desk-card h3 {
+      font-size: 18px;
+      color: #d17a6a;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #ffffff;
+      padding: 12px 16px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #2b2826;
+      font-weight: 600;
+      font-size: 14px;
+      border: 1px solid #eae5db;
+      transition: all 0.2s ease;
+    }
+
+    .contact-item:hover {
+      transform: translateX(4px);
+      border-color: #d17a6a;
+      box-shadow: 0 4px 12px rgba(209, 122, 106, 0.1);
+    }
+
+    .contact-item i {
+      color: #d17a6a;
+      width: 20px;
+      font-size: 16px;
+    }
+
+    /* Meeting & QR Payment Box with Form Inputs */
+    .qr-card {
+      background: linear-gradient(145deg, #231f20 0%, #3d3935 100%);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 28px 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .qr-card h3 {
+      font-size: 18px;
+      color: #ebb4a8;
+      margin-bottom: 6px;
+    }
+
+    .qr-card p {
+      font-size: 12px;
+      color: #d8c8b8;
+      margin-bottom: 14px;
+      line-height: 1.4;
+    }
+
+    /* Form Fields for Name & Phone */
+    .booking-form {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 16px;
+      text-align: left;
+    }
+
+    .form-group {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(235, 180, 168, 0.3);
+      border-radius: 10px;
+      padding: 8px 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 10px;
+      color: #ebb4a8;
+      font-weight: 700;
+      margin-bottom: 2px;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group input {
+      width: 100%;
+      background: transparent;
+      border: none;
+      color: #ffffff;
+      font-size: 13px;
+      font-family: inherit;
+      outline: none;
+    }
+
+    .form-group input::placeholder {
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Significantly Enlarged QR Frame for Maximum Scan Visibility */
+    .qr-frame {
+      width: 260px;
+      height: 260px;
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px dashed #d17a6a;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.4);
+      margin: 10px 0;
+    }
+
+    .qr-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .badge-bar {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .badge {
+      background: #ffffff;
+      padding: 6px 12px;
+      border-radius: 16px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #3d3935;
+      border: 1px solid #eae5db;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span class="tag-pill">EATS GUIDE</span>
+      <span>Savor Korea's Most Iconic Eats & Hanok Cafés. Instant Ordering.</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="tel:090777186" class="info-item">
+        <i class="fa-solid fa-phone"></i>
+        <span>Direct Support: <strong>090777186</strong></span>
+      </a>
+      <a href="#" class="info-item">
+        <i class="fa-solid fa-globe"></i>
+        <span>EN / KRW ₩ & USD $</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header class="main-header">
+    <a href="#" class="brand-logo">
+      <div class="logo-circle">한</div>
+      <div class="brand-details">
+        <span class="brand-name">HANARA</span>
+        <span class="brand-subtext">하나로 · ALL IN KOREA</span>
+      </div>
+    </a>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#" class="nav-item">Main Square</a></li>
+        <li><a href="#" class="nav-item">Cozy Stays</a></li>
+        <li><a href="#" class="nav-item">Eats & Cafés</a></li>
+        <li><a href="#" class="nav-item">Day Escapes</a></li>
+        <li><a href="#" class="nav-item">K-Culture</a></li>
+        <!-- Aesthetic Travel Desk Navigation Button -->
+        <li>
+          <a href="#travel-desk" class="nav-item active travel-desk-btn">
+            <span class="pulse-dot"></span>
+            <i class="fa-solid fa-headset"></i> Travel Desk
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Travel Desk Section Directly Under the Header -->
+  <section class="travel-desk-hero" id="travel-desk">
+    <div class="desk-hero-card">
+      <div class="desk-header">
+        <h2><i class="fa-solid fa-compass" style="color: #d17a6a;"></i> HANARA Travel Desk</h2>
+        <p>Your 24/7 personal concierge & emergency assistant based in Ulsan, South Korea.</p>
+      </div>
+
+      <div class="desk-grid">
+        <!-- Left: Direct Contact Options -->
+        <div class="desk-card">
+          <div>
+            <h3><i class="fa-solid fa-headset"></i> Immediate Assistance</h3>
+            <ul class="contact-list">
+              <li>
+                <a href="tel:090777186" class="contact-item">
+                  <i class="fa-solid fa-phone"></i>
+                  <span>Phone / WhatsApp: +82 90-777-186</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://t.me/090777186" target="_blank" class="contact-item">
+                  <i class="fa-paper-plane fa-solid"></i>
+                  <span>Telegram Emergency: @090777186</span>
+                </a>
+              </li>
+              <li>
+                <a href="mailto:eungmaneth186@gmail.com" class="contact-item">
+                  <i class="fa-solid fa-envelope"></i>
+                  <span>Email: eungmaneth186@gmail.com</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div style="margin-top: 20px;">
+            <span style="font-size: 11px; font-weight: 700; color: #7a7571; letter-spacing: 0.5px;">SUPPORTED LANGUAGES</span>
+            <div class="badge-bar">
+              <span class="badge">English</span>
+              <span class="badge">한국어</span>
+              <span class="badge">中文</span>
+              <span class="badge">Français</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Work Meeting, Form & Extra Large Payment QR Code Box -->
+        <div class="qr-card">
+          <div>
+            <h3><i class="fa-solid fa-handshake"></i> Book Work Meeting</h3>
+            <p>Please enter your details and complete the consultation payment first to confirm your meeting.</p>
+            
+            <!-- User Info Input Fields -->
+            <div class="booking-form">
+              <div class="form-group">
+                <label for="userName">YOUR NAME</label>
+                <input type="text" id="userName" placeholder="e.g. John Doe">
+              </div>
+              <div class="form-group">
+                <label for="userPhone">PHONE NUMBER / WHATSAPP</label>
+                <input type="text" id="userPhone" placeholder="e.g. +123456789">
+              </div>
+            </div>
+          </div>
+
+          <!-- Extra Large QR frame -->
+          <div class="qr-frame">
+            <img src="photo_2026-08-11_17-25-17.jpg" alt="Scan QR Code to Pay and Confirm Meeting">
+          </div>
+          
+          <span style="font-size: 11px; color: #ebb4a8; margin-top: 12px;">Scan to Complete Payment & Lock Meeting</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Dynamic Active Switcher -->
+  <script>
+    const navItems = document.querySelectorAll('.nav-item');
+
+    navItems.forEach(item => {
+      item.addEventListener('click', () => {
+        navItems.forEach(nav => nav.classList.remove('active'));
+        item.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+</html>

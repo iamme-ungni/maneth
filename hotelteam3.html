@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozy Stays — HANARA (하나로)</title>
+  
+  <!-- Google Fonts: Outfit & Noto Serif KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-cream: #FAF8F5;
+      --nav-bg: #FFFFFF;
+      --text-dark: #2B2829;
+      --text-muted: #847E82;
+      --hanaro-rose: #E0A99E;
+      --hanaro-rose-dark: #C88A7E;
+      --hanaro-sage: #B4C5B3;
+      --soft-peach: #F6E6E1;
+      --soft-bg-hover: #F6F2EE;
+      --font-kr: 'Noto Serif KR', serif;
+      --font-main: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      font-family: var(--font-main);
+      color: var(--text-dark);
+    }
+
+    /* Top Utility Bar */
+    .top-bar {
+      background-color: #F3EFEA;
+      color: var(--text-dark);
+      font-size: 0.78rem;
+      padding: 0.45rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .top-bar .landing-tip {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .top-bar .tag-pill {
+      background: #FFFFFF;
+      color: var(--hanaro-rose);
+      padding: 0.15rem 0.6rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.7rem;
+    }
+
+    .top-bar .user-options {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .top-bar a {
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    /* Main Navigation Header */
+    header {
+      background-color: var(--nav-bg);
+      border-bottom: 1px solid #ECE7E1;
+      padding: 1.1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      text-decoration: none;
+    }
+
+    .logo-symbol {
+      width: 38px;
+      height: 38px;
+      background: linear-gradient(135deg, var(--hanaro-rose) 0%, var(--hanaro-sage) 100%);
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-kr);
+      font-size: 0.95rem;
+      font-weight: 700;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      letter-spacing: 1px;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-family: var(--font-kr);
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-size: 0.9rem;
+      font-weight: 500;
+      padding: 0.4rem 0.8rem;
+      border-radius: 50px;
+      transition: all 0.2s;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: var(--soft-bg-hover);
+      color: var(--hanaro-rose);
+      font-weight: 600;
+    }
+
+    /* Hero Banner */
+    .stays-hero {
+      background: linear-gradient(180deg, #F6E6E1 0%, var(--bg-cream) 100%);
+      padding: 3.5rem 3rem 2rem 3rem;
+      text-align: center;
+    }
+
+    .stays-hero-subtitle {
+      font-family: var(--font-kr);
+      font-size: 0.9rem;
+      color: var(--hanaro-rose);
+      letter-spacing: 2px;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .stays-hero-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 0.8rem;
+    }
+
+    .stays-hero-desc {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Filter Pills */
+    .filter-section {
+      max-width: 1200px;
+      margin: 2rem auto 2.5rem auto;
+      padding: 0 3rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .filter-pills {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .filter-btn {
+      background: #FFFFFF;
+      border: 1px solid #ECE7E1;
+      padding: 0.55rem 1.25rem;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .filter-btn:hover, .filter-btn.active {
+      background: var(--text-dark);
+      color: #FFFFFF;
+      border-color: var(--text-dark);
+    }
+
+    /* Hotel Grid */
+    .stays-container {
+      max-width: 1200px;
+      margin: 0 auto 5rem auto;
+      padding: 0 3rem;
+    }
+
+    .stays-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .stay-card {
+      background: #FFFFFF;
+      border: 1px solid #EFEBE4;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .stay-card.hide {
+      display: none !important;
+    }
+
+    .stay-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px rgba(224, 169, 158, 0.18);
+      border-color: var(--hanaro-rose);
+    }
+
+    .stay-img-wrap {
+      position: relative;
+      height: 220px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .stay-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .stay-card:hover .stay-img-wrap img {
+      transform: scale(1.05);
+    }
+
+    .stay-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(8px);
+      padding: 0.3rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--text-dark);
+    }
+
+    .stay-heart {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-dark);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .stay-heart.liked {
+      color: #E74C3C;
+    }
+
+    .stay-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .stay-location {
+      font-size: 0.8rem;
+      color: var(--hanaro-rose-dark);
+      font-weight: 600;
+      text-transform: uppercase;
+      margin-bottom: 0.3rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .stay-title {
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--text-dark);
+    }
+
+    .stay-tags {
+      display: flex;
+      gap: 0.4rem;
+      margin-bottom: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .tag-chip {
+      background: var(--bg-cream);
+      color: var(--text-muted);
+      font-size: 0.72rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 8px;
+    }
+
+    .stay-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1rem;
+      border-top: 1px solid #F6F2EE;
+    }
+
+    .stay-price {
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .price-num {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.1;
+    }
+
+    .price-usd {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--hanaro-rose-dark);
+      margin-top: 2px;
+    }
+
+    .price-unit {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-weight: normal;
+    }
+
+    .btn-book-now {
+      background: var(--text-dark);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.6rem 1.1rem;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+    }
+
+    .btn-book-now:hover {
+      background: var(--hanaro-rose-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Modal / Payment Checkout Styling */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.55);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .modal-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .booking-modal {
+      background: #FFFFFF;
+      width: 90%;
+      max-width: 650px;
+      border-radius: 28px;
+      padding: 2.2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      background: var(--bg-cream);
+      border: none;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: var(--text-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-header {
+      border-bottom: 1px solid #EFEBE4;
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .modal-subtitle {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Hotel Selected Banner inside Modal */
+    .modal-hotel-info {
+      background: var(--bg-cream);
+      padding: 1rem 1.2rem;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-hotel-name {
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .modal-price-box {
+      text-align: right;
+    }
+
+    .modal-hotel-price {
+      color: var(--text-dark);
+      font-weight: 800;
+      font-size: 1rem;
+    }
+
+    .modal-hotel-usd {
+      color: var(--hanaro-rose-dark);
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+
+    /* Checkout Form */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text-dark);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1px solid #ECE7E1;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      font-family: var(--font-main);
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-control:focus {
+      border-color: var(--hanaro-rose);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Payment Methods */
+    .payment-methods {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+
+    .payment-option {
+      border: 1px solid #ECE7E1;
+      border-radius: 12px;
+      padding: 0.7rem;
+      text-align: center;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: 600;
+      transition: all 0.2s;
+    }
+
+    .payment-option.selected {
+      border-color: var(--hanaro-rose);
+      background: var(--soft-peach);
+      color: var(--hanaro-rose-dark);
+    }
+
+    /* Help & Support Info Box */
+    .support-info-box {
+      background: #F4F8F4;
+      border: 1px solid #D5E5D5;
+      padding: 1rem;
+      border-radius: 16px;
+      margin: 1.5rem 0;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .support-info-box i {
+      font-size: 1.4rem;
+      color: #27AE60;
+    }
+
+    .support-text-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #27AE60;
+    }
+
+    .support-phone-link {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      text-decoration: none;
+    }
+
+    /* Checkout Summary Footer */
+    .checkout-footer {
+      border-top: 1px solid #EFEBE4;
+      padding-top: 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .total-title {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .total-price-krw {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1;
+    }
+
+    .total-price-usd {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--hanaro-rose-dark);
+      margin-top: 3px;
+    }
+
+    .btn-confirm-pay {
+      background: linear-gradient(135deg, var(--hanaro-rose) 0%, var(--hanaro-rose-dark) 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(224, 169, 158, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .btn-confirm-pay:hover {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-bar">
+    <div class="landing-tip">
+      <span class="tag-pill">STAY GUIDE</span>
+      <span>36 Unique Accommodations in Korea. Instant Confirmation.</span>
+    </div>
+    <div class="user-options">
+      <a href="#"><i class="fa-solid fa-phone"></i> Direct Support: <strong>090777186</strong></a>
+      <a href="#"><i class="fa-solid fa-globe"></i> EN / KRW ₩ & USD $</a>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-symbol">한</div>
+      <div class="logo-text">
+        <span class="brand-name">HANARA</span>
+        <span class="brand-sub">하나로 · ALL IN KOREA</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#">Main Square</a>
+      <a href="#" class="active">Cozy Stays</a>
+      <a href="#">Eats & Cafés</a>
+      <a href="#">Day Escapes</a>
+      <a href="#">K-Culture</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="stays-hero">
+    <div class="stays-hero-subtitle">Rest & Unwind · 편안한 숙소</div>
+    <h1 class="stays-hero-title">Cozy Stays Across Korea</h1>
+    <p class="stays-hero-desc">Explore 6 unique accommodations in each major Korean region with direct booking support.</p>
+  </section>
+
+  <!-- Filter Section -->
+  <section class="filter-section">
+    <div class="filter-pills">
+      <button class="filter-btn active" data-filter="all">All Cities (36)</button>
+      <button class="filter-btn" data-filter="seoul">🏙️ Seoul (6)</button>
+      <button class="filter-btn" data-filter="busan">🌊 Busan (6)</button>
+      <button class="filter-btn" data-filter="daegu">🍁 Daegu (6)</button>
+      <button class="filter-btn" data-filter="jeju">🌿 Jeju (6)</button>
+      <button class="filter-btn" data-filter="gwangju">🎨 Gwangju (6)</button>
+      <button class="filter-btn" data-filter="suwon">🏰 Suwon (6)</button>
+    </div>
+  </section>
+
+  <!-- Hotel Grid Showcase -->
+  <section class="stays-container">
+    <div class="stays-grid" id="hotelGrid">
+
+      <!-- ================= SEOUL (6 HOTELS) ================= -->
+      <div class="stay-card" data-city="seoul">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1590490360182-c33d57733427?auto=format&fit=crop&q=80&w=800" alt="Yeonwoo Hanok">
+          <span class="stay-badge">Seoul · Hanok</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Bukchon Village, Seoul</div>
+          <h3 class="stay-title">Yeonwoo Traditional Courtyard</h3>
+          <div class="stay-tags"><span class="tag-chip">Tea Garden</span><span class="tag-chip">Heritage</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩185,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$137 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Yeonwoo Traditional Courtyard', 185000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="seoul">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" alt="Ananti Gangnam">
+          <span class="stay-badge">Seoul · Luxury</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Gangnam, Seoul</div>
+          <h3 class="stay-title">Ananti At Gangnam Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">Rooftop Pool</span><span class="tag-chip">Subway 2min</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩240,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$178 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Ananti At Gangnam Hotel', 240000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="seoul">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&q=80&w=800" alt="Ryse Hongdae">
+          <span class="stay-badge">Seoul · Trendy</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Hongdae, Seoul</div>
+          <h3 class="stay-title">RYSE Autograph Collection</h3>
+          <div class="stay-tags"><span class="tag-chip">Art Studio</span><span class="tag-chip">Cocktail Bar</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩210,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$155 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('RYSE Autograph Collection', 210000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="seoul">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800" alt="Shilla Seoul">
+          <span class="stay-badge">Seoul · 5-Star</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Jung-gu, Seoul</div>
+          <h3 class="stay-title">The Shilla Seoul Executive</h3>
+          <div class="stay-tags"><span class="tag-chip">Urban Spa</span><span class="tag-chip">Michelin Dining</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩380,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$281 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('The Shilla Seoul Executive', 380000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="seoul">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&q=80&w=800" alt="Myeongdong Stay">
+          <span class="stay-badge">Seoul · Shopping</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Myeongdong, Seoul</div>
+          <h3 class="stay-title">L7 Myeongdong Boutique</h3>
+          <div class="stay-tags"><span class="tag-chip">Rooftop Bar</span><span class="tag-chip">Night Market</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩175,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$130 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('L7 Myeongdong Boutique', 175000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="seoul">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1517840901100-8179e982acb7?auto=format&fit=crop&q=80&w=800" alt="Itaewon Loft">
+          <span class="stay-badge">Seoul · Modern</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Itaewon, Seoul</div>
+          <h3 class="stay-title">Namsan View Designer Loft</h3>
+          <div class="stay-tags"><span class="tag-chip">Tower View</span><span class="tag-chip">Full Kitchen</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩160,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$118 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Namsan View Designer Loft', 160000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ================= BUSAN (6 HOTELS) ================= -->
+      <div class="stay-card" data-city="busan">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&q=80&w=800" alt="Haeundae Horizon">
+          <span class="stay-badge">Busan · Oceanfront</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Haeundae, Busan</div>
+          <h3 class="stay-title">Haeundae Blue Horizon Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">Sea View</span><span class="tag-chip">Infinity Pool</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩210,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$155 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Haeundae Blue Horizon Hotel', 210000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="busan">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&q=80&w=800" alt="Gwangalli Bridge">
+          <span class="stay-badge">Busan · Beach Front</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Gwangalli, Busan</div>
+          <h3 class="stay-title">Bridge View Hotel Gwangalli</h3>
+          <div class="stay-tags"><span class="tag-chip">Bridge Night View</span><span class="tag-chip">Beachfront</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩165,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$122 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Bridge View Hotel Gwangalli', 165000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="busan">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1566665797739-1674de7a421a?auto=format&fit=crop&q=80&w=800" alt="Signiel Busan">
+          <span class="stay-badge">Busan · Ultra Luxury</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> LCT Tower, Busan</div>
+          <h3 class="stay-title">Signiel Ocean Tower Busan</h3>
+          <div class="stay-tags"><span class="tag-chip">Sky Lounge</span><span class="tag-chip">Private Beach</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩450,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$333 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Signiel Ocean Tower Busan', 450000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="busan">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&q=80&w=800" alt="Songdo Bay">
+          <span class="stay-badge">Busan · Harbor</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Songdo Beach, Busan</div>
+          <h3 class="stay-title">Songdo Cable Car Bay Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">Air Cruise</span><span class="tag-chip">Quiet Ocean</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩140,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$103 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Songdo Cable Car Bay Hotel', 140000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="busan">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?auto=format&fit=crop&q=80&w=800" alt="Seomyeon City">
+          <span class="stay-badge">Busan · Urban</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Seomyeon, Busan</div>
+          <h3 class="stay-title">Avani Central Busan Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">Central Location</span><span class="tag-chip">Buffet</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩155,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$115 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Avani Central Busan Hotel', 155000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="busan">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80&w=800" alt="Gijang Resort">
+          <span class="stay-badge">Busan · Coast Resort</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Gijang Coast, Busan</div>
+          <h3 class="stay-title">Ananti Cove Coastal Resort</h3>
+          <div class="stay-tags"><span class="tag-chip">Cliffside Pool</span><span class="tag-chip">Private Sauna</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩390,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$288 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Ananti Cove Coastal Resort', 390000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ================= DAEGU (6 HOTELS) ================= -->
+      <div class="stay-card" data-city="daegu">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?auto=format&fit=crop&q=80&w=800" alt="Interburgo Exco">
+          <span class="stay-badge">Daegu · City Hotel</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Dongseong-ro, Daegu</div>
+          <h3 class="stay-title">Hotel InterBurgo Exco</h3>
+          <div class="stay-tags"><span class="tag-chip">Shopping</span><span class="tag-chip">Buffet</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩145,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$107 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Hotel InterBurgo Exco', 145000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="daegu">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" alt="Apsan Retreat">
+          <span class="stay-badge">Daegu · Hillside</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Apsan Park, Daegu</div>
+          <h3 class="stay-title">Apsan Garden Retreat</h3>
+          <div class="stay-tags"><span class="tag-chip">Cable Car</span><span class="tag-chip">Mountain Air</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩130,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$96 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Apsan Garden Retreat', 130000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="daegu">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1591088398332-8a7791972843?auto=format&fit=crop&q=80&w=800" alt="Marriott Daegu">
+          <span class="stay-badge">Daegu · Luxury</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Dong-gu, Daegu</div>
+          <h3 class="stay-title">Daegu Marriott Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">Indoor Pool</span><span class="tag-chip">KTX Station 5m</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩220,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$163 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Daegu Marriott Hotel', 220000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="daegu">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&q=80&w=800" alt="Suseong Lake">
+          <span class="stay-badge">Daegu · Lake View</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Suseong Lake, Daegu</div>
+          <h3 class="stay-title">Hotel Suseong Resort</h3>
+          <div class="stay-tags"><span class="tag-chip">Hot Spring Pool</span><span class="tag-chip">Park Walks</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩190,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$140 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Hotel Suseong Resort', 190000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="daegu">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?auto=format&fit=crop&q=80&w=800" alt="Eldis Regent">
+          <span class="stay-badge">Daegu · Heritage</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Jung-gu, Daegu</div>
+          <h3 class="stay-title">Eldis Regent Heritage Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">Historic Alley</span><span class="tag-chip">Cozy Rooms</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩125,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$92 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Eldis Regent Heritage Hotel', 125000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="daegu">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1505691938895-1758d7feb511?auto=format&fit=crop&q=80&w=800" alt="Riverstone Stay">
+          <span class="stay-badge">Daegu · Boutique</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Buk-gu, Daegu</div>
+          <h3 class="stay-title">Riverstone Modern Stay</h3>
+          <div class="stay-tags"><span class="tag-chip">River Trail</span><span class="tag-chip">Espresso Bar</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩110,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$81 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Riverstone Modern Stay', 110000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ================= JEJU (6 HOTELS) ================= -->
+      <div class="stay-card" data-city="jeju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1563911302283-d2bc129e7570?auto=format&fit=crop&q=80&w=800" alt="Sori Ocean Villa">
+          <span class="stay-badge">Jeju · Resort</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Aewol, Jeju</div>
+          <h3 class="stay-title">Sori Ocean Minimalist Villa</h3>
+          <div class="stay-tags"><span class="tag-chip">Private Pool</span><span class="tag-chip">Sunset Deck</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩310,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$229 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Sori Ocean Minimalist Villa', 310000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="jeju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1587061949409-02df41d5e562?auto=format&fit=crop&q=80&w=800" alt="Hallasan Stay">
+          <span class="stay-badge">Jeju · Forest</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Seogwipo, Jeju</div>
+          <h3 class="stay-title">Hallasan Cedarwood Lodge</h3>
+          <div class="stay-tags"><span class="tag-chip">Forest Spa</span><span class="tag-chip">Mountain View</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩195,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$144 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Hallasan Cedarwood Lodge', 195000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="jeju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=800" alt="Parnas Jeju">
+          <span class="stay-badge">Jeju · Luxury Resort</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Jungmun Beach, Jeju</div>
+          <h3 class="stay-title">Parnas Hotel Jeju Cliff</h3>
+          <div class="stay-tags"><span class="tag-chip">110m Infinity Pool</span><span class="tag-chip">Cliff Walk</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩420,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$311 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Parnas Hotel Jeju Cliff', 420000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="jeju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&q=80&w=800" alt="Seongsan Sunrise">
+          <span class="stay-badge">Jeju · Nature</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Seongsan Peak, Jeju</div>
+          <h3 class="stay-title">Sunrise Ilchulbong Eco Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">Volcano View</span><span class="tag-chip">Organic Breakfast</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩160,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$118 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Sunrise Ilchulbong Eco Hotel', 160000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="jeju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=800" alt="Hyeopjae Beach">
+          <span class="stay-badge">Jeju · Beachfront</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Hyeopjae Beach, Jeju</div>
+          <h3 class="stay-title">Turquoise Bay Beach House</h3>
+          <div class="stay-tags"><span class="tag-chip">White Sands</span><span class="tag-chip">Kayak Rental</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩210,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$155 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Turquoise Bay Beach House', 210000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="jeju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?auto=format&fit=crop&q=80&w=800" alt="Tangerine Grove">
+          <span class="stay-badge">Jeju · Cottage</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Seogwipo Farm, Jeju</div>
+          <h3 class="stay-title">Tangerine Grove Stone House</h3>
+          <div class="stay-tags"><span class="tag-chip">Fruit Picking</span><span class="tag-chip">Stone Fireplace</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩175,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$130 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Tangerine Grove Stone House', 175000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ================= GWANGJU (6 HOTELS) ================= -->
+      <div class="stay-card" data-city="gwangju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&q=80&w=800" alt="ACC Design">
+          <span class="stay-badge">Gwangju · Design</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Dong-gu, Gwangju</div>
+          <h3 class="stay-title">ACC Design Hotel Gwangju</h3>
+          <div class="stay-tags"><span class="tag-chip">Culture Center</span><span class="tag-chip">Art Loft</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩150,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$111 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('ACC Design Hotel Gwangju', 150000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="gwangju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1512918728675-ed5a9ecdebfd?auto=format&fit=crop&q=80&w=800" alt="Mudeungsan Villa">
+          <span class="stay-badge">Gwangju · Mountain</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Mudeungsan, Gwangju</div>
+          <h3 class="stay-title">Mudeungsan Forest Villa</h3>
+          <div class="stay-tags"><span class="tag-chip">National Park</span><span class="tag-chip">Quiet Oasis</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩140,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$103 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Mudeungsan Forest Villa', 140000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="gwangju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&q=80&w=800" alt="Holiday Inn Gwangju">
+          <span class="stay-badge">Gwangju · Executive</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Seo-gu, Gwangju</div>
+          <h3 class="stay-title">Holiday Inn Executive Gwangju</h3>
+          <div class="stay-tags"><span class="tag-chip">Convention Center</span><span class="tag-chip">Spa</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩180,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$133 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Holiday Inn Executive Gwangju', 180000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="gwangju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1568495248636-6432b97bd949?auto=format&fit=crop&q=80&w=800" alt="Yangrim Art House">
+          <span class="stay-badge">Gwangju · Retro Hanok</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Yangrim-dong, Gwangju</div>
+          <h3 class="stay-title">Yangrim Art & Heritage House</h3>
+          <div class="stay-tags"><span class="tag-chip">Penguin Village</span><span class="tag-chip">Craft Workshops</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩135,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$100 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Yangrim Art & Heritage House', 135000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="gwangju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&q=80&w=800" alt="Biennale Park Hotel">
+          <span class="stay-badge">Gwangju · Modern Art</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Buk-gu, Gwangju</div>
+          <h3 class="stay-title">Biennale Park Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">Exhibition Hall</span><span class="tag-chip">Garden Cafe</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩120,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$88 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Biennale Park Hotel', 120000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="gwangju">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?auto=format&fit=crop&q=80&w=800" alt="Ramada Gwangju">
+          <span class="stay-badge">Gwangju · Business</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Sangam-dong, Gwangju</div>
+          <h3 class="stay-title">Ramada Plaza Premier Gwangju</h3>
+          <div class="stay-tags"><span class="tag-chip">Sky Restaurant</span><span class="tag-chip">Sauna</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩165,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$122 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Ramada Plaza Premier Gwangju', 165000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+
+      <!-- ================= SUWON (6 HOTELS) ================= -->
+      <div class="stay-card" data-city="suwon">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&q=80&w=800" alt="Hwaseong Courtyard">
+          <span class="stay-badge">Suwon · Heritage</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Hwaseong Fortress, Suwon</div>
+          <h3 class="stay-title">Hwaseong Courtyard Hotel</h3>
+          <div class="stay-tags"><span class="tag-chip">UNESCO Site</span><span class="tag-chip">Café Street</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩160,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$118 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Hwaseong Courtyard Hotel', 160000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="suwon">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?auto=format&fit=crop&q=80&w=800" alt="Value Hotel">
+          <span class="stay-badge">Suwon · City</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Ingye-dong, Suwon</div>
+          <h3 class="stay-title">Value Hotel Worldwide Suwon</h3>
+          <div class="stay-tags"><span class="tag-chip">Near KTX</span><span class="tag-chip">Fitness</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩125,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$92 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Value Hotel Worldwide Suwon', 125000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="suwon">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&q=80&w=800" alt="Novotel Suwon">
+          <span class="stay-badge">Suwon · Station Hotel</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Suwon Station, Suwon</div>
+          <h3 class="stay-title">Novotel Ambassador Suwon</h3>
+          <div class="stay-tags"><span class="tag-chip">Direct Train Access</span><span class="tag-chip">Mall Connected</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩190,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$140 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Novotel Ambassador Suwon', 190000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="suwon">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1496417263034-38ec4f0b665a?auto=format&fit=crop&q=80&w=800" alt="Gwanggyo Lake">
+          <span class="stay-badge">Suwon · Lake View</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Gwanggyo Lake Park, Suwon</div>
+          <h3 class="stay-title">Courtyard Marriott Gwanggyo</h3>
+          <div class="stay-tags"><span class="tag-chip">Lake Promenade</span><span class="tag-chip">Luxury Lounge</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩210,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$155 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Courtyard Marriott Gwanggyo', 210000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="suwon">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1507038772120-7fff76f79d79?auto=format&fit=crop&q=80&w=800" alt="Haengnidan Hanok">
+          <span class="stay-badge">Suwon · Boutique Hanok</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Haengnidan-gil, Suwon</div>
+          <h3 class="stay-title">Haengnidan Heritage Stay</h3>
+          <div class="stay-tags"><span class="tag-chip">Trendy Cafes</span><span class="tag-chip">Private Garden</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩155,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$115 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Haengnidan Heritage Stay', 155000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="stay-card" data-city="suwon">
+        <div class="stay-img-wrap">
+          <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=800" alt="Ibis Suwon">
+          <span class="stay-badge">Suwon · Business</span>
+          <div class="stay-heart"><i class="fa-regular fa-heart"></i></div>
+        </div>
+        <div class="stay-content">
+          <div class="stay-location"><i class="fa-solid fa-location-dot"></i> Ingye Center, Suwon</div>
+          <h3 class="stay-title">Ibis Ambassador Suwon Plaza</h3>
+          <div class="stay-tags"><span class="tag-chip">City Center</span><span class="tag-chip">Hot Breakfast</span></div>
+          <div class="stay-footer">
+            <div class="stay-price">
+              <span class="price-num">₩118,000 <span class="price-unit">/ night</span></span>
+              <span class="price-usd">$87 USD</span>
+            </div>
+            <button class="btn-book-now" onclick="openBookingModal('Ibis Ambassador Suwon Plaza', 118000)">Book Now</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Checkout & Payment Modal -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="booking-modal">
+      <button class="close-modal-btn" onclick="closeBookingModal()">&times;</button>
+      
+      <div class="modal-header">
+        <h2 class="modal-title">Complete Reservation</h2>
+        <p class="modal-subtitle">Secure payment processed instantly with HANARA Booking.</p>
+      </div>
+
+      <div class="modal-hotel-info">
+        <div>
+          <div class="modal-hotel-name" id="selectedHotelName">Hotel Name</div>
+          <div style="font-size: 0.78rem; color: var(--text-muted);">Standard King Room · 1 Night</div>
+        </div>
+        <div class="modal-price-box">
+          <div class="modal-hotel-price" id="selectedHotelPrice">₩0</div>
+          <div class="modal-hotel-usd" id="selectedHotelUsd">$0 USD</div>
+        </div>
+      </div>
+
+      <!-- Guest Details Form -->
+      <form id="checkoutForm" onsubmit="handlePaymentSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fa-solid fa-user"></i> Guest Full Name *</label>
+            <input type="text" class="form-control" placeholder="e.g. Min-woo Kim" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-envelope"></i> Email Address *</label>
+            <input type="email" class="form-control" placeholder="e.g. guest@hanara.kr" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label><i class="fa-solid fa-mobile-screen"></i> Mobile Contact Number *</label>
+            <input type="tel" class="form-control" placeholder="010-XXXX-XXXX" required>
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-users"></i> Number of Guests</label>
+            <select class="form-control" id="guestCount" onchange="recalculatePrice()">
+              <option value="1">1 Guest</option>
+              <option value="2" selected>2 Guests</option>
+              <option value="3">3 Guests (+₩20,000 / +$15 USD)</option>
+              <option value="4">4 Guests (+₩40,000 / +$30 USD)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Payment Method Options -->
+        <div class="form-group">
+          <label><i class="fa-solid fa-credit-card"></i> Select Payment Method</label>
+          <div class="payment-methods">
+            <div class="payment-option selected" onclick="selectPayment(this)"><i class="fa-solid fa-credit-card"></i> Credit Card</div>
+            <div class="payment-option" onclick="selectPayment(this)"><i class="fa-solid fa-comment"></i> KakaoPay</div>
+            <div class="payment-option" onclick="selectPayment(this)"><i class="fa-solid fa-wallet"></i> Toss / Naver</div>
+          </div>
+        </div>
+
+        <!-- Custom Support Phone Info Box -->
+        <div class="support-info-box">
+          <i class="fa-solid fa-headset"></i>
+          <div>
+            <div class="support-text-title">Need custom modifications or immediate assistance?</div>
+            <div>Call Direct Customer Helpdesk: <a href="tel:090777186" class="support-phone-link">📞 090777186</a></div>
+          </div>
+        </div>
+
+        <div class="checkout-footer">
+          <div>
+            <div class="total-title">Total Payable Amount</div>
+            <div class="total-price-krw" id="totalPaymentDisplay">₩0</div>
+            <div class="total-price-usd" id="totalUsdDisplay">$0 USD</div>
+          </div>
+          <button type="submit" class="btn-confirm-pay">Confirm & Pay</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    let currentBasePrice = 0;
+    const exchangeRate = 1350; // ₩1,350 KRW = $1 USD
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. City Filter Functionality
+      const filterBtns = document.querySelectorAll('.filter-btn');
+      const stayCards = document.querySelectorAll('.stay-card');
+
+      filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          filterBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+
+          const filterValue = btn.getAttribute('data-filter');
+
+          stayCards.forEach(card => {
+            const cardCity = card.getAttribute('data-city');
+            if (filterValue === 'all' || cardCity === filterValue) {
+              card.classList.remove('hide');
+            } else {
+              card.classList.add('hide');
+            }
+          });
+        });
+      });
+
+      // 2. Favorite Hearts Toggle
+      const heartIcons = document.querySelectorAll('.stay-heart');
+      heartIcons.forEach(heart => {
+        heart.addEventListener('click', () => {
+          heart.classList.toggle('liked');
+          const icon = heart.querySelector('i');
+          if (heart.classList.contains('liked')) {
+            icon.className = 'fa-solid fa-heart';
+          } else {
+            icon.className = 'fa-regular fa-heart';
+          }
+        });
+      });
+    });
+
+    // 3. Open Booking Checkout Modal
+    function openBookingModal(hotelName, basePrice) {
+      currentBasePrice = basePrice;
+      document.getElementById('selectedHotelName').innerText = hotelName;
+      document.getElementById('selectedHotelPrice').innerText = '₩' + basePrice.toLocaleString();
+      document.getElementById('selectedHotelUsd').innerText = '$' + Math.round(basePrice / exchangeRate) + ' USD';
+      document.getElementById('guestCount').value = "2";
+      recalculatePrice();
+      document.getElementById('bookingModal').classList.add('active');
+    }
+
+    // 4. Close Modal
+    function closeBookingModal() {
+      document.getElementById('bookingModal').classList.remove('active');
+    }
+
+    // 5. Dynamic Recalculation (Won + USD)
+    function recalculatePrice() {
+      const guests = parseInt(document.getElementById('guestCount').value);
+      let extra = 0;
+      if (guests === 3) extra = 20000;
+      if (guests === 4) extra = 40000;
+
+      const grandTotalKRW = currentBasePrice + extra;
+      const grandTotalUSD = Math.round(grandTotalKRW / exchangeRate);
+
+      document.getElementById('totalPaymentDisplay').innerText = '₩' + grandTotalKRW.toLocaleString();
+      document.getElementById('totalUsdDisplay').innerText = '$' + grandTotalUSD + ' USD';
+    }
+
+    // 6. Select Payment Method Toggle
+    function selectPayment(element) {
+      document.querySelectorAll('.payment-option').forEach(opt => opt.classList.remove('selected'));
+      element.classList.add('selected');
+    }
+
+    // 7. Handle Payment Submission
+    function handlePaymentSubmit(event) {
+      event.preventDefault();
+      alert('🎉 Booking Successfully Confirmed!\n\nThank you for booking with HANARA. A receipt and voucher have been sent to your email. For inquiries call: 090777186');
+      closeBookingModal();
+    }
+  </script>
+
+</body>
+</html>

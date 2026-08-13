@@ -1,0 +1,1294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HANARA (하나로) — Enchanting Royal Korea Travel</title>
+  
+  <!-- Google Fonts: Outfit & Noto Serif KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    /* Warm, Light Traditional Korean Heritage Palette Restored (No Black Backgrounds) */
+    :root {
+      --bg-deep: #FAF6F0;                  /* Soft Warm Hanji Paper Cream */
+      --bg-surface: #FFFFFF;               /* Clean White for Cards */
+      --bg-surface-hover: #FFF9F2;         /* Soft Cream Hover */
+      
+      --text-main: #2C2422;                /* Rich Espresso Ink */
+      --text-muted: #736865;               /* Warm Taupe */
+      
+      --hanbok-coral: #D96B51;             /* Terracotta Coral */
+      --hanbok-gold: #C29B38;              /* Muted Imperial Gold */
+      --hanbok-jade: #5C8A76;              /* Celadon Jade */
+      --hanbok-crimson: #B33933;           /* Traditional Crimson */
+      
+      --font-kr: 'Noto Serif KR', serif;
+      --font-main: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-deep);
+      font-family: var(--font-main);
+      color: var(--text-main);
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 15%, rgba(217, 107, 81, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 90% 85%, rgba(92, 138, 118, 0.06) 0%, transparent 45%);
+      background-attachment: fixed;
+    }
+
+    /* --- Immersive Top Utility Bar --- */
+    .top-bar {
+      background: #F4EBE1;
+      border-bottom: 1px solid rgba(194, 155, 56, 0.2);
+      color: var(--text-muted);
+      font-size: 0.78rem;
+      padding: 0.5rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 500;
+    }
+
+    .top-bar .landing-tip {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .top-bar .tag-pill {
+      background: var(--hanbok-gold);
+      color: #FFFFFF;
+      padding: 0.15rem 0.6rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.68rem;
+      letter-spacing: 0.5px;
+    }
+
+    .top-bar .user-options {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .top-bar a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .top-bar a:hover {
+      color: var(--hanbok-coral);
+    }
+
+    /* --- Header & Luxury Navigation --- */
+    header {
+      background-color: rgba(250, 246, 240, 0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(44, 36, 34, 0.08);
+      padding: 1.1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      text-decoration: none;
+    }
+
+    .logo-symbol {
+      width: 42px;
+      height: 42px;
+      background: linear-gradient(135deg, var(--hanbok-coral) 0%, var(--hanbok-gold) 100%);
+      color: #FFFFFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-kr);
+      font-size: 1.1rem;
+      font-weight: 900;
+      box-shadow: 0 4px 12px rgba(217, 107, 81, 0.25);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      letter-spacing: 1.5px;
+      line-height: 1;
+    }
+
+    .brand-sub {
+      font-family: var(--font-kr);
+      font-size: 0.65rem;
+      color: var(--hanbok-gold);
+      letter-spacing: 1.5px;
+      margin-top: 4px;
+      font-weight: 700;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all 0.25s ease;
+      padding: 0.45rem 0.9rem;
+      border-radius: 50px;
+    }
+
+    nav a:hover, nav a.active {
+      background-color: rgba(217, 107, 81, 0.1);
+      color: var(--hanbok-coral);
+      font-weight: 600;
+    }
+
+    nav .dot {
+      color: var(--hanbok-gold);
+      font-size: 0.45rem;
+      opacity: 0.5;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .btn-search-icon {
+      background: rgba(44, 36, 34, 0.05);
+      border: 1px solid rgba(44, 36, 34, 0.1);
+      font-size: 1rem;
+      color: var(--text-main);
+      cursor: pointer;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+
+    .btn-search-icon:hover {
+      background: var(--hanbok-coral);
+      color: #FFFFFF;
+      border-color: var(--hanbok-coral);
+    }
+
+    .btn-next-dest {
+      background: linear-gradient(135deg, var(--hanbok-gold), #A6812A);
+      color: #FFFFFF;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 700;
+      padding: 0.7rem 1.4rem;
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(194, 155, 56, 0.25);
+      transition: all 0.25s ease;
+    }
+
+    .btn-next-dest:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(194, 155, 56, 0.4);
+    }
+
+    .mobile-menu {
+      display: none;
+      font-size: 1.2rem;
+      cursor: pointer;
+    }
+
+    /* --- Cinematic Background Video Section (Clean View, Middle Text Removed) --- */
+    .hero-slider-section {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      border-bottom: 1px solid rgba(44, 36, 34, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bg-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-slider-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(44,36,34,0.15) 0%, rgba(44,36,34,0.35) 100%);
+      z-index: 2;
+    }
+
+    /* Video Sound Toggle Button */
+    .sound-toggle-btn {
+      position: absolute;
+      bottom: 1.5rem;
+      right: 2rem;
+      z-index: 20;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(4px);
+      color: var(--text-main);
+      border: 1px solid rgba(44, 36, 34, 0.15);
+      padding: 0.6rem 1.2rem;
+      border-radius: 50px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .sound-toggle-btn:hover {
+      background: var(--hanbok-gold);
+      border-color: var(--hanbok-gold);
+      color: #FFFFFF;
+    }
+
+    /* --- Stunning Korean Aesthetic Search Deck (Redesigned with Hanok Motif & Warm Paper Texture) --- */
+    .discovery-deck {
+      max-width: 860px;
+      margin: -3.2rem auto 3.5rem auto;
+      position: relative;
+      z-index: 30;
+      padding: 0 2rem;
+    }
+
+    .discovery-card {
+      background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF9 100%);
+      border: 2px solid rgba(194, 155, 56, 0.35);
+      border-radius: 32px;
+      padding: 2.2rem 2.8rem;
+      box-shadow: 0 22px 50px rgba(44, 36, 34, 0.12), 0 0 0 6px rgba(250, 246, 240, 0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle traditional Korean lattice corner decoration watermark */
+    .discovery-card::after {
+      content: '結';
+      position: absolute;
+      right: -15px;
+      bottom: -35px;
+      font-family: var(--font-kr);
+      font-size: 9rem;
+      color: rgba(194, 155, 56, 0.05);
+      z-index: 0;
+      pointer-events: none;
+      font-weight: 900;
+    }
+
+    .deck-header-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .korean-seal {
+      display: inline-block;
+      font-family: var(--font-kr);
+      font-size: 0.75rem;
+      background: rgba(179, 57, 51, 0.1);
+      color: var(--hanbok-crimson);
+      padding: 0.2rem 0.8rem;
+      border-radius: 4px;
+      border: 1px dashed rgba(179, 57, 51, 0.3);
+      letter-spacing: 2px;
+      margin-bottom: 0.5rem;
+      font-weight: 700;
+    }
+
+    .deck-title-main {
+      font-family: var(--font-kr);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 0.5px;
+    }
+
+    .hero-search-box {
+      position: relative;
+      z-index: 2;
+      background: #FAF6F0;
+      border: 2px solid rgba(194, 155, 56, 0.25);
+      border-radius: 60px;
+      padding: 0.5rem 0.5rem 0.5rem 1.8rem;
+      display: flex;
+      align-items: center;
+      box-shadow: inset 0 2px 6px rgba(44, 36, 34, 0.03);
+      transition: all 0.3s ease;
+    }
+
+    .hero-search-box:focus-within {
+      border-color: var(--hanbok-coral);
+      background: #FFFFFF;
+      box-shadow: 0 8px 25px rgba(217, 107, 81, 0.12), inset 0 2px 4px rgba(0,0,0,0.02);
+    }
+
+    .hero-search-box i.fa-location-dot {
+      color: var(--hanbok-coral);
+      font-size: 1.2rem;
+      margin-right: 0.8rem;
+    }
+
+    .hero-search-box input {
+      border: none;
+      outline: none;
+      width: 100%;
+      font-size: 1rem;
+      font-family: var(--font-main);
+      color: var(--text-main);
+      background: transparent;
+      font-weight: 500;
+    }
+
+    .hero-search-box input::placeholder {
+      color: var(--text-muted);
+      font-weight: 400;
+    }
+
+    .hero-search-box button {
+      background: linear-gradient(135deg, var(--hanbok-coral) 0%, var(--hanbok-crimson) 100%);
+      color: #FFFFFF;
+      border: none;
+      padding: 0.9rem 2.2rem;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      white-space: nowrap;
+      box-shadow: 0 4px 15px rgba(217, 107, 81, 0.35);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .hero-search-box button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(217, 107, 81, 0.5);
+      opacity: 0.95;
+    }
+
+    .hero-tags {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 0.7rem;
+      margin-top: 1.4rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-tags-label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-right: 0.3rem;
+    }
+
+    .hero-tags span {
+      font-size: 0.8rem;
+      background: #FAF6F0;
+      border: 1px solid rgba(194, 155, 56, 0.2);
+      color: var(--text-main);
+      padding: 0.35rem 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.25s;
+      font-weight: 500;
+    }
+
+    .hero-tags span:hover {
+      border-color: var(--hanbok-coral);
+      color: var(--hanbok-coral);
+      background: #FFF9F2;
+      transform: translateY(-1px);
+    }
+
+    /* --- Immersive Main Showcase Gallery --- */
+    .showcase-section {
+      max-width: 1240px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-header h2 {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: var(--text-main);
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.5px;
+    }
+
+    .section-header p {
+      font-size: 1rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    .landmarks-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .landmark-card {
+      background: var(--bg-surface);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: 0 12px 30px rgba(44, 36, 34, 0.06);
+      border: 1px solid rgba(44, 36, 34, 0.08);
+      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .landmark-card:hover {
+      transform: translateY(-8px);
+      background: var(--bg-surface-hover);
+      box-shadow: 0 20px 40px rgba(217, 107, 81, 0.12);
+      border-color: rgba(217, 107, 81, 0.35);
+    }
+
+    .landmark-img-wrap {
+      width: 100%;
+      height: 230px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .landmark-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    .landmark-card:hover .landmark-img-wrap img {
+      transform: scale(1.08);
+    }
+
+    .landmark-badge {
+      position: absolute;
+      top: 1.1rem;
+      right: 1.1rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(6px);
+      color: var(--text-main);
+      padding: 0.35rem 0.9rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      border: 1px solid rgba(44, 36, 34, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    }
+
+    .landmark-badge.ancient {
+      color: #9E7A1C;
+      border-color: rgba(194, 155, 56, 0.35);
+      background: rgba(194, 155, 56, 0.12);
+    }
+
+    .landmark-content {
+      padding: 1.8rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      justify-content: space-between;
+    }
+
+    .landmark-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: var(--text-main);
+      letter-spacing: -0.3px;
+    }
+
+    .btn-book-landmark {
+      width: 100%;
+      background: #FAF6F0;
+      color: var(--text-main);
+      border: 1px solid rgba(44, 36, 34, 0.12);
+      padding: 0.85rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+
+    .landmark-card:hover .btn-book-landmark {
+      background: linear-gradient(135deg, var(--hanbok-coral), var(--hanbok-crimson));
+      color: #FFFFFF;
+      border-color: transparent;
+      box-shadow: 0 4px 15px rgba(217, 107, 81, 0.3);
+    }
+
+    /* --- Immersive Booking & Hanbok Options Modal --- */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(44, 36, 34, 0.45);
+      backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      padding: 1rem;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+    }
+
+    .modal-container {
+      background: #FFFFFF;
+      border: 1px solid rgba(194, 155, 56, 0.3);
+      width: 100%;
+      max-width: 720px;
+      border-radius: 30px;
+      padding: 2.8rem;
+      position: relative;
+      box-shadow: 0 30px 60px rgba(44, 36, 34, 0.2);
+      max-height: 90vh;
+      overflow-y: auto;
+      animation: modalScaleUp 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    @keyframes modalScaleUp {
+      from { transform: scale(0.92); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1.6rem;
+      right: 1.6rem;
+      background: #FAF6F0;
+      border: 1px solid rgba(44, 36, 34, 0.1);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
+      font-size: 1rem;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background: var(--hanbok-coral);
+      color: #FFFFFF;
+      border-color: var(--hanbok-coral);
+    }
+
+    .modal-header h2 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+      letter-spacing: -0.5px;
+    }
+
+    .modal-header p {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-bottom: 1.8rem;
+      line-height: 1.5;
+    }
+
+    /* Ancient Hanbok Add-on Options Box */
+    .addon-section {
+      background: #FAF6F0;
+      border: 1px solid rgba(194, 155, 56, 0.25);
+      border-radius: 20px;
+      padding: 1.4rem;
+      margin-bottom: 1.8rem;
+    }
+
+    .addon-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: #9E7A1C;
+    }
+
+    .addon-options {
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+    }
+
+    .addon-card {
+      background: #FFFFFF;
+      border: 1.5px solid rgba(44, 36, 34, 0.08);
+      border-radius: 14px;
+      padding: 0.9rem 1.1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .addon-card:hover {
+      border-color: var(--hanbok-coral);
+      background: #FFF9F2;
+    }
+
+    .addon-card input[type="radio"] {
+      accent-color: var(--hanbok-coral);
+      width: 18px;
+      height: 18px;
+    }
+
+    .addon-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .addon-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--text-main);
+    }
+
+    .addon-desc {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .addon-price {
+      font-size: 0.85rem;
+      color: #9E7A1C;
+      font-weight: 700;
+    }
+
+    /* Form Fields */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--text-muted);
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 0.8rem 1.1rem;
+      border: 1.5px solid rgba(44, 36, 34, 0.12);
+      border-radius: 14px;
+      font-family: var(--font-main);
+      font-size: 0.92rem;
+      outline: none;
+      background: #FAF6F0;
+      color: var(--text-main);
+      transition: border-color 0.2s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--hanbok-gold);
+      background: #FFFFFF;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .btn-submit-booking {
+      width: 100%;
+      background: linear-gradient(135deg, var(--hanbok-gold), #A6812A);
+      color: #FFFFFF;
+      border: none;
+      padding: 1rem;
+      border-radius: 50px;
+      font-size: 0.98rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-top: 1rem;
+      box-shadow: 0 4px 20px rgba(194, 155, 56, 0.3);
+    }
+
+    .btn-submit-booking:hover {
+      opacity: 0.95;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(194, 155, 56, 0.45);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 1024px) {
+      nav { display: none; }
+      .mobile-menu { display: block; }
+      .top-bar { display: none; }
+      header { padding: 1rem 1.5rem; }
+      .hero-slider-section { height: 340px; }
+      .sound-toggle-btn { right: 1rem; bottom: 1rem; }
+      .discovery-deck { margin-top: -2rem; padding: 0 1rem; }
+      .landmarks-container { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .hero-search-box { flex-direction: column; border-radius: 20px; padding: 1rem; gap: 0.8rem; }
+      .hero-search-box button { width: 100%; justify-content: center; }
+      .hero-search-box i.fa-location-dot { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Utility Bar -->
+  <div class="top-bar">
+    <div class="landing-tip">
+      <span class="tag-pill">ROYAL TRANSIT</span>
+      <span>Incheon & Gimpo Airport transit & T-Money card VIP setup guide.</span>
+    </div>
+    <div class="user-options">
+      <a href="#"><i class="fa-solid fa-globe"></i> EN / KRW ₩</a>
+      <a href="#"><i class="fa-regular fa-bookmark"></i> Saved Heritage Spots</a>
+    </div>
+  </div>
+
+  <!-- Main Navigation Header -->
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-symbol">한</div>
+      <div class="logo-text">
+        <span class="brand-name">HANARA</span>
+        <span class="brand-sub">하나로 · ROYAL KOREA JOURNEY</span>
+      </div>
+    </a>
+
+    <nav>
+      <a href="#" class="active">Main Square</a>
+      <span class="dot">•</span>
+      <a href="hotelteam3.html">Cozy Stays</a>
+      <span class="dot">•</span>
+      <a href="coffeeteam3.html">Eats & Cafés</a>
+      <span class="dot">•</span>
+      <a href="day-escape.html">Day Escapes</a>
+      <span class="dot">•</span>
+      <a href="kculture.html">K-Culture & Shows</a>
+      <span class="dot">•</span>
+      <a href="travel-desk.html">Travel Desk</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="btn-search-icon" title="Search stays, places, events...">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+
+      <a href="hotelteam3.html" class="btn-next-dest">
+        <i class="fa-solid fa-compass"></i> Cozy Stays
+      </a>
+
+      <div class="mobile-menu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Cinematic Background Video Section (Unobstructed Clean View, Center Text Deleted) -->
+    <section class="hero-slider-section">
+      <!-- Background Video: korea.mp4 (autoplay, loop, muted initially, plays continuously) -->
+      <video class="bg-video" id="bgVideo" autoplay muted loop playsinline>
+        <source src="korea.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+      </video>
+
+      <!-- Sound Toggle Button -->
+      <button class="sound-toggle-btn" id="soundToggleBtn">
+        <i class="fa-solid fa-volume-xmark" id="soundIcon"></i> <span id="soundText">Open Sound</span>
+      </button>
+    </section>
+
+    <!-- Redesigned Korean Aesthetic Discovery Deck (Dropdown Search Bar) -->
+    <div class="discovery-deck">
+      <div class="discovery-card">
+        <div class="deck-header-content">
+          <div class="korean-seal">여행 탐색</div>
+          <h2 class="deck-title-main">Where does your royal Korean story begin?</h2>
+        </div>
+
+        <div class="hero-search-box">
+          <i class="fa-solid fa-location-dot"></i>
+          <input type="text" placeholder="Search ancient palaces, Hanok villages, royal ceremonies...">
+          <button><i class="fa-solid fa-compass"></i> Discover</button>
+        </div>
+
+        <div class="hero-tags">
+          <span class="hero-tags-label"><i class="fa-solid fa-sparkles"></i> Popular:</span>
+          <span>🌸 Gyeongbokgung Palace</span>
+          <span>🏛️ Suwon Hwaseong</span>
+          <span>🏮 Bukchon Hanok</span>
+          <span>⛩️ Andong Folk Village</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Landmarks Gallery Showcase Section -->
+    <section class="showcase-section" id="top-landmarks">
+      <div class="section-header">
+        <h2>Landmarks & Heritage Showcase</h2>
+        <p>Explore Korea's historic ancient sites and modern wonders. True ancient historical landmarks feature exclusive traditional royal Hanbok packages.</p>
+      </div>
+
+      <div class="landmarks-container">
+        <!-- 1. Gyeongbokgung Palace -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="01pic.jpg" alt="Gyeongbokgung Palace">
+            <span class="landmark-badge ancient">Ancient Site</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Gyeongbokgung Palace</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Gyeongbokgung Palace', true)">
+              <i class="fa-solid fa-shirt"></i> Select & Add Ancient Hanbok Option
+            </button>
+          </div>
+        </div>
+
+        <!-- 2. Suwon Hwaseong Fortress -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="suwon.png" alt="Suwon Hwaseong Fortress">
+            <span class="landmark-badge ancient">Ancient Site</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Suwon Hwaseong Fortress</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Suwon Hwaseong Fortress', true)">
+              <i class="fa-solid fa-shirt"></i> Select & Add Ancient Hanbok Option
+            </button>
+          </div>
+        </div>
+
+        <!-- 3. Gwanghwamun Square -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="03pic.png" alt="Gwanghwamun Square">
+            <span class="landmark-badge">Modern Plaza</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Gwanghwamun Square</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Gwanghwamun Square', false)">
+              <i class="fa-solid fa-ticket"></i> Book Landmark Ticket
+            </button>
+          </div>
+        </div>
+
+        <!-- 4. Bukchon Hanok Village -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="04pic.png" alt="Bukchon Hanok Village">
+            <span class="landmark-badge ancient">Ancient Site</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Bukchon Hanok Village</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Bukchon Hanok Village', true)">
+              <i class="fa-solid fa-shirt"></i> Select & Add Ancient Hanbok Option
+            </button>
+          </div>
+        </div>
+
+        <!-- 5. N Seoul Tower -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="05pic.png" alt="N Seoul Tower">
+            <span class="landmark-badge">Modern Landmark</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">N Seoul Tower</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('N Seoul Tower', false)">
+              <i class="fa-solid fa-ticket"></i> Book Landmark Ticket
+            </button>
+          </div>
+        </div>
+
+        <!-- 6. Lotte World Tower -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="06pic.png" alt="Lotte World Tower">
+            <span class="landmark-badge">Modern Skyscraper</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Lotte World Tower</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Lotte World Tower', false)">
+              <i class="fa-solid fa-ticket"></i> Book Landmark Ticket
+            </button>
+          </div>
+        </div>
+
+        <!-- 7. Seoul City Hall -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="07pic.png" alt="Seoul City Hall">
+            <span class="landmark-badge">Modern Architecture</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Seoul City Hall</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Seoul City Hall', false)">
+              <i class="fa-solid fa-ticket"></i> Book Landmark Ticket
+            </button>
+          </div>
+        </div>
+
+        <!-- 8. Manchunjeon -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="08pic.png" alt="Manchunjeon">
+            <span class="landmark-badge ancient">Ancient Site</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Manchunjeon</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Manchunjeon', true)">
+              <i class="fa-solid fa-shirt"></i> Select & Add Ancient Hanbok Option
+            </button>
+          </div>
+        </div>
+
+        <!-- 9. Hahyangjeong Pavilion -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="09pic.png" alt="Hahyangjeong Pavilion">
+            <span class="landmark-badge ancient">Ancient Site</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Hahyangjeong Pavilion</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Hahyangjeong Pavilion', true)">
+              <i class="fa-solid fa-shirt"></i> Select & Add Ancient Hanbok Option
+            </button>
+          </div>
+        </div>
+
+        <!-- 10. Andong Hahoe Folk Village -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="10pic.png" alt="Andong Hahoe Folk Village">
+            <span class="landmark-badge ancient">Ancient Site</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Andong Hahoe Folk Village</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Andong Hahoe Folk Village', true)">
+              <i class="fa-solid fa-shirt"></i> Select & Add Ancient Hanbok Option
+            </button>
+          </div>
+        </div>
+
+        <!-- 11. Busan Cinema Center -->
+        <div class="landmark-card">
+          <div class="landmark-img-wrap">
+            <img src="busan.png" alt="Busan Cinema Center">
+            <span class="landmark-badge">Modern Landmark</span>
+          </div>
+          <div class="landmark-content">
+            <div>
+              <h3 class="landmark-title">Busan Cinema Center</h3>
+            </div>
+            <button class="btn-book-landmark" onclick="openBooking('Busan Cinema Center', false)">
+              <i class="fa-solid fa-ticket"></i> Book Landmark Ticket
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Landmark Booking Modal -->
+  <div class="modal-overlay" id="landmarkModal">
+    <div class="modal-container">
+      <button class="modal-close" id="closeLandmarkModal"><i class="fa-solid fa-xmark"></i></button>
+      
+      <div class="modal-header">
+        <h2 id="modalLandmarkTitle">Landmark Booking</h2>
+        <p id="modalSubtitle">Complete your reservation information and choose optional packages.</p>
+      </div>
+
+      <form id="bookingForm">
+        <input type="hidden" id="selectedLandmarkInput" name="landmark">
+
+        <!-- Dynamic Hanbok Add-on Container -->
+        <div class="addon-section" id="hanbokAddonSection" style="display: none;">
+          <div class="addon-title"><i class="fa-solid fa-shirt"></i> Ancient Traditional Hanbok Experience Options (Includes Free Royal Makeup & Hairstyling!)</div>
+          <div class="addon-options">
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <input type="radio" name="hanbok" value="4hrs">
+                <div class="addon-info">
+                  <span class="addon-name">Ancient Royal Hanbok Rental (4 hrs)</span>
+                  <span class="addon-desc">Free professional royal makeup & hairstyling included</span>
+                </div>
+              </div>
+              <span class="addon-price">$32.50</span>
+            </label>
+
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <input type="radio" name="hanbok" value="night_walk">
+                <div class="addon-info">
+                  <span class="addon-name">Ancient Night Palace Walk (24 hrs)</span>
+                  <span class="addon-desc">Free professional royal makeup & hairstyling included</span>
+                </div>
+              </div>
+              <span class="addon-price">$48.00</span>
+            </label>
+
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <input type="radio" name="hanbok" value="overnight">
+                <div class="addon-info">
+                  <span class="addon-name">Ancient Overnight Rental (24 hrs)</span>
+                  <span class="addon-desc">Free professional royal makeup & hairstyling included</span>
+                </div>
+              </div>
+              <span class="addon-price">$78.00</span>
+            </label>
+
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <input type="radio" name="hanbok" value="outdoor_photo">
+                <div class="addon-info">
+                  <span class="addon-name">Ancient Palace Outdoor Photoshoot</span>
+                  <span class="addon-desc">Free professional royal makeup & hairstyling included</span>
+                </div>
+              </div>
+              <span class="addon-price">$195.00</span>
+            </label>
+
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <input type="radio" name="hanbok" value="indoor_photo">
+                <div class="addon-info">
+                  <span class="addon-name">Ancient Studio Indoor Photoshoot</span>
+                  <span class="addon-desc">Free professional royal makeup & hairstyling included</span>
+                </div>
+              </div>
+              <span class="addon-price">$245.00</span>
+            </label>
+
+            <label class="addon-card">
+              <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <input type="radio" name="hanbok" value="traditional_wedding">
+                <div class="addon-info">
+                  <span class="addon-name">Royal Dynasty Wedding Photoshoot</span>
+                  <span class="addon-desc">Free professional royal makeup & hairstyling included</span>
+                </div>
+              </div>
+              <span class="addon-price">$395.00</span>
+            </label>
+
+            <label class="addon-card" style="background: #FAF6F0;">
+              <div style="display: flex; align-items: center; gap: 0.8rem;">
+                <input type="radio" name="hanbok" value="none" checked>
+                <div class="addon-info">
+                  <span class="addon-name">No Ancient Hanbok Rental / Photoshoot</span>
+                  <span class="addon-desc">Sightseeing entry pass only</span>
+                </div>
+              </div>
+              <span class="addon-price">Free</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Notice for Modern Places -->
+        <div class="addon-section" id="modernNoticeSection" style="display: none; background: #FAF6F0;">
+          <div class="addon-title" style="color: var(--text-muted);"><i class="fa-solid fa-circle-info"></i> Modern Location Notice</div>
+          <p style="font-size: 0.85rem; color: var(--text-muted);">This site is a modern architectural landmark. Traditional ancient Hanbok packages are not available here.</p>
+        </div>
+
+        <!-- User Information Fields -->
+        <div class="form-row">
+          <div class="form-group">
+            <label for="userName">Full Name</label>
+            <input type="text" id="userName" placeholder="e.g. Jane Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="userEmail">Email Address</label>
+            <input type="email" id="userEmail" placeholder="e.g. jane@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="visitDate">Preferred Date</label>
+            <input type="date" id="visitDate" required>
+          </div>
+          <div class="form-group">
+            <label for="guestCount">Number of Guests</label>
+            <select id="guestCount">
+              <option value="1">1 Person</option>
+              <option value="2">2 People</option>
+              <option value="3">3 People</option>
+              <option value="4">4+ People</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit-booking">Confirm Reservation</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript Logic -->
+  <script>
+    /* --- Sound Toggle Logic (Keeps video playing continuously) --- */
+    const bgVideo = document.getElementById('bgVideo');
+    const soundToggleBtn = document.getElementById('soundToggleBtn');
+    const soundIcon = document.getElementById('soundIcon');
+    const soundText = document.getElementById('soundText');
+
+    soundToggleBtn.addEventListener('click', () => {
+      if (bgVideo.muted) {
+        bgVideo.muted = false;
+        soundIcon.className = "fa-solid fa-volume-high";
+        soundText.textContent = "Close Sound";
+      } else {
+        bgVideo.muted = true;
+        soundIcon.className = "fa-solid fa-volume-xmark";
+        soundText.textContent = "Open Sound";
+      }
+    });
+
+    /* --- Landmark Modal Open/Close Logic with Ancient vs Modern Control --- */
+    const modal = document.getElementById('landmarkModal');
+    const closeBtn = document.getElementById('closeLandmarkModal');
+    const bookingForm = document.getElementById('bookingForm');
+    const modalTitle = document.getElementById('modalLandmarkTitle');
+    const modalSubtitle = document.getElementById('modalSubtitle');
+    const selectedLandmarkInput = document.getElementById('selectedLandmarkInput');
+    const hanbokAddonSection = document.getElementById('hanbokAddonSection');
+    const modernNoticeSection = document.getElementById('modernNoticeSection');
+
+    function openBooking(landmarkName, isAncient) {
+      modalTitle.textContent = `Booking: ${landmarkName}`;
+      selectedLandmarkInput.value = landmarkName;
+
+      if (isAncient) {
+        modalSubtitle.textContent = "Complete your reservation information and choose your traditional royal Hanbok styling options.";
+        hanbokAddonSection.style.display = 'block';
+        modernNoticeSection.style.display = 'none';
+      } else {
+        modalSubtitle.textContent = "Complete your reservation information for this modern landmark entry.";
+        hanbokAddonSection.style.display = 'none';
+        modernNoticeSection.style.display = 'block';
+        const noneRadio = document.querySelector('input[name="hanbok"][value="none"]');
+        if (noneRadio) noneRadio.checked = true;
+      }
+
+      modal.classList.add('active');
+    }
+
+    closeBtn.addEventListener('click', () => {
+      modal.classList.remove('active');
+    });
+
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+      }
+    });
+
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('Thank you! Your royal reservation request has been received. We will send payment and confirmation details to your email shortly.');
+      modal.classList.remove('active');
+      bookingForm.reset();
+    });
+  </script>
+
+</body>
+</html>

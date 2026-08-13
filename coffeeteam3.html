@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HANARA — Eats & Cafés</title>
+  
+  <!-- Fonts & FontAwesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background-color: #FAF8F5; font-family: 'Outfit', sans-serif; color: #2B2829; }
+
+    /* --- Top Announcement Bar CSS --- */
+    .top-announcement-bar {
+      background-color: #F8F5F0;
+      padding: 0.4rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: #555153;
+      border-bottom: 1px solid #ECE7E1;
+    }
+    .top-bar-left { display: flex; align-items: center; gap: 0.8rem; }
+    .badge-stay-guide {
+      background-color: #FFFFFF;
+      border: 1px solid #E5DFD7;
+      padding: 0.15rem 0.6rem;
+      border-radius: 50px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: #E0A99E;
+      letter-spacing: 0.5px;
+    }
+    .top-bar-right { display: flex; align-items: center; gap: 1.5rem; }
+
+    /* --- Main Header CSS --- */
+    .main-header {
+      background-color: #FFFFFF;
+      border-bottom: 1px solid #ECE7E1;
+      padding: 1.1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+    }
+    .logo { display: flex; align-items: center; gap: 0.7rem; text-decoration: none; }
+    .logo-symbol {
+      width: 38px;
+      height: 38px;
+      background-color: #D3C2B5;
+      color: #FFF;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+    }
+    .brand-name { font-size: 1.3rem; font-weight: 800; color: #2B2829; letter-spacing: 1px; }
+    .brand-sub { font-size: 0.65rem; color: #847E82; display: block; margin-top: 1px; }
+    .nav-menu { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-menu a {
+      text-decoration: none;
+      color: #2B2829;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.5rem 1rem;
+      border-radius: 50px;
+      transition: 0.2s;
+    }
+    .nav-menu a.active {
+      background-color: #FAF0EC;
+      color: #E0A99E;
+    }
+
+    /* --- Main Content Grid --- */
+    .eats-container { max-width: 1200px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+    .eats-hero { text-align: center; margin-bottom: 3rem; }
+    .hero-subheading { font-family: 'Noto Serif KR', serif; font-size: 0.85rem; color: #E0A99E; letter-spacing: 2px; font-weight: 700; }
+    .hero-heading { font-size: 2.2rem; font-weight: 800; margin: 0.4rem 0 0.8rem; }
+    .hero-desc { font-size: 0.95rem; color: #847E82; }
+
+    .places-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; }
+    .place-card { background: #FFFFFF; border-radius: 20px; overflow: hidden; border: 1px solid #ECE7E1; cursor: pointer; transition: all 0.3s ease; }
+    .place-card:hover { transform: translateY(-6px); box-shadow: 0 18px 35px rgba(224, 169, 158, 0.2); border-color: #E0A99E; }
+    .card-image-wrap { overflow: hidden; height: 220px; position: relative; }
+    .card-image { height: 220px; background-size: cover; background-position: center; transition: transform 0.5s ease; }
+    .place-card:hover .card-image { transform: scale(1.03); }
+    .card-category { position: absolute; top: 1rem; left: 1rem; background: rgba(255,255,255,0.92); font-size: 0.72rem; font-weight: 800; padding: 0.35rem 0.85rem; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-content { padding: 1.4rem; }
+    .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.4rem; }
+    .rating { font-size: 0.82rem; color: #E0A99E; font-weight: 700; background-color: #FAF8F5; padding: 0.2rem 0.5rem; border-radius: 8px; }
+    .location { font-size: 0.82rem; color: #847E82; margin-bottom: 0.8rem; }
+    .description { font-size: 0.88rem; color: #555153; margin-bottom: 1.2rem; line-height: 1.4; }
+    .btn-view-menu { background: #FAF8F5; color: #E0A99E; border: 1px solid #F6E6E1; width: 100%; padding: 0.75rem; border-radius: 12px; font-weight: 700; cursor: pointer; transition: 0.2s; }
+    .place-card:hover .btn-view-menu { background: #E0A99E; color: #FFF; border-color: #E0A99E; }
+
+    /* --- Modals Overlay --- */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.6); backdrop-filter: blur(6px); display: none; justify-content: center; align-items: center; z-index: 2000; padding: 1rem; }
+    .modal-overlay.active { display: flex; }
+    .modal-card { background: #FFF; border-radius: 24px; max-width: 750px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 2rem; position: relative; box-shadow: 0 25px 50px rgba(0,0,0,0.2); }
+    .close-btn { position: absolute; top: 1.2rem; right: 1.2rem; background: #FAF8F5; border: none; width: 38px; height: 38px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; z-index: 10; transition: 0.2s; }
+    .close-btn:hover { background: #E0A99E; color: #FFF; }
+
+    /* --- Food & Drink Menu Layout --- */
+    .menu-section-title { font-size: 1.1rem; font-weight: 800; color: #2B2829; margin: 1.8rem 0 0.8rem; border-bottom: 2px solid #F6F2EE; padding-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem; }
+    .menu-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    .menu-item-card { display: flex; gap: 1rem; align-items: center; border: 1px solid #ECE7E1; padding: 0.9rem; border-radius: 18px; cursor: pointer; transition: all 0.25s ease; background: #FFF; }
+    .menu-item-card:hover { border-color: #E0A99E; background: #FFFAF8; transform: translateY(-2px); box-shadow: 0 8px 20px rgba(224, 169, 158, 0.15); }
+    .menu-item-img { width: 85px; height: 85px; border-radius: 14px; object-fit: cover; flex-shrink: 0; background-color: #ECE7E1; }
+    .menu-item-info { flex-grow: 1; }
+    .menu-item-info h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.2rem; color: #2B2829; display: flex; align-items: center; gap: 0.4rem; flex-wrap: wrap; }
+    .menu-item-info p { font-size: 0.8rem; color: #6E686B; margin-bottom: 0.4rem; line-height: 1.35; }
+    .badge-tag { font-size: 0.62rem; background: #FFEBE6; color: #D9534F; font-weight: 800; padding: 0.15rem 0.45rem; border-radius: 50px; text-transform: uppercase; }
+    .badge-drink { background: #E6F0FA; color: #2B6CB0; }
+
+    /* Dual Price Styling */
+    .menu-item-price-box { text-align: right; min-width: 100px; }
+    .price-won { font-weight: 800; color: #E0A99E; font-size: 1rem; display: block; }
+    .price-usd { font-weight: 600; color: #847E82; font-size: 0.82rem; margin-top: 2px; display: block; }
+
+    /* Dish Preview */
+    .dish-preview-img { width: 100%; height: 220px; object-fit: cover; border-radius: 18px; margin: 1rem 0; display: block; }
+    .order-qty-control { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; background: #FAF8F5; padding: 0.6rem 1rem; border-radius: 50px; width: fit-content; }
+    .qty-btn { width: 36px; height: 36px; border-radius: 50%; border: 1px solid #ECE7E1; background: #FFF; font-size: 1.2rem; font-weight: 700; cursor: pointer; }
+    .qty-number { font-size: 1.2rem; font-weight: 800; min-width: 24px; text-align: center; }
+    
+    .form-group { margin-bottom: 1rem; }
+    .form-group label { display: block; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.4rem; color: #2B2829; }
+    .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 0.8rem; border: 1px solid #ECE7E1; border-radius: 14px; font-family: inherit; font-size: 0.9rem; outline: none; background: #FAF8F5; }
+    
+    .total-price-bar { display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 800; margin: 1.5rem 0 1rem; padding-top: 1rem; border-top: 1px solid #ECE7E1; }
+    .total-usd-sub { font-size: 0.9rem; color: #847E82; font-weight: 600; margin-left: 0.5rem; }
+    .btn-submit-order { background: #2B2829; color: #FFF; border: none; width: 100%; padding: 1.1rem; border-radius: 50px; font-size: 1.05rem; font-weight: 700; cursor: pointer; transition: 0.25s; }
+    .btn-submit-order:hover { background: #E0A99E; }
+
+    .kitchen-ticket { background: #2B2829; color: #FFF; padding: 1.8rem; border-radius: 20px; font-family: monospace; }
+    .kitchen-ticket h3 { color: #B4C5B3; margin-bottom: 0.5rem; font-family: 'Outfit', sans-serif; font-size: 1.2rem; }
+    .ticket-divider { border-bottom: 1px dashed #555; margin: 1rem 0; }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <div class="top-bar-left">
+      <span class="badge-stay-guide">EATS GUIDE</span>
+      <span>Savor Korea's Most Iconic Eats & Hanok Cafés. Instant Ordering.</span>
+    </div>
+    <div class="top-bar-right">
+      <span><i class="fa-solid fa-phone"></i> Direct Support: <strong>090777186</strong></span>
+      <span><i class="fa-solid fa-globe"></i> EN / KRW ₩ & USD $</span>
+    </div>
+  </div>
+
+  <!-- Main Header Navigation -->
+  <header class="main-header">
+    <a href="index.html" class="logo">
+      <div class="logo-symbol">한</div>
+      <div class="logo-text">
+        <span class="brand-name">HANARA</span>
+        <span class="brand-sub">하나로 · ALL IN KOREA</span>
+      </div>
+    </a>
+    <nav class="nav-menu">
+      <a href="index.html">Main Square</a>
+      <a href="hotelteam3.html">Cozy Stays</a>
+      <a href="coffeeteam.html" class="active">Eats & Cafés</a>
+      <a href="dayescapes.html">Day Escapes</a>
+      <a href="kculture.html">K-Culture</a>
+    </nav>
+  </header>
+
+  <!-- Main Places Container -->
+  <main class="eats-container">
+    <section class="eats-hero">
+      <span class="hero-subheading">한국의 맛과 멋 · Gourmet Korean Feast</span>
+      <h1 class="hero-heading">Savor Korea's Most Iconic Eats & Hanok Cafés</h1>
+      <p class="hero-desc">Click any restaurant to view mouth-watering photo menus (15+ items) and dispatch orders straight to the kitchen!</p>
+    </section>
+
+    <section class="places-grid">
+      <!-- 1. Tosokchon Samgyetang -->
+      <div class="place-card" onclick="openMenu('Tosokchon Samgyetang')">
+        <div class="card-image-wrap">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=800&q=80');"></div>
+          <span class="card-category">Traditional Soup</span>
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Tosokchon Samgyetang</h3>
+            <span class="rating"><i class="fa-solid fa-star"></i> 4.9</span>
+          </div>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Gyeongbokgung, Seoul</p>
+          <p class="description">Rich, velvety ginseng broth infused with wild chestnut, pine nuts, and tender whole young chicken stuffed with sweet sticky rice.</p>
+          <button class="btn-view-menu"><i class="fa-solid fa-utensils"></i> View Menu & Order</button>
+        </div>
+      </div>
+
+      <!-- 2. Onion Anguk -->
+      <div class="place-card" onclick="openMenu('Onion Anguk')">
+        <div class="card-image-wrap">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=800&q=80');"></div>
+          <span class="card-category">Hanok Bakery</span>
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Onion Anguk</h3>
+            <span class="rating"><i class="fa-solid fa-star"></i> 4.9</span>
+          </div>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Anguk-dong, Seoul</p>
+          <p class="description">Flaky butter pastries dusted in powdered sugar and savory Injeolmi cream, baked fresh inside a 100-year-old wooden Hanok.</p>
+          <button class="btn-view-menu"><i class="fa-solid fa-mug-hot"></i> View Menu & Order</button>
+        </div>
+      </div>
+
+      <!-- 3. Myeongdong Kyoja -->
+      <div class="place-card" onclick="openMenu('Myeongdong Kyoja')">
+        <div class="card-image-wrap">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80');"></div>
+          <span class="card-category">Handmade Noodles</span>
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Myeongdong Kyoja</h3>
+            <span class="rating"><i class="fa-solid fa-star"></i> 4.8</span>
+          </div>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Myeongdong, Seoul</p>
+          <p class="description">Michelin Bib Gourmand silky knife-cut noodles swimming in a smoky, rich chicken broth paired with fiery garlic kimchi.</p>
+          <button class="btn-view-menu"><i class="fa-solid fa-bowl-food"></i> View Menu & Order</button>
+        </div>
+      </div>
+
+      <!-- 4. Mokmyeoksanbang -->
+      <div class="place-card" onclick="openMenu('Mokmyeoksanbang')">
+        <div class="card-image-wrap">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=800&q=80');"></div>
+          <span class="card-category">Royal Bibimbap</span>
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Mokmyeoksanbang</h3>
+            <span class="rating"><i class="fa-solid fa-star"></i> 4.9</span>
+          </div>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Namsan, Seoul</p>
+          <p class="description">Sizzling brass bowls brimming with fragrant sesame-oiled wild herbs, tender ribeye, and house-fermented Gochujang.</p>
+          <button class="btn-view-menu"><i class="fa-solid fa-utensils"></i> View Menu & Order</button>
+        </div>
+      </div>
+
+      <!-- 5. Gwangjang Feast -->
+      <div class="place-card" onclick="openMenu('Gwangjang Feast')">
+        <div class="card-image-wrap">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=800&q=80');"></div>
+          <span class="card-category">Street Gourmet</span>
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Gwangjang Feast</h3>
+            <span class="rating"><i class="fa-solid fa-star"></i> 4.8</span>
+          </div>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Jongno, Seoul</p>
+          <p class="description">Golden crispy mung bean pancakes sizzled in iron skillets alongside chewy rice cakes smothered in sweet spicy red pepper sauce.</p>
+          <button class="btn-view-menu"><i class="fa-solid fa-fire-burner"></i> View Menu & Order</button>
+        </div>
+      </div>
+
+      <!-- 6. Geumdwaeji Sikdang -->
+      <div class="place-card" onclick="openMenu('Geumdwaeji Sikdang')">
+        <div class="card-image-wrap">
+          <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=80');"></div>
+          <span class="card-category">Gold Pork K-BBQ</span>
+        </div>
+        <div class="card-content">
+          <div class="card-header">
+            <h3>Geumdwaeji Sikdang</h3>
+            <span class="rating"><i class="fa-solid fa-star"></i> 5.0</span>
+          </div>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Yaksu, Seoul</p>
+          <p class="description">Juicy thick-cut bone-in pork belly seared over natural oak charcoal, served with roasted Maldon sea salt flakes.</p>
+          <button class="btn-view-menu"><i class="fa-solid fa-drumstick-bite"></i> View Menu & Order</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- STEP 1: RESTAURANT MENU MODAL -->
+  <div class="modal-overlay" id="menuModal">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeModal('menuModal')">&times;</button>
+      <h2 id="modalRestaurantName" style="font-size:1.6rem; color:#2B2829;">Restaurant Menu</h2>
+      <p style="color:#847E82; font-size: 0.88rem; margin-top: 4px;">Select any delicious dish or drink to customize and order directly!</p>
+      
+      <!-- Food Items Section -->
+      <div class="menu-section-title"><i class="fa-solid fa-utensils" style="color:#E0A99E;"></i> Food & Gourmet Dishes</div>
+      <div class="menu-grid" id="foodItemsContainer"></div>
+
+      <!-- Drink Items Section -->
+      <div class="menu-section-title"><i class="fa-solid fa-glass-water" style="color:#2B6CB0;"></i> Beverages & Craft Drinks</div>
+      <div class="menu-grid" id="drinkItemsContainer"></div>
+    </div>
+  </div>
+
+  <!-- STEP 2: DISH ORDERING MODAL -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeModal('orderModal')">&times;</button>
+      <span style="color:#E0A99E; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;">Kitchen Order</span>
+      <h2 id="orderDishName" style="margin-top:2px; font-size: 1.5rem;">Dish Name</h2>
+      
+      <img id="orderDishImage" class="dish-preview-img" src="" alt="Dish Preview">
+      <p id="orderDishDesc" style="color:#6E686B; font-size: 0.9rem; line-height: 1.4;"></p>
+
+      <div class="order-qty-control">
+        <span style="font-weight:700; font-size:0.9rem;">Quantity:</span>
+        <button class="qty-btn" onclick="updateQty(-1)">-</button>
+        <span class="qty-number" id="qtyDisplay">1</span>
+        <button class="qty-btn" onclick="updateQty(1)">+</button>
+      </div>
+
+      <div class="form-group">
+        <label>Dining Mode</label>
+        <select id="orderType">
+          <option value="Dine-In (Table Service)">Dine-In (Table Service)</option>
+          <option value="Takeout / Express Pickup">Takeout / Express Pickup</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Your Name / Table No.</label>
+        <input type="text" id="customerDetails" placeholder="e.g. Table 04 or Alex Smith">
+      </div>
+
+      <div class="form-group">
+        <label>Special Instructions for Chef</label>
+        <textarea id="chefNotes" rows="2" placeholder="e.g. Extra spicy broth, sauce on the side, extra cilantro..."></textarea>
+      </div>
+
+      <div class="total-price-bar">
+        <span>Total Price:</span>
+        <div>
+          <span style="color:#E0A99E;" id="totalPriceDisplay">₩0</span>
+          <span class="total-usd-sub" id="totalUsdDisplay">($0.00 USD)</span>
+        </div>
+      </div>
+
+      <button class="btn-submit-order" onclick="sendToKitchen()"><i class="fa-solid fa-paper-plane"></i> Send Order to Kitchen</button>
+    </div>
+  </div>
+
+  <!-- STEP 3: KITCHEN CONFIRMATION MODAL -->
+  <div class="modal-overlay" id="confirmationModal">
+    <div class="modal-card">
+      <button class="close-btn" onclick="closeModal('confirmationModal')">&times;</button>
+      <div class="kitchen-ticket">
+        <h3><i class="fa-solid fa-circle-check"></i> ORDER SENT TO KITCHEN!</h3>
+        <p>Status: <span style="color:#B4C5B3; font-weight:bold;">PREPARING YOUR DISH</span></p>
+        <div class="ticket-divider"></div>
+        <p id="ticketDetails">Details here...</p>
+        <div class="ticket-divider"></div>
+        <p style="font-size: 0.8rem; color:#AAA;">Estimated Preparation Time: 10-15 Mins</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS Logic with Dynamic USD Conversion & 15+ Items Per Spot -->
+  <script>
+    const KRW_TO_USD = 1350; // Conversion rate: ~1350 KRW = $1 USD
+
+    function formatUsd(krw) {
+      return `$${(krw / KRW_TO_USD).toFixed(2)} USD`;
+    }
+
+    // 15+ Items Database per restaurant (11 Food + 5 Drinks = 16 Options per spot)
+    const restaurantData = {
+      "Tosokchon Samgyetang": {
+        foods: [
+          { name: "Signature Ginseng Chicken Soup", price: 20000, desc: "Whole young chicken slow-simmered with mountain ginseng, chestnuts, jujubes, and sticky rice.", badge: "Must Try", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" },
+          { name: "Wild Mountain Ginseng Soup", price: 26000, desc: "Rare wild-cultivated mountain ginseng infused into rich golden bone broth.", badge: "Chef Special", image: "https://images.unsplash.com/photo-1580651214613-f4323e015d68?auto=format&fit=crop&w=500&q=80" },
+          { name: "Black Bone Silkie Samgyetang", price: 24000, desc: "Nutrient-rich black silkie chicken stewed with herbal roots.", badge: "Healthy", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" },
+          { name: "Seafood & Green Scallion Pancake", price: 18000, desc: "Crispy scallion pancake packed with tender squid, prawns, and sesame oil.", badge: "Crispy", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" },
+          { name: "Spicy Roasted Kimchi Pancake", price: 16000, desc: "Aged ferment kimchi pancake pan-seared to golden perfection. 🌶️", badge: "Spicy", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" },
+          { name: "Roasted Garlic Chicken Wings", price: 17000, desc: "Crispy fried chicken glazed in sweet honey garlic glaze.", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" },
+          { name: "Braised Spicy Chicken (Dak-bokkeum-tang)", price: 32000, desc: "Tender chicken chunks braised with potatoes in spicy chili broth. 🌶️🌶️", image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80" },
+          { name: "Steamed Glutinous Sticky Rice", price: 3000, desc: "Fragrant sticky rice cooked with jujubes and sweet chestnuts.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" },
+          { name: "Aged Napa Kimchi Pot", price: 5000, desc: "Traditional slow-fermented garlic cabbage kimchi.", image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=500&q=80" },
+          { name: "Pickled Radish & Cubed Kkakdugi", price: 4000, desc: "Crunchy sweet & sour radish cubes.", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" },
+          { name: "Acorn Jelly Salad (Dotori-muk)", price: 14000, desc: "Nutty acorn jelly tossed with fresh lettuce, chili, and soy dressing.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" }
+        ],
+        drinks: [
+          { name: "Insam-ju (Aged Ginseng Wine Shot)", price: 4000, desc: "Traditional herbal wine infused with 6-year-old Korean ginseng roots.", badge: "House Special", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Bottle of Tosokchon Ginseng Liquor", price: 12000, desc: "Full 375ml bottle of signature ginseng rice wine.", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Chilled Sweet Sikhye (Rice Punch)", price: 4500, desc: "Refreshing traditional malt rice drink served ice cold.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Iced Five-Flavor Omija Tea", price: 5000, desc: "Sweet & sour wild berry tea brewed in house.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Sparkling Mineral Water", price: 3000, desc: "Chilled bottled natural sparkling spring water.", image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=500&q=80" }
+        ]
+      },
+
+      "Onion Anguk": {
+        foods: [
+          { name: "Injeolmi Cream Pandoro", price: 6500, desc: "Soft Italian Pandoro dusted in sweet roasted soybean powder.", badge: "Best Seller", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" },
+          { name: "Butter Salt Bread (Sio Pan)", price: 4200, desc: "Flaky roll made with premium French sea salt and rich cream butter.", badge: "Fresh Baked", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" },
+          { name: "Black Sesame Cream Croissant", price: 5800, desc: "Double-baked croissant filled with nutty roasted black sesame pastry cream.", image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80" },
+          { name: "Matcha Custard Cruffin", price: 6000, desc: "Flaky muffin croissant filled with rich Jeju green tea custard.", image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=500&q=80" },
+          { name: "Smoked Bacon & Garlic Brioche", price: 6800, desc: "Savory loaf layered with thick bacon and cream cheese.", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" },
+          { name: "Almond Vanilla Scone", price: 4500, desc: "Crumbly butter scone topped with sliced almonds.", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" },
+          { name: "Strawberry Mascarpone Tart", price: 7500, desc: "Fresh seasonal strawberries over sweet vanilla mascarpone.", image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=500&q=80" },
+          { name: "Red Bean Butter Baguette (Ang-Butter)", price: 5500, desc: "Crispy baguette stuffed with sweet red bean paste and sliced French butter.", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" },
+          { name: "Truffle Mushroom Tartine", price: 8500, desc: "Sourdough toast topped with sautéed wild mushrooms and truffle oil.", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" },
+          { name: "Dark Chocolate Pain au Chocolat", price: 5200, desc: "Layered French pastry stuffed with 70% dark Belgian chocolate.", image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80" },
+          { name: "Earl Grey Cream Roll", price: 6200, desc: "Soft sponge cake infused with bergamot tea and whipped cream.", image: "https://images.unsplash.com/photo-1541544741938-0af808871cc0?auto=format&fit=crop&w=500&q=80" }
+        ],
+        drinks: [
+          { name: "Anguk Pour-Over Hand Drip", price: 6000, desc: "Single-origin beans with floral, bright peach notes.", badge: "Signature Coffee", image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80" },
+          { name: "Iced Vanilla Bean Latte", price: 6500, desc: "Espresso combined with house-made Madagascar vanilla syrup.", image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80" },
+          { name: "Einspänner Cold Brew", price: 6800, desc: "Concentrated cold brew topped with thick sweet velvet cream.", image: "https://images.unsplash.com/photo-1554118811-1e0d58224f24?auto=format&fit=crop&w=500&q=80" },
+          { name: "Iced Organic Jeju Matcha Latte", price: 7000, desc: "Stone-ground green tea whisked fresh over cold whole milk.", image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=500&q=80" },
+          { name: "Sparkling Yuzu Lemon Ade", price: 6500, desc: "Tangy citron marmalade mixed with fizzy sparkling soda.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" }
+        ]
+      },
+
+      "Myeongdong Kyoja": {
+        foods: [
+          { name: "Kalguksu (Hand-Cut Noodle Soup)", price: 11000, desc: "Silky hand-cut noodles served in a rich chicken broth with ground pork.", badge: "Michelin Bib", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=80" },
+          { name: "Steamed Pork Mandu Dumplings", price: 12000, desc: "10-piece thin-wrapped dumplings exploding with juicy pork juice.", badge: "Must Order", image: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=500&q=80" },
+          { name: "Spicy Sesame Bibim Guksu", price: 11000, desc: "Chilled wheat noodles tossed in fiery garlic paste and cucumber. 🌶️", badge: "Spicy", image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80" },
+          { name: "Kongguksu (Chilled Soy Milk Noodles)", price: 12000, desc: "Seasonal cold noodles in a thick, creamy pure ground soybean broth.", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=80" },
+          { name: "Garlic Bomb Kimchi Dish", price: 3000, desc: "Famous intense spicy garlic-heavy fresh Napa cabbage kimchi. 🌶️🌶️", image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=500&q=80" },
+          { name: "Extra Handmade Noodle Refill", price: 4000, desc: "Fresh batch of boiled wheat noodles.", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=80" },
+          { name: "Steamed Chicken Dumplings", price: 12000, desc: "Delicate dumplings filled with minced chicken and scallions.", image: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=500&q=80" },
+          { name: "Spicy Soy Garlic Rice Bowl", price: 9000, desc: "Steamed rice topped with chicken gravy and spicy garlic paste.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" },
+          { name: "Sesame Oil Wonton Soup", price: 10000, desc: "Clear chicken broth filled with 6 mini pork wontons.", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=80" },
+          { name: "Chilled Cucumber Salad", price: 4000, desc: "Crispy cucumbers marinated in sesame vinegar.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" },
+          { name: "Mini Beef Broth Pot", price: 5000, desc: "Side bowl of rich simmering soup base.", image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80" }
+        ],
+        drinks: [
+          { name: "Iced Roasted Barley Tea (Bori-cha)", price: 2000, desc: "Classic nutty iced roasted barley water.", badge: "Traditional", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Cold Coca-Cola Original", price: 2500, desc: "355ml chilled glass bottle.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Zero Sugar Sprite", price: 2500, desc: "Crisp lemon-lime soda.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Cass Fresh Draft Lager", price: 5000, desc: "Cold draft Korean beer.", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Chilled Green Tea Soda", price: 3500, desc: "Lightly carbonated iced green tea.", image: "https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=500&q=80" }
+        ]
+      },
+
+      "Mokmyeoksanbang": {
+        foods: [
+          { name: "Wild Mountain Herb Bibimbap", price: 13000, desc: "Seven fresh mountain vegetables over rice with toasted sesame oil.", badge: "Healthy", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" },
+          { name: "Marinated Hanwoo Beef Bibimbap", price: 15000, desc: "Sizzling soy-marinated beef ribeye served with spicy red pepper sauce.", badge: "Top Seller", image: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=500&q=80" },
+          { name: "Spicy Squid Bibimbap", price: 14000, desc: "Sautéed tender squid in fiery chili paste over rice. 🌶️", image: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=500&q=80" },
+          { name: "Crispy Seafood Leek Pancake", price: 16000, desc: "Pan-fried leek pancake topped with squid and shrimp.", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" },
+          { name: "Acorn Jelly Salad Bowl", price: 12000, desc: "Fresh acorn jelly tossed with sesame oil, lettuce, and chili flakes.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" },
+          { name: "Grilled Tofu with Soy Reduction", price: 10000, desc: "Seared organic tofu cakes drizzled with garlic soy glaze.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" },
+          { name: "Soy-Braised Pork Ribs (Galbi-jim)", price: 28000, desc: "Tender beef short ribs stewed with carrots and chestnuts.", badge: "Royal Feast", image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80" },
+          { name: "Soybean Paste Stew (Doenjang-jjigae)", price: 9000, desc: "Earthy fermented bean soup with tofu and zucchini.", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" },
+          { name: "Seasoned Wild Mushroom Bowl", price: 11000, desc: "Sauteed shiitake and oyster mushrooms with garlic oil.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" },
+          { name: "Chilled Kimchi Water Soup", price: 5000, desc: "Crisp radish in tangy cold water broth.", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" },
+          { name: "Steamed Multi-Grain Rice Bowl", price: 3000, desc: "Healthy purple rice cooked with barley and beans.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" }
+        ],
+        drinks: [
+          { name: "Warm Jujube Date Tea", price: 6000, desc: "Slow-brewed Korean red date elixir.", badge: "Herbal Wellness", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Iced Cinnamon Ginger Tea (Sujeonggwa)", price: 6000, desc: "Spiced punch made with dried persimmons and pine nuts.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "House Unfiltered Makgeolli", price: 8000, desc: "Creamy traditional rice wine served in a brass bowl.", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Iced Bellflower Root Tea", price: 5500, desc: "Honey-sweetened throat soothing herbal brew.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Organic Cold Barley Tea", price: 2500, desc: "Chilled roasted tea.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" }
+        ]
+      },
+
+      "Gwangjang Feast": {
+        foods: [
+          { name: "Golden Crispy Bindaetteok", price: 6000, desc: "Fresh ground mung bean pancake pan-fried golden in iron skillets.", badge: "Street Classic", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" },
+          { name: "Fiery Tteokbokki Rice Cakes", price: 5000, desc: "Thick chewy rice cakes steeped in rich sweet-and-spicy gochujang sauce. 🌶️", badge: "Super Spicy", image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=500&q=80" },
+          { name: "Mayak Mini Seaweed Rolls", price: 4000, desc: "Addictive mini gimbap dipped in tangy mustard soy sauce.", badge: "Popular", image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=500&q=80" },
+          { name: "Fresh Raw Beef Tartare (Yukhoe)", price: 19000, desc: "Seasoned prime beef tartare with sweet Asian pear and egg yolk.", badge: "Delicacy", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" },
+          { name: "Traditional Blood Sausage (Sundae)", price: 7000, desc: "Steamed glass noodle sausage served with chili salt and liver.", image: "https://images.unsplash.com/photo-1626777552726-4a6b54c97e46?auto=format&fit=crop&w=500&q=80" },
+          { name: "Handmade Knife Noodle Soup", price: 7000, desc: "Market stall hot noodle soup cooked in anchovy broth.", image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=80" },
+          { name: "Crispy Pork Meatballs (Wanja)", price: 5000, desc: "Pan-fried minced pork patties.", image: "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=80" },
+          { name: "Braised Pig's Trotters (Jokbal)", price: 25000, desc: "Glazed soy-braised pork feet served sliced with garlic.", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" },
+          { name: "Spicy Braised Sea Snail Salad", price: 18000, desc: "Sea snails tossed with thin noodles and fiery chili sauce. 🌶️", image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80" },
+          { name: "Deep Fried Twisted Doughnuts (Kkwagbaegi)", price: 2000, desc: "Sugar dusted warm chewy street doughnuts.", image: "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=500&q=80" },
+          { name: "Steamed Pork Mandu (6pcs)", price: 6000, desc: "Large market-style kimchi and pork dumplings.", image: "https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=500&q=80" }
+        ],
+        drinks: [
+          { name: "Fresh Draft Makgeolli Bowl", price: 4000, desc: "Chilled draft rice wine served in a traditional brass bowl.", badge: "Market Favorite", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Ice Cold Kelly Lager", price: 4500, desc: "Crispy amber lager beer bottle.", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Fresh Grapefruit Soda", price: 3000, desc: "Fizzy fruit soda.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Sweet Sikhye Rice Punch Bottle", price: 3000, desc: "Cold house-made malt drink.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Korean Soju Green Bottle", price: 4500, desc: "Classic 16.9% spirit.", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" }
+        ]
+      },
+
+      "Geumdwaeji Sikdang": {
+        foods: [
+          { name: "Bone-in Pork Belly (Samgyeopsal 180g)", price: 19000, desc: "Thick cuts of gold pork grilled on cast iron with oak coal.", badge: "Michelin Guide", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" },
+          { name: "Juicy Pork Shoulder (Moksal 180g)", price: 19000, desc: "Tender marbled pork neck steak seasoned with Maldon sea salt.", badge: "Chef Favorite", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" },
+          { name: "Special Pork Jowl (Hangjeongsal 150g)", price: 21000, desc: "Crispy textured pork jowl with rich natural flavor.", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" },
+          { name: "Aged Kimchi Pork Stew (Kimchi-jjigae)", price: 9000, desc: "Slow-simmered spicy kimchi stew with tender pork chunks. 🌶️", badge: "Rich & Savory", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" },
+          { name: "Grilled Whole King Oyster Mushrooms", price: 4000, desc: "Foil-wrapped mushrooms grilled in meat juices.", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" },
+          { name: "Sizzling Garlic & Scallion Bowl", price: 3000, desc: "Sesame oil roasted garlic cloves and green onion salad.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" },
+          { name: "Volcano Steamed Egg Custard", price: 6000, desc: "Fluffy steamed egg pot topped with scallions and sesame.", image: "https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&w=500&q=80" },
+          { name: "Cold Buckwheat Noodle Soup (Naengmyeon)", price: 8000, desc: "Chilled icy broth noodles to cleanse the palate after BBQ.", image: "https://images.unsplash.com/photo-1582878826629-29b7ad1cdc43?auto=format&fit=crop&w=500&q=80" },
+          { name: "Spicy Gochujang Fried Rice", price: 7000, desc: "Iron-skillet fried rice topped with melted cheese and seaweed. 🌶️", image: "https://images.unsplash.com/photo-1590301157890-4810ed352733?auto=format&fit=crop&w=500&q=80" },
+          { name: "Smoked Bacon Thin Slices (150g)", price: 18000, desc: "Quick-sear thin bacon strips.", image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=500&q=80" },
+          { name: "Pickled Basil Leaves & Garlic Shoots", price: 3500, desc: "Sour herb wraps for BBQ meat.", image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=500&q=80" }
+        ],
+        drinks: [
+          { name: "Highball Smokey Whiskey", price: 8000, desc: "Japanese whiskey blended with cold soda water and fresh lemon.", badge: "Best BBQ Pairing", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Chilled Chamisul Soju Bottle", price: 5000, desc: "Classic clear Korean spirit.", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Terra Cold Lager Beer", price: 6000, desc: "Crisp malt Korean bottled beer.", image: "https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=500&q=80" },
+          { name: "Grapefruit Soju Cocktail", price: 7000, desc: "Sweet fruity chilled rice spirit.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" },
+          { name: "Iced Green Plum Tea (Maesil)", price: 4000, desc: "Sweet fermented plum digestif drink.", image: "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=500&q=80" }
+        ]
+      }
+    };
+
+    let currentRestaurant = "";
+    let currentDish = null;
+    let quantity = 1;
+
+    // Open Restaurant Menu
+    function openMenu(restaurantName) {
+      currentRestaurant = restaurantName;
+      document.getElementById('modalRestaurantName').innerText = restaurantName;
+      
+      const foodContainer = document.getElementById('foodItemsContainer');
+      const drinkContainer = document.getElementById('drinkItemsContainer');
+      
+      foodContainer.innerHTML = "";
+      drinkContainer.innerHTML = "";
+
+      const data = restaurantData[restaurantName] || { foods: [], drinks: [] };
+      
+      data.foods.forEach(dish => foodContainer.appendChild(createMenuItemCard(dish, false)));
+      data.drinks.forEach(drink => drinkContainer.appendChild(createMenuItemCard(drink, true)));
+
+      document.getElementById('menuModal').classList.add('active');
+    }
+
+    // Helper: Create Menu Item Card with Dual Pricing ($ USD & ₩ KRW)
+    function createMenuItemCard(item, isDrink) {
+      const card = document.createElement('div');
+      card.className = 'menu-item-card';
+      card.onclick = () => selectDish(item);
+
+      const usdPrice = formatUsd(item.price);
+
+      card.innerHTML = `
+        <img class="menu-item-img" src="${item.image}" alt="${item.name}">
+        <div class="menu-item-info">
+          <h4>
+            ${item.name} 
+            ${item.badge ? `<span class="badge-tag ${isDrink ? 'badge-drink' : ''}">${item.badge}</span>` : ''}
+          </h4>
+          <p>${item.desc}</p>
+        </div>
+        <div class="menu-item-price-box">
+          <span class="price-won">₩${item.price.toLocaleString()}</span>
+          <span class="price-usd">${usdPrice}</span>
+        </div>
+      `;
+      return card;
+    }
+
+    // Select Dish & Open Order Modal
+    function selectDish(dish) {
+      currentDish = dish;
+      quantity = 1;
+      
+      document.getElementById('orderDishName').innerText = dish.name;
+      document.getElementById('orderDishDesc').innerText = dish.desc;
+      document.getElementById('orderDishImage').src = dish.image;
+      document.getElementById('qtyDisplay').innerText = quantity;
+      
+      updatePrice();
+      closeModal('menuModal');
+      document.getElementById('orderModal').classList.add('active');
+    }
+
+    function updateQty(change) {
+      if (quantity + change >= 1) {
+        quantity += change;
+        document.getElementById('qtyDisplay').innerText = quantity;
+        updatePrice();
+      }
+    }
+
+    function updatePrice() {
+      const totalKrw = currentDish.price * quantity;
+      const totalUsd = formatUsd(totalKrw);
+
+      document.getElementById('totalPriceDisplay').innerText = `₩${totalKrw.toLocaleString()}`;
+      document.getElementById('totalUsdDisplay').innerText = `(${totalUsd})`;
+    }
+
+    function sendToKitchen() {
+      const details = document.getElementById('customerDetails').value || "Guest Table";
+      const orderType = document.getElementById('orderType').value;
+      const notes = document.getElementById('chefNotes').value || "None";
+      const totalKrw = (currentDish.price * quantity).toLocaleString();
+      const totalUsd = formatUsd(currentDish.price * quantity);
+
+      const orderTicketHtml = `
+        <strong>Ticket ID:</strong> #KCH-${Math.floor(1000 + Math.random() * 9000)}<br>
+        <strong>Target Spot:</strong> ${currentRestaurant}<br>
+        <strong>Customer / Table:</strong> ${details} (${orderType})<br>
+        <br>
+        <strong>Order:</strong> ${quantity}x ${currentDish.name}<br>
+        <strong>Total Bill:</strong> ₩${totalKrw} <span style="color:#B4C5B3;">(${totalUsd})</span><br>
+        <strong>Chef Notes:</strong> "${notes}"
+      `;
+
+      document.getElementById('ticketDetails').innerHTML = orderTicketHtml;
+      closeModal('orderModal');
+      document.getElementById('confirmationModal').classList.add('active');
+    }
+
+    function closeModal(modalId) {
+      document.getElementById(modalId).classList.remove('active');
+    }
+  </script>
+</body>
+</html>

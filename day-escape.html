@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>HANARA - Day Escapes</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      background-color: #f7f5f0;
+      color: #2b2826;
+    }
+
+    /* Top Announcement Bar */
+    .top-bar {
+      background-color: #f7f3ec;
+      border-bottom: 1px solid #eae5db;
+      padding: 8px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 13px;
+      color: #3d3935;
+    }
+
+    .top-bar-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .tag-pill {
+      border: 1.5px solid #ebb4a8;
+      color: #d17a6a;
+      background-color: #ffffff;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.5px;
+    }
+
+    .top-bar-right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      font-size: 13px;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Main Header Navigation */
+    .main-header {
+      background-color: #ffffff;
+      padding: 16px 32px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eae5db;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .logo-circle {
+      width: 44px;
+      height: 44px;
+      background-color: #d8c8b8;
+      color: #ffffff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Noto Sans KR', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .brand-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-name {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      color: #231f20;
+    }
+
+    .brand-subtext {
+      font-size: 11px;
+      color: #7a7571;
+      font-weight: 500;
+      margin-top: 3px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      list-style: none;
+    }
+
+    .nav-item {
+      text-decoration: none;
+      color: #2b2826;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 10px 20px;
+      border-radius: 25px;
+      transition: all 0.2s ease;
+      cursor: pointer;
+    }
+
+    .nav-item:hover, .nav-item.active {
+      background-color: #faece7;
+      color: #d17a6a;
+    }
+
+    /* Day Escapes Section Container */
+    .escape-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    .hero-banner {
+      background: linear-gradient(135deg, #ffffff 0%, #f7f3ec 100%);
+      border: 1px solid #eae5db;
+      border-radius: 20px;
+      padding: 32px 40px;
+      margin-bottom: 28px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+    }
+
+    .hero-banner h1 {
+      font-size: 30px;
+      font-weight: 800;
+      color: #231f20;
+      margin-bottom: 6px;
+    }
+
+    .hero-banner p {
+      font-size: 14px;
+      color: #615c57;
+      max-width: 700px;
+      line-height: 1.6;
+    }
+
+    .discount-banner-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #d17a6a;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-top: 12px;
+    }
+
+    /* Category Filter Navigation (Divided into 4 options) */
+    .category-navigation {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 28px;
+      border-bottom: 2px solid #eae5db;
+      padding-bottom: 12px;
+      overflow-x: auto;
+    }
+
+    .category-btn {
+      background: #ffffff;
+      border: 1px solid #eae5db;
+      padding: 12px 22px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #524e4a;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .category-btn.active, .category-btn:hover {
+      background-color: #d17a6a;
+      color: #ffffff;
+      border-color: #d17a6a;
+      box-shadow: 0 4px 12px rgba(209, 122, 106, 0.25);
+    }
+
+    .category-btn span.count-badge {
+      background: rgba(0,0,0,0.08);
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 11px;
+    }
+
+    .category-btn.active span.count-badge {
+      background: rgba(255,255,255,0.25);
+      color: #ffffff;
+    }
+
+    /* Grid Layout */
+    .escape-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+      gap: 24px;
+    }
+
+    /* Card Item */
+    .escape-card {
+      background-color: #ffffff;
+      border-radius: 16px;
+      border: 1px solid #eae5db;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .escape-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    }
+
+    .card-img-wrapper {
+      height: 180px;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card-img-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .badge-overlay {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .vibe-badge, .transit-badge {
+      background-color: rgba(255, 255, 255, 0.95);
+      color: #2b2826;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 10px;
+      backdrop-filter: blur(4px);
+    }
+
+    .card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-subtitle {
+      font-size: 11px;
+      color: #8c8680;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .card-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #231f20;
+      margin-bottom: 6px;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: #524e4a;
+      line-height: 1.5;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .card-footer {
+      border-top: 1px dashed #eae5db;
+      padding-top: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price-krw {
+      font-size: 15px;
+      font-weight: 800;
+      color: #231f20;
+    }
+
+    .price-usd {
+      font-size: 11px;
+      font-weight: 700;
+      color: #d17a6a;
+    }
+
+    .explore-btn {
+      background-color: #faece7;
+      color: #d17a6a;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .explore-btn:hover {
+      background-color: #d17a6a;
+      color: #ffffff;
+    }
+
+    /* Modal Overlay */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      padding: 20px;
+    }
+
+    .modal-overlay.open {
+      display: flex;
+    }
+
+    .booking-modal {
+      background-color: #ffffff;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 500px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+    }
+
+    .modal-header-img {
+      height: 150px;
+      width: 100%;
+      position: relative;
+    }
+
+    .modal-header-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .modal-content {
+      padding: 20px 24px;
+    }
+
+    .modal-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: #231f20;
+    }
+
+    .modal-location {
+      font-size: 12px;
+      color: #8c8680;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .form-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #3d3935;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .date-input, .select-input {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid #eae5db;
+      background-color: #f7f5f0;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .discount-badge-alert {
+      background-color: #f2e3e0;
+      border: 1px solid #ebb4a8;
+      color: #c0523f;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      display: none;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .discount-badge-alert.show {
+      display: flex;
+    }
+
+    .option-card {
+      border: 1.5px solid #eae5db;
+      border-radius: 12px;
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background-color: #ffffff;
+      margin-bottom: 8px;
+    }
+
+    .option-card.selected {
+      border-color: #d17a6a;
+      background-color: #faece7;
+    }
+
+    .option-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .option-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background-color: #f7f3ec;
+      color: #d17a6a;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .option-text h4 {
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .option-text p {
+      font-size: 11px;
+      color: #7a7571;
+    }
+
+    .option-price {
+      font-size: 12px;
+      font-weight: 800;
+      color: #d17a6a;
+      text-align: right;
+    }
+
+    .modal-checkout-footer {
+      border-top: 1px solid #eae5db;
+      margin-top: 16px;
+      padding-top: 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .total-price-val {
+      font-size: 20px;
+      font-weight: 800;
+      color: #231f20;
+    }
+
+    .total-price-usd {
+      font-size: 12px;
+      font-weight: 700;
+      color: #d17a6a;
+    }
+
+    .book-now-btn {
+      background-color: #d17a6a;
+      color: #ffffff;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 25px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <span class="tag-pill">EATS GUIDE</span>
+      <span>Savor Korea's Most Iconic Day Trips & Outings. Instant Booking.</span>
+    </div>
+    <div class="top-bar-right">
+      <a href="tel:090777186" class="info-item">
+        <i class="fa-solid fa-phone"></i>
+        <span>Direct Support: <strong>090777186</strong></span>
+      </a>
+      <div class="info-item">
+        <i class="fa-solid fa-globe"></i>
+        <span>EN / KRW ₩ & USD $</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="main-header">
+    <a href="#" class="brand-logo">
+      <div class="logo-circle">한</div>
+      <div class="brand-details">
+        <span class="brand-name">HANARA</span>
+        <span class="brand-subtext">하나로 · ALL IN KOREA</span>
+      </div>
+    </a>
+
+    <nav>
+      <ul class="nav-links">
+        <li><a class="nav-item">Main Square</a></li>
+        <li><a class="nav-item">Cozy Stays</a></li>
+        <li><a class="nav-item">Eats & Cafés</a></li>
+        <li><a class="nav-item active">Day Escapes</a></li>
+        <li><a class="nav-item">K-Culture</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main Container -->
+  <main class="escape-container">
+    
+    <div class="hero-banner">
+      <h1>Nadeuri (나들이) · Local Day Outings</h1>
+      <p>Select a category below to explore 10+ curated escapes per option. Instant pricing, USD conversion, and group discounts built right in.</p>
+      <div class="discount-banner-tag">
+        <i class="fa-solid fa-tags"></i> GROUP SPECIAL: Book for 3+ guests and get 30% OFF automatically!
+      </div>
+    </div>
+
+    <!-- Category Filter Buttons (Each category has 10+ trips) -->
+    <div class="category-navigation">
+      <button class="category-btn active" onclick="switchCategory('heritage', this)">
+        <i class="fa-solid fa-synagogue"></i> Heritage & Slow City <span class="count-badge">10 Escapes</span>
+      </button>
+      <button class="category-btn" onclick="switchCategory('nature', this)">
+        <i class="fa-solid fa-tree"></i> Nature & Healing <span class="count-badge">10 Escapes</span>
+      </button>
+      <button class="category-btn" onclick="switchCategory('outdoor', this)">
+        <i class="fa-solid fa-utensils"></i> Outdoor & Eats <span class="count-badge">10 Escapes</span>
+      </button>
+      <button class="category-btn" onclick="switchCategory('arts', this)">
+        <i class="fa-solid fa-palette"></i> Arts & Mega-Cafes <span class="count-badge">10 Escapes</span>
+      </button>
+    </div>
+
+    <!-- Grid Container -->
+    <div class="escape-grid" id="escapeGrid">
+      <!-- Dynamic JS Content Injected Here -->
+    </div>
+  </main>
+
+  <!-- BOOKING MODAL -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="booking-modal">
+      <div class="modal-header-img">
+        <img id="modalImg" src="" alt="Destination Image">
+        <button class="close-modal-btn" onclick="closeBooking()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-content">
+        <h3 class="modal-title" id="modalTitle">Destination</h3>
+        <div class="modal-location" id="modalLocation"><i class="fa-solid fa-location-dot"></i> Location</div>
+
+        <div class="form-grid">
+          <div>
+            <label class="form-label"><i class="fa-regular fa-calendar"></i> Select Date</label>
+            <input type="date" class="date-input" id="tripDate">
+          </div>
+          <div>
+            <label class="form-label"><i class="fa-solid fa-user-group"></i> Guests</label>
+            <select class="select-input" id="guestCount" onchange="updateTotal()">
+              <option value="1">1 Person</option>
+              <option value="2">2 People</option>
+              <option value="3" selected>3 People (30% OFF)</option>
+              <option value="4">4 People (30% OFF)</option>
+              <option value="5">5 People (30% OFF)</option>
+              <option value="6">6+ Group (30% OFF)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="discount-badge-alert" id="discountAlert">
+          <i class="fa-solid fa-bolt"></i> 30% Group Discount Applied to Total!
+        </div>
+
+        <div>
+          <label class="form-label">Guide Experience Option</label>
+          
+          <div class="option-card selected" id="optSelf" onclick="toggleGuide(false)">
+            <div class="option-left">
+              <div class="option-icon"><i class="fa-solid fa-compass"></i></div>
+              <div class="option-text">
+                <h4>Self-Guided Exploration</h4>
+                <p>Includes route map, transit instructions & pass</p>
+              </div>
+            </div>
+            <div class="option-price">Included</div>
+          </div>
+
+          <div class="option-card" id="optGuide" onclick="toggleGuide(true)">
+            <div class="option-left">
+              <div class="option-icon"><i class="fa-solid fa-user-ninja"></i></div>
+              <div class="option-text">
+                <h4>Private Local English Guide</h4>
+                <p>Dedicated guide for personalized history & eats</p>
+              </div>
+            </div>
+            <div class="option-price">+₩80,000<br><span style="font-size:10px; font-weight:500;">(~$61.50 USD)</span></div>
+          </div>
+        </div>
+
+        <div class="modal-checkout-footer">
+          <div>
+            <div style="font-size:11px; color:#7a7571;">Total Payment</div>
+            <div class="total-price-val" id="totalPriceKRW">₩0</div>
+            <div class="total-price-usd" id="totalPriceUSD">~$0 USD</div>
+          </div>
+          <button class="book-now-btn" onclick="confirmBooking()">Reserve Spot</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT FOR 40 DESTINATIONS & INTERACTIVE LOGIC -->
+  <script>
+    const exchangeRate = 1300; // ₩1,300 KRW = $1 USD
+
+    // FULL DATABASE: 10+ Items per Category Option
+    const escapesDatabase = {
+      heritage: [
+        { title: "Suwon Hwaseong Fortress", loc: "Gyeonggi-do", price: 35000, time: "45 mins", vibe: "#UNESCO Heritage", desc: "Stroll ancient fortress walls at sunset, then explore Hanok cafes in Haengnidan-gil.", img: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" },
+        { title: "Jeonju Hanok Village", loc: "Jeollabuk-do", price: 65000, time: "1.5 hrs KTX", vibe: "#Classic Korea", desc: "Wear traditional Hanbok through over 800 preserved Hanok houses and eat original Bibimbap.", img: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80" },
+        { title: "Gyeongju Ancient Relics", loc: "Gyeongju", price: 72000, time: "2 hrs KTX", vibe: "#Ancient Kingdom", desc: "Discover royal burial mounds, Cheomseongdae observatory, and serene Donggung palace views.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" },
+        { title: "Andong Hahoe Folk Village", loc: "Andong", price: 68000, time: "2 hrs", vibe: "#Living History", desc: "UNESCO-listed clan village surrounded by the Nakdong River and traditional mask dances.", img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" },
+        { title: "Ganghwa Island Forts", loc: "Incheon Outer", price: 38000, time: "1 hr", vibe: "#Coastal History", desc: "Explore ancient coastal defense batteries, dolmen sites, and sunset ocean views.", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" },
+        { title: "Gongju & Buyeo Baekje Sites", loc: "Chungcheongnam-do", price: 48000, time: "1 hr", vibe: "#Baekje Kingdom", desc: "Visit King Muryeong's tomb, ancient fortress ruins, and peaceful riverside temples.", img: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" },
+        { title: "Yeoju Royal Tombs", loc: "Gyeonggi-do", price: 32000, time: "50 mins", vibe: "#Joseon Dynasty", desc: "Walk quiet pine forests leading to King Sejong the Great’s peaceful resting site.", img: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" },
+        { title: "Namhansanseong Mountain Fortress", loc: "Gwangju", price: 30000, time: "40 mins", vibe: "#Mountain Citadel", desc: "Hike along ancient wall ramparts perched high above the Seoul skyline.", img: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80" },
+        { title: "Gorgong Hanok Cultural Town", loc: "Chungcheong", price: 40000, time: "1 hr", vibe: "#Craft & Tea", desc: "Experience traditional pottery throwing and tea ceremonies in authentic wooden pavilions.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" },
+        { title: "Sanseong Village & Temple Pass", loc: "Daejeon Outer", price: 44000, time: "1 hr 10m", vibe: "#Temple Stay", desc: "Relax in secluded Buddhist temple grounds and sample vegetarian temple cuisine.", img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" }
+      ],
+      nature: [
+        { title: "Garden of Morning Calm", loc: "Gapyeong", price: 38000, time: "80 mins", vibe: "#Botanical Healing", desc: "Walk through world-class curated botanical gardens featuring seasonal flowers.", img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" },
+        { title: "Nami Island Pine Paths", loc: "Chuncheon", price: 39000, time: "70 mins", vibe: "#Island Escape", desc: "Take a ferry ride to tree-lined avenues, riverside walks, and woodland wildlife.", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" },
+        { title: "Bukhansan Summit Trail", loc: "North Seoul", price: 28000, time: "30 mins", vibe: "#Granite Peaks", desc: "Conquer granite mountain summits right on Seoul's doorstep with panorama views.", img: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80" },
+        { title: "Seoraksan Eastern Ridge", loc: "Sokcho", price: 58000, time: "2 hrs", vibe: "#Jagged Peaks", desc: "Cable car ride to dramatic mountain peaks, crystal waterfalls, and ancient temples.", img: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" },
+        { title: "Pocheon Art Valley Lake", loc: "Pocheon", price: 36000, time: "60 mins", vibe: "#Quarry Oasis", desc: "Monorail access to dramatic emerald water quarries enclosed by sheer granite cliffs.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" },
+        { title: "Danyang Sobaeksan Walk", loc: "Danyang", price: 49000, time: "1.5 hrs", vibe: "#River & Caves", desc: "Explore giant limestone caves and glass skywalks overlooking winding rivers.", img: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" },
+        { title: "Anseong Farmland Meadow", loc: "Anseong", price: 33000, time: "50 mins", vibe: "#Rolling Hills", desc: "Seasonal flower fields featuring golden canola blooms in spring and pink muhly grass.", img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" },
+        { title: "Taehean Arboretum & Pines", loc: "Taean Coast", price: 42000, time: "1.5 hrs", vibe: "#Coastal Pines", desc: "Dense pine woodland trails ending directly on pristine West Sea sand beaches.", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" },
+        { title: "Yangpyeong Dumulmeori", loc: "Yangpyeong", price: 29000, time: "45 mins", vibe: "#River Confluence", desc: "Iconic eco-park where the Namhan and Bukhan rivers meet; lotus ponds and giant weeping willows.", img: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80" },
+        { title: "Inje Birch Forest", loc: "Inje", price: 52000, time: "1 hr 40m", vibe: "#White Birch Magic", desc: "Hike through thousands of tall, stark white birch trees in Korea's quiet northern valleys.", img: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" }
+      ],
+      outdoor: [
+        { title: "Oido Island Clam Grill", loc: "Incheon Coast", price: 42000, time: "60 mins", vibe: "#Seafood Feast", desc: "Sunset views over mudflats paired with unlimited fresh roasted shellfish (Jogaegui).", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" },
+        { title: "Gangneung Beach & Coffee Street", loc: "East Sea", price: 55000, time: "2 hrs KTX", vibe: "#Ocean Breeze", desc: "Sip hand-drip coffee right on Anmok Beach and try spicy seafood noodle soup.", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" },
+        { title: "Chuncheon Dakgalbi & Lake Railbike", loc: "Chuncheon", price: 45000, time: "1 hr", vibe: "#Food & Activity", desc: "Pedal along abandoned train tracks over scenic rivers, followed by spicy iron-skillet chicken.", img: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" },
+        { title: "Sokcho Abai Fishermen Village", loc: "East Coast", price: 58000, time: "2 hrs", vibe: "#Harbor Dining", desc: "Cross the harbor on a hand-pulled wooden ferry to taste traditional squid sundae sausages.", img: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80" },
+        { title: "Taean Mudflat Crabbing & Grill", loc: "Taean", price: 44000, time: "1.5 hrs", vibe: "#Mudflat Foraging", desc: "Dig for clams on low-tide mudflats and enjoy fresh coastal crab soup.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" },
+        { title: "Pocheon Makgeolli & Herb Island", loc: "Pocheon", price: 37000, time: "1 hr", vibe: "#Brewery & Herbs", desc: "Tour historic rice-wine breweries followed by night light shows at Mediterranean herb farms.", img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" },
+        { title: "Ganghwa Luge & Seafood Alley", loc: "Ganghwa", price: 41000, time: "1 hr", vibe: "#Thrill & Food", desc: "Ride downhill gravity luge carts facing the ocean before dining on salted grilled prawns.", img: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" },
+        { title: "Yeongjong Island Sunset Crab", loc: "Incheon Outer", price: 46000, time: "45 mins", vibe: "#Coastal Sunset", desc: "Dine on soy-marinated raw crab at seaside wooden decks facing Incheon Bridge sunsets.", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" },
+        { title: "Bukhansan Pajeon & Makgeolli Trail", loc: "Seoul Edge", price: 28000, time: "30 mins", vibe: "#Hiking Food", desc: "Feast on crispy scallion pancakes and iced rice wine at rustic wooden mountain lodges.", img: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80" },
+        { title: "Danyang River Kayaking & Garlic Market", loc: "Danyang", price: 51000, time: "1.5 hrs", vibe: "#Paddle & Market", desc: "Kayak past karst rock formations and visit local markets famous for garlic fried chicken.", img: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" }
+      ],
+      arts: [
+        { title: "Heyri Art Village & Book City", loc: "Paju", price: 30000, time: "50 mins", vibe: "#Architecture", desc: "Unplug in floor-to-ceiling libraries, modern museum architectures, and concept cafes.", img: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" },
+        { title: "Anyang Art Park Valley", loc: "Anyang", price: 27000, time: "35 mins", vibe: "#Outdoor Art", desc: "Find hidden sculpture installations nestled inside lush mountain streams and forest paths.", img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" },
+        { title: "Incheon Open Port Art District", loc: "Incheon", price: 32000, time: "50 mins", vibe: "#Retro Vintage", desc: "Explore converted Japanese-era redbrick warehouses filled with galleries and coffee roasters.", img: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" },
+        { title: "Gimpo Dockside Mega-Cafe Strip", loc: "Gimpo", price: 29000, time: "40 mins", vibe: "#Mega Bakery", desc: "Visit massive multi-floor botanical bakery cafes featuring indoor waterfalls and bakeries.", img: "https://images.unsplash.com/photo-1501785888041-af3ef285b470?auto=format&fit=crop&w=800&q=80" },
+        { title: "Yongin Ho-Am Art Museum & Garden", loc: "Yongin", price: 34000, time: "45 mins", vibe: "#Traditional Art", desc: "Explore traditional Korean gardens housing ancient stone sculptures and modern art exhibits.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" },
+        { title: "Daejeon Science & Art Hub", loc: "Daejeon", price: 46000, time: "1 hr KTX", vibe: "#Interactive Art", desc: "Futuristic digital art exhibitions, planetariums, and modern architectural cafes.", img: "https://images.unsplash.com/photo-1578637387939-43c525550085?auto=format&fit=crop&w=800&q=80" },
+        { title: "Gwangju Craft & Ceramic Village", loc: "Gwangju", price: 33000, time: "45 mins", vibe: "#Pottery Kilns", desc: "Watch master potters work ancient white porcelain kilns and bake your own ceramic cup.", img: "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80" },
+        { title: "Gyeonggi Modern Art Museum Park", loc: "Ansan", price: 28000, time: "40 mins", vibe: "#Modern Masters", desc: "Sprawling lake park featuring contemporary glass museums and outdoor sculpture lawns.", img: "https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=800&q=80" },
+        { title: "Seochon & Buam-dong Gallery Walk", loc: "Central Seoul", price: 25000, time: "15 mins", vibe: "#Boutique Art", desc: "Stroll foothill indie galleries, private photo collections, and quiet hillside espresso bars.", img: "https://images.unsplash.com/photo-1548115184-bc6544d06a58?auto=format&fit=crop&w=800&q=80" },
+        { title: "Yangpyeong Guhouse Museum & River Cafe", loc: "Yangpyeong", price: 35000, time: "50 mins", vibe: "#Living Museum", desc: "A museum designed like a modern home filled with world-renowned design furniture and art.", img: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80" }
+      ]
+    };
+
+    let activeCategory = "heritage";
+    let basePriceKRW = 0;
+    let guidePriceKRW = 80000;
+    let hasGuide = false;
+
+    // Initialize Page
+    window.onload = function() {
+      renderCards(activeCategory);
+      // Set tomorrow's date
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      document.getElementById('tripDate').value = tomorrow.toISOString().split('T')[0];
+    };
+
+    function switchCategory(catKey, btnElem) {
+      activeCategory = catKey;
+      document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+      btnElem.classList.add('active');
+      renderCards(catKey);
+    }
+
+    function renderCards(catKey) {
+      const grid = document.getElementById('escapeGrid');
+      grid.innerHTML = "";
+
+      escapesDatabase[catKey].forEach(item => {
+        const usdPrice = (item.price / exchangeRate).toFixed(1);
+        
+        const cardHtml = `
+          <article class="escape-card">
+            <div class="card-img-wrapper">
+              <div class="badge-overlay">
+                <span class="vibe-badge">${item.vibe}</span>
+                <span class="transit-badge"><i class="fa-solid fa-clock"></i> ${item.time}</span>
+              </div>
+              <img src="${item.img}" alt="${item.title}">
+            </div>
+            <div class="card-body">
+              <span class="card-subtitle">${item.loc}</span>
+              <h2 class="card-title">${item.title}</h2>
+              <p class="card-desc">${item.desc}</p>
+              <div class="card-footer">
+                <div>
+                  <div class="price-krw">₩${item.price.toLocaleString()}</div>
+                  <div class="price-usd">~$${usdPrice} USD / person</div>
+                </div>
+                <button class="explore-btn" onclick="openBooking('${item.title}', '${item.loc}', ${item.price}, '${item.img}')">Book Trip <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+            </div>
+          </article>
+        `;
+        grid.insertAdjacentHTML('beforeend', cardHtml);
+      });
+    }
+
+    function openBooking(title, location, priceKRW, imgUrl) {
+      document.getElementById('modalTitle').innerText = title;
+      document.getElementById('modalLocation').innerHTML = `<i class="fa-solid fa-location-dot"></i> ${location}`;
+      document.getElementById('modalImg').src = imgUrl;
+      basePriceKRW = priceKRW;
+      hasGuide = false;
+
+      document.getElementById('optSelf').classList.add('selected');
+      document.getElementById('optGuide').classList.remove('selected');
+
+      updateTotal();
+      document.getElementById('bookingModal').classList.add('open');
+    }
+
+    function closeBooking() {
+      document.getElementById('bookingModal').classList.remove('open');
+    }
+
+    function toggleGuide(enableGuide) {
+      hasGuide = enableGuide;
+      if (hasGuide) {
+        document.getElementById('optGuide').classList.add('selected');
+        document.getElementById('optSelf').classList.remove('selected');
+      } else {
+        document.getElementById('optSelf').classList.add('selected');
+        document.getElementById('optGuide').classList.remove('selected');
+      }
+      updateTotal();
+    }
+
+    function updateTotal() {
+      const guests = parseInt(document.getElementById('guestCount').value);
+      let subtotal = (basePriceKRW * guests) + (hasGuide ? guidePriceKRW : 0);
+
+      // 30% discount logic for 3+ people
+      let discountAlert = document.getElementById('discountAlert');
+      if (guests >= 3) {
+        subtotal = subtotal * 0.70;
+        discountAlert.classList.add('show');
+      } else {
+        discountAlert.classList.remove('show');
+      }
+
+      let subtotalUSD = (subtotal / exchangeRate).toFixed(2);
+
+      document.getElementById('totalPriceKRW').innerText = `₩${Math.round(subtotal).toLocaleString()}`;
+      document.getElementById('totalPriceUSD').innerText = `~$${subtotalUSD} USD`;
+    }
+
+    function confirmBooking() {
+      const selectedDate = document.getElementById('tripDate').value;
+      const guests = document.getElementById('guestCount').value;
+      const title = document.getElementById('modalTitle').innerText;
+      const totalKRW = document.getElementById('totalPriceKRW').innerText;
+      const totalUSD = document.getElementById('totalPriceUSD').innerText;
+      const guideText = hasGuide ? "With Private Local Guide" : "Self-Guided Tour";
+
+      alert(`🎉 Booking Confirmed!\n\nDestination: ${title}\nDate: ${selectedDate}\nParty Size: ${guests} Person(s)\nMode: ${guideText}\nTotal Paid: ${totalKRW} (${totalUSD})\n\nDetails and digital vouchers have been dispatched to your email!`);
+      closeBooking();
+    }
+  </script>
+
+</body>
+</html>
