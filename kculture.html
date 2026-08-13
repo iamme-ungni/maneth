@@ -472,22 +472,21 @@
 
   <!-- Main Navigation Header -->
   <header class="main-header">
-    <a href="#" class="brand-logo">
+    <a href="index.html" class="brand-logo">
       <div class="logo-circle">한</div>
       <div class="brand-details">
         <span class="brand-name">HANARA</span>
         <span class="brand-subtext">하나로 · ALL IN KOREA</span>
       </div>
     </a>
-
     <nav>
       <ul class="nav-links">
-        <li><a href="#" class="nav-item">Main Square</a></li>
-        <li><a href="#" class="nav-item">Cozy Stays</a></li>
-        <li><a href="#" class="nav-item">Eats & Cafés</a></li>
-        <li><a href="#" class="nav-item">Day Escapes</a></li>
-        <li><a href="#" class="nav-item active">K-Culture</a></li>
-        <li><a href="#" class="nav-item">Travel Desk</a></li>
+        <li><a href="index.html" class="nav-item">Main Square</a></li>
+        <li><a href="hotelteam3.html" class="nav-item">Cozy Stays</a></li>
+        <li><a href="coffeeteam3.html" class="nav-item">Eats & Cafés</a></li>
+        <li><a href="day-escape.html" class="nav-item">Day Escapes</a></li>
+        <li><span class="nav-item active">K-Culture & Shows</span></li>
+        <li><a href="travel-desk.html" class="nav-item">Travel Desk</a></li>
       </ul>
     </nav>
   </header>
@@ -865,9 +864,9 @@
             <div>
               <div class="addon-section">
                 <h3>Official Merch & Add-ons</h3>
-                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="45000" data-usd="33"> MOA Bong Lightstick</label><span class="price-tag">₩77,660 ($55)</span></div>
-                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="18000" data-usd="13"> Album Set</label><span class="price-tag">₩56,480 ($40)</span></div>
-                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩69,148 ($39)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="45000" data-usd="33"> MOA Bong Lightstick</label><span class="price-tag">₩94,132 ($66.50)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="18000" data-usd="13"> Album Set</label><span class="price-tag">₩49,420 ($35)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩70,600 ($50)</span></div>
               </div>
             </div>
           </div>
@@ -893,112 +892,96 @@
               <div class="form-group">
                 <label>Select Ticket Category</label>
                 <select class="form-control ticketType" required>
-                  <option value="general" data-price="110000" data-usd="80">General Admission - ₩183,560 ($130)</option>
-                  <option value="membership" data-price="130000" data-usd="95">Fanclub Presale - ₩42,360 ($30)</option>
-                  <option value="vip" data-price="160000" data-usd="117">VIP Showcase Pass - ₩593,040 ($420)</option>
+                  <option value="general" data-price="110000" data-usd="80">General Admission - ₩110,000 ($80)</option>
+                  <option value="vip" data-price="160000" data-usd="115">VIP Showcase Pass - ₩160,000 ($115)</option>
                 </select>
               </div>
-              <div class="form-group"><label>Fanclub ID / Code</label><input type="text" class="form-control"></div>
               <div class="form-group"><label>Full Name (As on Passport)</label><input type="text" class="form-control" required></div>
             </div>
             <div>
               <div class="addon-section">
                 <h3>Official Merch & Add-ons</h3>
-                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="40000" data-usd="29"> Official Light Ring</label><span class="price-tag">₩63,540 ($45)</span></div>
-                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="15000" data-usd="11"> Single Album</label><span class="price-tag">₩91,780 ($)65</span></div>
-                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="25000" data-usd="18"> Shuttle</label><span class="price-tag">₩59,304 ($42)</span></div>
+                <div class="checkbox-item"><label><input type="checkbox" class="addon" data-price="35000" data-usd="25"> Showcase Goods Set</label><span class="price-tag">₩35,000 ($25)</span></div>
               </div>
             </div>
           </div>
           <div class="checkout-footer">
-            <div class="total-display">Total Price: <span class="totalAmount">₩183,560 ($130)</span></div>
+            <div class="total-display">Total Price: <span class="totalAmount">₩110,000 ($80)</span></div>
             <button type="submit" class="btn-submit">Proceed to Secure Checkout</button>
           </div>
         </form>
       </div>
+
     </div>
   </div>
 
-  <!-- Scripts for Navigation, Modal Popups, & Dynamic Pricing -->
   <script>
-    // Header navigation active state logic
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach(item => {
-      item.addEventListener('click', (e) => {
-        e.preventDefault();
-        navItems.forEach(nav => nav.classList.remove('active'));
-        item.classList.add('active');
-      });
-    });
-
-    // Modal Popup Trigger Logic
-    const artistCards = document.querySelectorAll('.artist-option-card');
-    const modalOverlay = document.getElementById('bookingModalOverlay');
+    // JavaScript to handle modal popups and dynamic price calculation
+    const overlay = document.getElementById('bookingModalOverlay');
     const closeModalBtn = document.getElementById('closeModalBtn');
-    const modalSlides = document.querySelectorAll('.modal-slide');
+    const artistCards = document.querySelectorAll('.artist-option-card');
+    const concertCards = document.querySelectorAll('.concert-card');
 
     artistCards.forEach(card => {
       card.addEventListener('click', () => {
         const targetId = card.getAttribute('data-target');
         
-        // Hide all modal slides inside popup first
-        modalSlides.forEach(slide => slide.classList.remove('active-slide'));
-
-        // Show specific target modal slide
+        // Hide all slides first
+        concertCards.forEach(c => c.classList.remove('active-slide'));
+        
+        // Show target slide
         const targetSlide = document.getElementById(targetId);
-        if (targetSlide) {
+        if(targetSlide) {
           targetSlide.classList.add('active-slide');
         }
-
-        // Open modal overlay
-        modalOverlay.classList.add('active');
+        
+        overlay.classList.add('active');
       });
     });
 
-    // Close modal via close button or outside click
     function closeModal() {
-      modalOverlay.classList.remove('active');
+      overlay.classList.remove('active');
     }
 
     closeModalBtn.addEventListener('click', closeModal);
-    modalOverlay.addEventListener('click', (e) => {
-      if (e.target === modalOverlay) {
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) {
         closeModal();
       }
     });
 
-    // Dynamic Price Calculation Logic for each form instance (handles both KRW and USD)
-    const forms = document.querySelectorAll('.concertForm');
-    forms.forEach(form => {
+    // Price calculation logic for forms inside modals
+    document.querySelectorAll('.concertForm').forEach(form => {
       const ticketSelect = form.querySelector('.ticketType');
-      const checkboxes = form.querySelectorAll('.addon');
-      const totalAmountSpan = form.querySelector('.totalAmount');
+      const addons = form.querySelectorAll('.addon');
+      const totalSpan = form.querySelector('.totalAmount');
 
-      function calculateTotal() {
-        const selectedOption = ticketSelect.options[ticketSelect.selectedIndex];
-        let totalKrw = parseInt(selectedOption.getAttribute('data-price'));
-        let totalUsd = parseInt(selectedOption.getAttribute('data-usd'));
-        
-        checkboxes.forEach(box => {
-          if (box.checked) {
-            totalKrw += parseInt(box.getAttribute('data-price'));
-            totalUsd += parseInt(box.getAttribute('data-usd'));
+      function updateTotalPrice() {
+        let selectedOption = ticketSelect.options[ticketSelect.selectedIndex];
+        let baseKrw = parseInt(selectedOption.getAttribute('data-price')) || 0;
+        let baseUsd = parseInt(selectedOption.getAttribute('data-usd')) || 0;
+
+        let addonKrw = 0;
+        let addonUsd = 0;
+
+        addons.forEach(addon => {
+          if(addon.checked) {
+            addonKrw += parseInt(addon.getAttribute('data-price')) || 0;
+            addonUsd += parseInt(addon.getAttribute('data-usd')) || 0;
           }
         });
 
-        totalAmountSpan.textContent = '₩' + totalKrw.toLocaleString() + ' ($' + totalUsd.toLocaleString() + ')';
+        let totalKrw = baseKrw + addonKrw;
+        let totalUsd = baseUsd + addonUsd;
+
+        totalSpan.textContent = `₩${totalKrw.toLocaleString()} ($${totalUsd})`;
       }
 
-      ticketSelect.addEventListener('change', calculateTotal);
-      checkboxes.forEach(box => box.addEventListener('change', calculateTotal));
-
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('Order securely queued! Connecting to HANARA global payment gateway...');
-        closeModal();
+      ticketSelect.addEventListener('change', updateTotalPrice);
+      addons.forEach(addon => {
+        addon.addEventListener('change', updateTotalPrice);
       });
     });
   </script>
-
 </body>
 </html>
