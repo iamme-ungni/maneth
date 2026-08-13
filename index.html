@@ -3,33 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HANARA (하나로) — Enchanting Royal Korea Travel</title>
-  
-  <!-- Google Fonts: Outfit & Noto Serif KR -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@500;700;900&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  
-  <!-- FontAwesome Icons -->
+  <title>HANARA · Royal Korea Journey</title>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
+  
   <style>
-    /* Warm, Light Traditional Korean Heritage Palette Restored (No Black Backgrounds) */
     :root {
-      --bg-deep: #FAF6F0;                  /* Soft Warm Hanji Paper Cream */
-      --bg-surface: #FFFFFF;               /* Clean White for Cards */
-      --bg-surface-hover: #FFF9F2;         /* Soft Cream Hover */
-      
-      --text-main: #2C2422;                /* Rich Espresso Ink */
-      --text-muted: #736865;               /* Warm Taupe */
-      
-      --hanbok-coral: #D96B51;             /* Terracotta Coral */
-      --hanbok-gold: #C29B38;              /* Muted Imperial Gold */
-      --hanbok-jade: #5C8A76;              /* Celadon Jade */
-      --hanbok-crimson: #B33933;           /* Traditional Crimson */
-      
-      --font-kr: 'Noto Serif KR', serif;
-      --font-main: 'Outfit', sans-serif;
+      --hanbok-coral: #E06D53;
+      --hanbok-gold: #C29B38;
+      --hanbok-blue: #3A6073;
+      --bg-cream: #FAF6F0;
+      --text-main: #2C2422;
+      --text-muted: #7A6E6B;
+      --font-main: 'Plus Jakarta Sans', sans-serif;
     }
 
     * {
@@ -39,70 +27,62 @@
     }
 
     body {
-      background-color: var(--bg-deep);
       font-family: var(--font-main);
+      background-color: var(--bg-cream);
       color: var(--text-main);
       overflow-x: hidden;
-      background-image: 
-        radial-gradient(circle at 10% 15%, rgba(217, 107, 81, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 90% 85%, rgba(92, 138, 118, 0.06) 0%, transparent 45%);
-      background-attachment: fixed;
     }
 
-    /* --- Immersive Top Utility Bar --- */
+    /* Top Utility Bar */
     .top-bar {
-      background: #F4EBE1;
-      border-bottom: 1px solid rgba(194, 155, 56, 0.2);
-      color: var(--text-muted);
-      font-size: 0.78rem;
-      padding: 0.5rem 3rem;
+      background: #2C2422;
+      color: #FAF6F0;
+      padding: 0.5rem 2rem;
+      font-size: 0.8rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      font-weight: 500;
     }
 
-    .top-bar .landing-tip {
+    .landing-tip {
       display: flex;
       align-items: center;
-      gap: 0.6rem;
+      gap: 0.8rem;
     }
 
-    .top-bar .tag-pill {
+    .tag-pill {
       background: var(--hanbok-gold);
-      color: #FFFFFF;
-      padding: 0.15rem 0.6rem;
-      border-radius: 50px;
+      color: #fff;
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
       font-weight: 700;
-      font-size: 0.68rem;
+      font-size: 0.7rem;
       letter-spacing: 0.5px;
     }
 
-    .top-bar .user-options {
+    .user-options {
       display: flex;
       gap: 1.5rem;
     }
 
-    .top-bar a {
-      color: var(--text-muted);
+    .user-options a {
+      color: #FAF6F0;
       text-decoration: none;
-      transition: color 0.2s;
+      transition: opacity 0.2s;
     }
 
-    .top-bar a:hover {
-      color: var(--hanbok-coral);
+    .user-options a:hover {
+      opacity: 0.8;
     }
 
-    /* --- Header & Luxury Navigation --- */
+    /* Main Navigation Header */
     header {
-      background-color: rgba(250, 246, 240, 0.9);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(44, 36, 34, 0.08);
-      padding: 1.1rem 3rem;
+      background: #FFFFFF;
+      padding: 1rem 3rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      border-bottom: 1px solid rgba(44, 36, 34, 0.08);
       position: sticky;
       top: 0;
       z-index: 1000;
@@ -118,16 +98,15 @@
     .logo-symbol {
       width: 42px;
       height: 42px;
-      background: linear-gradient(135deg, var(--hanbok-coral) 0%, var(--hanbok-gold) 100%);
-      color: #FFFFFF;
-      border-radius: 50%;
+      background: linear-gradient(135deg, var(--hanbok-coral), #C24A38);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.2rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-family: var(--font-kr);
-      font-size: 1.1rem;
-      font-weight: 900;
-      box-shadow: 0 4px 12px rgba(217, 107, 81, 0.25);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(224, 109, 83, 0.25);
     }
 
     .logo-text {
@@ -136,48 +115,41 @@
     }
 
     .brand-name {
-      font-size: 1.4rem;
       font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.5px;
       color: var(--text-main);
-      letter-spacing: 1.5px;
-      line-height: 1;
     }
 
     .brand-sub {
-      font-family: var(--font-kr);
       font-size: 0.65rem;
-      color: var(--hanbok-gold);
-      letter-spacing: 1.5px;
-      margin-top: 4px;
-      font-weight: 700;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+      font-weight: 600;
     }
 
+    /* Desktop Navigation */
     nav {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 1.2rem;
     }
 
     nav a {
       text-decoration: none;
-      color: var(--text-muted);
       font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.25s ease;
-      padding: 0.45rem 0.9rem;
-      border-radius: 50px;
+      font-weight: 600;
+      color: var(--text-muted);
+      transition: color 0.2s;
     }
 
     nav a:hover, nav a.active {
-      background-color: rgba(217, 107, 81, 0.1);
       color: var(--hanbok-coral);
-      font-weight: 600;
     }
 
     nav .dot {
-      color: var(--hanbok-gold);
-      font-size: 0.45rem;
-      opacity: 0.5;
+      color: rgba(44, 36, 34, 0.2);
+      font-size: 0.6rem;
     }
 
     .header-actions {
@@ -187,62 +159,95 @@
     }
 
     .btn-search-icon {
-      background: rgba(44, 36, 34, 0.05);
-      border: 1px solid rgba(44, 36, 34, 0.1);
-      font-size: 1rem;
-      color: var(--text-main);
-      cursor: pointer;
+      background: #FAF6F0;
+      border: none;
       width: 40px;
       height: 40px;
       border-radius: 50%;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.2s;
+      color: var(--text-main);
+      transition: background 0.2s;
     }
 
     .btn-search-icon:hover {
-      background: var(--hanbok-coral);
-      color: #FFFFFF;
-      border-color: var(--hanbok-coral);
+      background: #ECE4D8;
     }
 
     .btn-next-dest {
-      background: linear-gradient(135deg, var(--hanbok-gold), #A6812A);
-      color: #FFFFFF;
+      background: var(--text-main);
+      color: #FAF6F0;
+      padding: 0.6rem 1.2rem;
+      border-radius: 30px;
       text-decoration: none;
       font-size: 0.85rem;
       font-weight: 700;
-      padding: 0.7rem 1.4rem;
-      border-radius: 50px;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      box-shadow: 0 4px 15px rgba(194, 155, 56, 0.25);
-      transition: all 0.25s ease;
+      transition: background 0.2s;
     }
 
     .btn-next-dest:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(194, 155, 56, 0.4);
+      background: var(--hanbok-coral);
     }
 
     .mobile-menu {
       display: none;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       cursor: pointer;
+      background: #FAF6F0;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-main);
     }
 
-    /* --- Cinematic Background Video Section (Clean View, Middle Text Removed) --- */
+    /* Mobile Dropdown Menu Container */
+    .mobile-dropdown-nav {
+      display: none;
+      background: #FFFFFF;
+      border-bottom: 1px solid rgba(44, 36, 34, 0.08);
+      padding: 1rem 1.5rem 1.5rem 1.5rem;
+      position: sticky;
+      top: 73px;
+      z-index: 999;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+
+    .mobile-dropdown-nav.active {
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .mobile-dropdown-nav a {
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(44, 36, 34, 0.04);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .mobile-dropdown-nav a.active, .mobile-dropdown-nav a:hover {
+      color: var(--hanbok-coral);
+    }
+
+    /* Cinematic Background Video Section */
     .hero-slider-section {
       position: relative;
       width: 100%;
-      height: 420px;
+      height: 480px;
       overflow: hidden;
-      border-bottom: 1px solid rgba(44, 36, 34, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      background: #000;
     }
 
     .bg-video {
@@ -255,230 +260,172 @@
       height: auto;
       transform: translate(-50%, -50%);
       object-fit: cover;
-      z-index: 1;
+      opacity: 0.85;
     }
 
-    .hero-slider-section::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(44,36,34,0.15) 0%, rgba(44,36,34,0.35) 100%);
-      z-index: 2;
-    }
-
-    /* Video Sound Toggle Button */
     .sound-toggle-btn {
       position: absolute;
       bottom: 1.5rem;
-      right: 2rem;
-      z-index: 20;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(4px);
-      color: var(--text-main);
-      border: 1px solid rgba(44, 36, 34, 0.15);
-      padding: 0.6rem 1.2rem;
-      border-radius: 50px;
+      right: 2.5rem;
+      background: rgba(44, 36, 34, 0.75);
+      backdrop-filter: blur(8px);
+      color: #FAF6F0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      padding: 0.6rem 1.1rem;
+      border-radius: 30px;
       cursor: pointer;
+      font-size: 0.82rem;
+      font-weight: 600;
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      font-size: 0.85rem;
-      font-weight: 700;
-      transition: all 0.25s ease;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      z-index: 10;
+      transition: background 0.2s;
     }
 
     .sound-toggle-btn:hover {
-      background: var(--hanbok-gold);
-      border-color: var(--hanbok-gold);
-      color: #FFFFFF;
+      background: rgba(44, 36, 34, 0.95);
     }
 
-    /* --- Stunning Korean Aesthetic Search Deck (Redesigned with Hanok Motif & Warm Paper Texture) --- */
+    /* Redesigned Discovery Deck (Dropdown Search Bar) */
     .discovery-deck {
-      max-width: 860px;
-      margin: -3.2rem auto 3.5rem auto;
+      max-width: 900px;
+      margin: -3rem auto 2rem auto;
+      padding: 0 1.5rem;
       position: relative;
-      z-index: 30;
-      padding: 0 2rem;
+      z-index: 20;
     }
 
     .discovery-card {
-      background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF9 100%);
-      border: 2px solid rgba(194, 155, 56, 0.35);
-      border-radius: 32px;
-      padding: 2.2rem 2.8rem;
-      box-shadow: 0 22px 50px rgba(44, 36, 34, 0.12), 0 0 0 6px rgba(250, 246, 240, 0.6);
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* Subtle traditional Korean lattice corner decoration watermark */
-    .discovery-card::after {
-      content: '結';
-      position: absolute;
-      right: -15px;
-      bottom: -35px;
-      font-family: var(--font-kr);
-      font-size: 9rem;
-      color: rgba(194, 155, 56, 0.05);
-      z-index: 0;
-      pointer-events: none;
-      font-weight: 900;
+      background: #FFFFFF;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: 0 15px 40px rgba(44, 36, 34, 0.08);
+      border: 1px solid rgba(194, 155, 56, 0.15);
+      transition: box-shadow 0.3s ease;
     }
 
     .deck-header-content {
-      position: relative;
-      z-index: 2;
+      margin-bottom: 1.2rem;
       text-align: center;
-      margin-bottom: 1.5rem;
     }
 
     .korean-seal {
       display: inline-block;
-      font-family: var(--font-kr);
       font-size: 0.75rem;
-      background: rgba(179, 57, 51, 0.1);
-      color: var(--hanbok-crimson);
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: var(--hanbok-gold);
+      background: #FAF6F0;
       padding: 0.2rem 0.8rem;
-      border-radius: 4px;
-      border: 1px dashed rgba(179, 57, 51, 0.3);
-      letter-spacing: 2px;
+      border-radius: 20px;
       margin-bottom: 0.5rem;
-      font-weight: 700;
     }
 
     .deck-title-main {
-      font-family: var(--font-kr);
       font-size: 1.5rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--text-main);
-      letter-spacing: 0.5px;
+      letter-spacing: -0.5px;
     }
 
     .hero-search-box {
-      position: relative;
-      z-index: 2;
-      background: #FAF6F0;
-      border: 2px solid rgba(194, 155, 56, 0.25);
-      border-radius: 60px;
-      padding: 0.5rem 0.5rem 0.5rem 1.8rem;
       display: flex;
       align-items: center;
-      box-shadow: inset 0 2px 6px rgba(44, 36, 34, 0.03);
-      transition: all 0.3s ease;
-    }
-
-    .hero-search-box:focus-within {
-      border-color: var(--hanbok-coral);
-      background: #FFFFFF;
-      box-shadow: 0 8px 25px rgba(217, 107, 81, 0.12), inset 0 2px 4px rgba(0,0,0,0.02);
+      background: #FAF6F0;
+      border: 2px solid rgba(194, 155, 56, 0.25);
+      border-radius: 50px;
+      padding: 0.4rem 0.4rem 0.4rem 1.2rem;
+      gap: 0.8rem;
     }
 
     .hero-search-box i.fa-location-dot {
       color: var(--hanbok-coral);
-      font-size: 1.2rem;
-      margin-right: 0.8rem;
+      font-size: 1.1rem;
     }
 
     .hero-search-box input {
+      flex: 1;
       border: none;
-      outline: none;
-      width: 100%;
-      font-size: 1rem;
-      font-family: var(--font-main);
-      color: var(--text-main);
       background: transparent;
-      font-weight: 500;
-    }
-
-    .hero-search-box input::placeholder {
-      color: var(--text-muted);
-      font-weight: 400;
+      outline: none;
+      font-family: var(--font-main);
+      font-size: 0.95rem;
+      color: var(--text-main);
     }
 
     .hero-search-box button {
-      background: linear-gradient(135deg, var(--hanbok-coral) 0%, var(--hanbok-crimson) 100%);
-      color: #FFFFFF;
+      background: linear-gradient(135deg, var(--hanbok-coral), #C24A38);
+      color: #fff;
       border: none;
-      padding: 0.9rem 2.2rem;
-      border-radius: 50px;
-      font-size: 0.95rem;
+      padding: 0.75rem 1.6rem;
+      border-radius: 40px;
       font-weight: 700;
+      font-size: 0.9rem;
       cursor: pointer;
-      transition: all 0.3s ease;
-      white-space: nowrap;
-      box-shadow: 0 4px 15px rgba(217, 107, 81, 0.35);
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      box-shadow: 0 4px 15px rgba(224, 109, 83, 0.3);
+      transition: opacity 0.2s, transform 0.2s;
     }
 
     .hero-search-box button:hover {
+      opacity: 0.92;
       transform: translateY(-1px);
-      box-shadow: 0 6px 20px rgba(217, 107, 81, 0.5);
-      opacity: 0.95;
     }
 
     .hero-tags {
-      position: relative;
-      z-index: 2;
       display: flex;
-      gap: 0.7rem;
-      margin-top: 1.4rem;
-      flex-wrap: wrap;
-      justify-content: center;
       align-items: center;
+      gap: 0.6rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+      font-size: 0.8rem;
+      color: var(--text-muted);
     }
 
     .hero-tags-label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      font-weight: 600;
-      margin-right: 0.3rem;
-    }
-
-    .hero-tags span {
-      font-size: 0.8rem;
-      background: #FAF6F0;
-      border: 1px solid rgba(194, 155, 56, 0.2);
+      font-weight: 700;
       color: var(--text-main);
-      padding: 0.35rem 1rem;
-      border-radius: 50px;
+    }
+
+    .hero-tags span:not(.hero-tags-label) {
+      background: #FAF6F0;
+      padding: 0.3rem 0.8rem;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.25s;
-      font-weight: 500;
+      border: 1px solid rgba(44, 36, 34, 0.05);
+      transition: all 0.2s;
     }
 
-    .hero-tags span:hover {
-      border-color: var(--hanbok-coral);
-      color: var(--hanbok-coral);
-      background: #FFF9F2;
-      transform: translateY(-1px);
+    .hero-tags span:not(.hero-tags-label):hover {
+      border-color: var(--hanbok-gold);
+      color: var(--hanbok-gold);
     }
 
-    /* --- Immersive Main Showcase Gallery --- */
+    /* Top Landmarks Gallery Showcase Section */
     .showcase-section {
-      max-width: 1240px;
-      margin: 4rem auto;
-      padding: 0 2rem;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 1.5rem;
     }
 
     .section-header {
+      margin-bottom: 2rem;
       text-align: center;
-      margin-bottom: 3rem;
     }
 
     .section-header h2 {
-      font-size: 2.4rem;
+      font-size: 2rem;
       font-weight: 800;
-      color: var(--text-main);
-      margin-bottom: 0.6rem;
       letter-spacing: -0.5px;
+      margin-bottom: 0.5rem;
+      color: var(--text-main);
     }
 
     .section-header p {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       max-width: 700px;
       margin: 0 auto;
@@ -487,32 +434,29 @@
 
     .landmarks-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2.2rem;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.8rem;
     }
 
     .landmark-card {
-      background: var(--bg-surface);
-      border-radius: 26px;
+      background: #FFFFFF;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 12px 30px rgba(44, 36, 34, 0.06);
-      border: 1px solid rgba(44, 36, 34, 0.08);
-      transition: all 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 8px 25px rgba(44, 36, 34, 0.05);
+      border: 1px solid rgba(44, 36, 34, 0.06);
       display: flex;
       flex-direction: column;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
 
     .landmark-card:hover {
-      transform: translateY(-8px);
-      background: var(--bg-surface-hover);
-      box-shadow: 0 20px 40px rgba(217, 107, 81, 0.12);
-      border-color: rgba(217, 107, 81, 0.35);
+      transform: translateY(-5px);
+      box-shadow: 0 14px 35px rgba(44, 36, 34, 0.1);
     }
 
     .landmark-img-wrap {
-      width: 100%;
-      height: 230px;
       position: relative;
+      height: 200px;
       overflow: hidden;
     }
 
@@ -520,46 +464,43 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: transform 0.5s;
     }
 
     .landmark-card:hover .landmark-img-wrap img {
-      transform: scale(1.08);
+      transform: scale(1.05);
     }
 
     .landmark-badge {
       position: absolute;
-      top: 1.1rem;
-      right: 1.1rem;
-      background: rgba(255, 255, 255, 0.9);
-      backdrop-filter: blur(6px);
-      color: var(--text-main);
-      padding: 0.35rem 0.9rem;
-      border-radius: 50px;
-      font-size: 0.75rem;
+      top: 1rem;
+      left: 1rem;
+      background: rgba(44, 36, 34, 0.75);
+      backdrop-filter: blur(4px);
+      color: #FAF6F0;
+      padding: 0.25rem 0.7rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
       font-weight: 700;
-      border: 1px solid rgba(44, 36, 34, 0.1);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
 
     .landmark-badge.ancient {
-      color: #9E7A1C;
-      border-color: rgba(194, 155, 56, 0.35);
-      background: rgba(194, 155, 56, 0.12);
+      background: var(--hanbok-gold);
+      color: #FFF;
     }
 
     .landmark-content {
-      padding: 1.8rem;
+      padding: 1.2rem;
       display: flex;
       flex-direction: column;
-      flex-grow: 1;
+      flex: 1;
       justify-content: space-between;
+      gap: 1rem;
     }
 
     .landmark-title {
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 1.2rem;
       color: var(--text-main);
       letter-spacing: -0.3px;
     }
@@ -568,84 +509,88 @@
       width: 100%;
       background: #FAF6F0;
       color: var(--text-main);
-      border: 1px solid rgba(44, 36, 34, 0.12);
-      padding: 0.85rem;
-      border-radius: 50px;
-      font-size: 0.9rem;
-      font-weight: 600;
+      border: 1.5px solid rgba(194, 155, 56, 0.3);
+      padding: 0.7rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: 700;
       cursor: pointer;
-      transition: all 0.25s ease;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.6rem;
+      gap: 0.5rem;
+      transition: all 0.2s;
     }
 
-    .landmark-card:hover .btn-book-landmark {
-      background: linear-gradient(135deg, var(--hanbok-coral), var(--hanbok-crimson));
-      color: #FFFFFF;
-      border-color: transparent;
-      box-shadow: 0 4px 15px rgba(217, 107, 81, 0.3);
+    .btn-book-landmark:hover {
+      background: var(--hanbok-gold);
+      color: #FFF;
+      border-color: var(--hanbok-gold);
     }
 
-    /* --- Immersive Booking & Hanbok Options Modal --- */
+    /* Modal Layout */
     .modal-overlay {
       position: fixed;
-      inset: 0;
-      background: rgba(44, 36, 34, 0.45);
-      backdrop-filter: blur(8px);
-      display: none;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(44, 36, 34, 0.6);
+      backdrop-filter: blur(5px);
+      display: flex;
       align-items: center;
       justify-content: center;
       z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
       padding: 1rem;
     }
 
     .modal-overlay.active {
-      display: flex;
+      opacity: 1;
+      visibility: visible;
     }
 
     .modal-container {
       background: #FFFFFF;
-      border: 1px solid rgba(194, 155, 56, 0.3);
       width: 100%;
-      max-width: 720px;
-      border-radius: 30px;
-      padding: 2.8rem;
+      max-width: 620px;
+      border-radius: 24px;
+      padding: 2.2rem;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
       position: relative;
-      box-shadow: 0 30px 60px rgba(44, 36, 34, 0.2);
       max-height: 90vh;
       overflow-y: auto;
-      animation: modalScaleUp 0.35s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transform: translateY(20px);
+      transition: transform 0.3s;
     }
 
-    @keyframes modalScaleUp {
-      from { transform: scale(0.92); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+    .modal-overlay.active .modal-container {
+      transform: translateY(0);
     }
 
     .modal-close {
       position: absolute;
-      top: 1.6rem;
-      right: 1.6rem;
+      top: 1.5rem;
+      right: 1.5rem;
       background: #FAF6F0;
-      border: 1px solid rgba(44, 36, 34, 0.1);
-      width: 38px;
-      height: 38px;
+      border: none;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
+      font-size: 1rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       color: var(--text-main);
-      font-size: 1rem;
-      transition: all 0.2s;
+      transition: background 0.2s;
     }
 
     .modal-close:hover {
       background: var(--hanbok-coral);
-      color: #FFFFFF;
-      border-color: var(--hanbok-coral);
+      color: #fff;
     }
 
     .modal-header h2 {
@@ -794,8 +739,9 @@
 
     /* Responsive adjustments */
     @media (max-width: 1024px) {
-      nav { display: none; }
-      .mobile-menu { display: block; }
+      header nav { display: none; }
+      .btn-next-dest { display: none; } /* Hide desktop button on phone, use mobile menu instead */
+      .mobile-menu { display: flex; }
       .top-bar { display: none; }
       header { padding: 1rem 1.5rem; }
       .hero-slider-section { height: 340px; }
@@ -833,6 +779,7 @@
       </div>
     </a>
 
+    <!-- Desktop Navigation Links -->
     <nav>
       <a href="#" class="active">Main Square</a>
       <span class="dot">•</span>
@@ -848,7 +795,8 @@
     </nav>
 
     <div class="header-actions">
-      <button class="btn-search-icon" title="Search stays, places, events...">
+      <!-- Header Search Icon Connected to Main Search Bar -->
+      <button class="btn-search-icon" id="headerSearchBtn" title="Search places...">
         <i class="fa-solid fa-magnifying-glass"></i>
       </button>
 
@@ -856,16 +804,26 @@
         <i class="fa-solid fa-compass"></i> Cozy Stays
       </a>
 
-      <div class="mobile-menu">
-        <i class="fa-solid fa-bars"></i>
+      <!-- Mobile Hamburger Menu Button -->
+      <div class="mobile-menu" id="mobileMenuToggle">
+        <i class="fa-solid fa-bars" id="mobileMenuIcon"></i>
       </div>
     </div>
   </header>
 
+  <!-- Mobile Dropdown Navigation Menu (Appears on phone when hamburger icon is clicked) -->
+  <div class="mobile-dropdown-nav" id="mobileDropdownNav">
+    <a href="#" class="active">Main Square <i class="fa-solid fa-chevron-right" style="font-size:0.8rem;"></i></a>
+    <a href="hotelteam3.html">Cozy Stays <i class="fa-solid fa-chevron-right" style="font-size:0.8rem;"></i></a>
+    <a href="coffeeteam3.html">Eats & Cafés <i class="fa-solid fa-chevron-right" style="font-size:0.8rem;"></i></a>
+    <a href="day-escape.html">Day Escapes <i class="fa-solid fa-chevron-right" style="font-size:0.8rem;"></i></a>
+    <a href="kculture.html">K-Culture & Shows <i class="fa-solid fa-chevron-right" style="font-size:0.8rem;"></i></a>
+    <a href="travel-desk.html">Travel Desk <i class="fa-solid fa-chevron-right" style="font-size:0.8rem;"></i></a>
+  </div>
+
   <main>
-    <!-- Cinematic Background Video Section (Unobstructed Clean View, Center Text Deleted) -->
+    <!-- Cinematic Background Video Section -->
     <section class="hero-slider-section">
-      <!-- Background Video: korea.mp4 (autoplay, loop, muted initially, plays continuously) -->
       <video class="bg-video" id="bgVideo" autoplay muted loop playsinline>
         <source src="korea.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
@@ -878,8 +836,8 @@
     </section>
 
     <!-- Redesigned Korean Aesthetic Discovery Deck (Dropdown Search Bar) -->
-    <div class="discovery-deck">
-      <div class="discovery-card">
+    <div class="discovery-deck" id="discoverySection">
+      <div class="discovery-card" id="discoveryCard">
         <div class="deck-header-content">
           <div class="korean-seal">여행 탐색</div>
           <h2 class="deck-title-main">Where does your royal Korean story begin?</h2>
@@ -893,10 +851,10 @@
 
         <div class="hero-tags">
           <span class="hero-tags-label"><i class="fa-solid fa-sparkles"></i> Popular:</span>
-          <span>🌸 Gyeongbokgung Palace</span>
-          <span>🏛️ Suwon Hwaseong</span>
-          <span>🏮 Bukchon Hanok</span>
-          <span>⛩️ Andong Folk Village</span>
+          <span data-search="Gyeongbokgung">🌸 Gyeongbokgung Palace</span>
+          <span data-search="Suwon">🏛️ Suwon Hwaseong</span>
+          <span data-search="Bukchon">🏮 Bukchon Hanok</span>
+          <span data-search="Andong">⛩️ Andong Folk Village</span>
         </div>
       </div>
     </div>
@@ -1225,7 +1183,7 @@
 
   <!-- JavaScript Logic -->
   <script>
-    /* --- Sound Toggle Logic (Keeps video playing continuously) --- */
+    /* --- Sound Toggle Logic --- */
     const bgVideo = document.getElementById('bgVideo');
     const soundToggleBtn = document.getElementById('soundToggleBtn');
     const soundIcon = document.getElementById('soundIcon');
@@ -1241,6 +1199,96 @@
         soundIcon.className = "fa-solid fa-volume-xmark";
         soundText.textContent = "Open Sound";
       }
+    });
+
+    /* --- Mobile Dropdown Menu Toggle Logic --- */
+    const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+    const mobileDropdownNav = document.getElementById('mobileDropdownNav');
+    const mobileMenuIcon = document.getElementById('mobileMenuIcon');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      mobileDropdownNav.classList.toggle('active');
+      if (mobileDropdownNav.classList.contains('active')) {
+        mobileMenuIcon.className = "fa-solid fa-xmark";
+      } else {
+        mobileMenuIcon.className = "fa-solid fa-bars";
+      }
+    });
+
+    /* --- Live Search and Discovery Logic --- */
+    const searchInput = document.querySelector('.hero-search-box input');
+    const searchButton = document.querySelector('.hero-search-box button');
+    const popularTags = document.querySelectorAll('.hero-tags span[data-search]');
+    const headerSearchBtn = document.getElementById('headerSearchBtn');
+    const discoveryCard = document.getElementById('discoveryCard');
+
+    function executeSearch(queryText) {
+      const query = queryText.toLowerCase().trim();
+      if (!query) {
+        alert('Please enter a search term (e.g., Gyeongbokgung, Tower, Village).');
+        return;
+      }
+
+      const landmarkCards = document.querySelectorAll('.landmark-card');
+      let found = false;
+
+      landmarkCards.forEach(card => {
+        const title = card.querySelector('.landmark-title').textContent.toLowerCase();
+        
+        card.style.transform = 'none';
+        card.style.boxShadow = 'none';
+
+        if (title.includes(query)) {
+          found = true;
+          card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          
+          card.style.transition = 'all 0.4s ease';
+          card.style.transform = 'translateY(-6px)';
+          card.style.boxShadow = '0 12px 30px rgba(194, 155, 56, 0.35)';
+
+          setTimeout(() => {
+            card.style.transform = 'none';
+            card.style.boxShadow = 'none';
+          }, 3000);
+        }
+      });
+
+      if (!found) {
+        alert(`No matching landmarks found for "${queryText}". Try searching for "Palace", "Tower", or "Village".`);
+      }
+    }
+
+    // Search button click
+    searchButton.addEventListener('click', () => {
+      executeSearch(searchInput.value);
+    });
+
+    // Enter key support inside input
+    searchInput.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        executeSearch(searchInput.value);
+      }
+    });
+
+    // Popular tags shortcut click
+    popularTags.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const keyword = tag.getAttribute('data-search');
+        searchInput.value = keyword;
+        executeSearch(keyword);
+      });
+    });
+
+    // Connect top header magnifying glass icon to jump smoothly to search bar and focus it
+    headerSearchBtn.addEventListener('click', () => {
+      discoveryCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      searchInput.focus();
+      
+      discoveryCard.style.transition = 'box-shadow 0.3s ease';
+      discoveryCard.style.boxShadow = '0 0 0 3px var(--hanbok-gold)';
+      setTimeout(() => {
+        discoveryCard.style.boxShadow = '0 15px 40px rgba(44, 36, 34, 0.08)';
+      }, 1200);
     });
 
     /* --- Landmark Modal Open/Close Logic with Ancient vs Modern Control --- */
